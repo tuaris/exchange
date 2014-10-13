@@ -9,11 +9,17 @@ zh-CN:
       ip: IP地址
       location: 登录地点
     google_auth_activated:
-      subject: "[云币网] 绑定 Google Authenticator"
-      google_auth_activated: 您已绑定 Google Authenticator。
+      subject: "[云币网] 绑定谷歌两步验证"
+      google_auth_activated: 您已绑定谷歌两步验证。
     google_auth_deactivated:
-      subject: "[云币网] 重置 Google Authenticator"
-      google_auth_deactivated: 您已重置 Google Authenticator。
+      subject: "[云币网] 重置谷歌两步验证"
+      google_auth_deactivated: 您已重置谷歌两步验证。
+    sms_auth_activated:
+      subject: "[云币网] 绑定短信两步验证"
+      sms_auth_activated: 您已绑定短信两步验证。
+    sms_auth_deactivated:
+      subject: "[云币网] 重置短信两步验证"
+      sms_auth_deactivated: 您已重置短信两步验证。
     reset_password_done:
       subject: "[云币网] 密码修改成功"
       successful: "您已成功修改密码。请妥善保管~"
