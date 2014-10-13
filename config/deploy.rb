@@ -7,9 +7,9 @@ require 'mina/slack/tasks'
 set :repository, 'git@github.com:peatio/peatio_beijing.git'
 set :user, 'deploy'
 set :deploy_to, '/home/deploy/peatio'
-set :branch, ENV['branch'] || 'master'
 set :keep_releases, 20
 
+branch = ENV['branch'] || 'production'
 case ENV['to']
 when 'demo'
   set :domain, 'demo.peat.io'
@@ -17,17 +17,16 @@ when 'peatio-daemon'
   set :domain, 'peatio-daemon'
 when 'peatio-redis'
   set :domain, 'peatio-redis'
-when 'peatio-web-01'
-  set :domain, 'peatio-web-01'
-when 'peatio-web-02'
-  set :domain, 'peatio-web-02'
 when 'peatio-admin'
   set :domain, 'peatio-admin'
 when 'yunbi-web-01'
   set :domain, 'yunbi-web-01'
 else
+  branch = 'staging'
   set :domain, 'peatio-stg'
 end
+
+set :branch, branch
 
 set :shared_paths, [
   'config/database.yml',
