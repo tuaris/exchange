@@ -9,6 +9,7 @@ html lang="en"
     = yield(:scripts) if content_for?(:scripts)
     = render 'shared/html5'
     = render 'shared/meta'
+    = render 'shared/tongji' if Rails.env.production?
     = csrf_meta_tags
 
   body id='#{body_id}' data-lang="#{locale_name}"
@@ -31,5 +32,3 @@ html lang="en"
       = yield(:footer)
     - else
       = render 'shared/footer'
-
-    = render 'shared/analysis' if Rails.env.production?
