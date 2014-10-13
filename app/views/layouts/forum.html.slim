@@ -5,6 +5,7 @@ html lang="en"
     = stylesheet_link_tag "application", media: "all"
     = render 'shared/html5'
     = render 'shared/meta'
+    = render 'shared/tongji' if Rails.env.production?
   body id='#{controller_name}-#{action_name}' data-lang="#{I18n.locale.to_s.downcase}"
     #wrap
       .container
