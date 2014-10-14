@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006172601) do
+ActiveRecord::Schema.define(version: 20141012124243) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -200,9 +200,8 @@ ActiveRecord::Schema.define(version: 20141006172601) do
     t.boolean  "activated"
     t.integer  "country_code"
     t.string   "phone_number"
-    t.boolean  "phone_number_verified"
-    t.boolean  "disabled",              default: false
-    t.boolean  "api_disabled",          default: false
+    t.boolean  "disabled",     default: false
+    t.boolean  "api_disabled", default: false
   end
 
   create_table "orders", force: true do |t|
@@ -332,7 +331,7 @@ ActiveRecord::Schema.define(version: 20141006172601) do
     t.string   "token"
     t.datetime "expire_at"
     t.integer  "member_id"
-    t.boolean  "is_used"
+    t.boolean  "is_used",    default: false
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -397,6 +396,7 @@ ActiveRecord::Schema.define(version: 20141006172601) do
     t.string   "aasm_state"
     t.decimal  "sum",        precision: 32, scale: 16, default: 0.0, null: false
     t.string   "type"
+    t.string   "memo"
   end
 
 end

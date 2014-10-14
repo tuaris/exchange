@@ -3,7 +3,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :is_admin?, :current_market, :muut_enabled?, :gon
   before_action :set_language, :set_timezone, :set_gon
+  after_action :allow_iframe
   rescue_from CoinRPC::ConnectionRefusedError, with: :coin_rpc_connection_refused
+
+  include TwoFactorHelper
 
   def currency
     "#{params[:ask]}#{params[:bid]}".to_sym
@@ -23,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def auth_member!
-    redirect_to signin_path unless current_user
+    redirect_to root_path, alert: t('.login_required') unless current_user
   end
 
   def auth_activated!
@@ -70,7 +73,7 @@ class ApplicationController < ActionController::Base
     return false if not two_factor
 
     two_factor.assign_attributes params.require(:two_factor).permit(:otp)
-    two_factor.verify
+    two_factor.verify?
   end
 
   def set_language
@@ -185,4 +188,7 @@ class ApplicationController < ActionController::Base
     Rails.cache.delete_matched "peatio:sessions:#{member_id}:*"
   end
 
+  def allow_iframe
+    response.headers.except! 'X-Frame-Options' if Rails.env.development?
+  end
 end
