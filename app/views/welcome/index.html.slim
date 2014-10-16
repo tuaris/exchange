@@ -24,12 +24,12 @@
                   .form-group
                     .col-xs-20.col-xs-offset-4
                       = f.button :submit, class: 'btn btn-lg btn-block btn-success', value: t("header.signin")
-                      h5.inline-links
+                      h6.inline-links
                         = link_to "忘了密码?", new_reset_password_path
                         '|
                         = link_to '注册新帐号', signup_path
-                  .col-xs-4
-                    a href="/auth/weibo" class="btn btn-primary btn-lg btn-block" role="button" = t("header.login_via_weibo")
+                        '|
+                        = link_to t("header.login_via_weibo"), '/auth/weibo'
 
   .main-section
     .container
