@@ -56,4 +56,16 @@ module APIv2
       super code: 2004, text: "Order##{id} doesn't exist.", status: 404
     end
   end
+
+  class UserNotFoundError < Error
+    def initialize(uid)
+      super code: 3001, text: "User##{uid} doesn't exist.", status: 404
+    end
+  end
+
+  class InsufficientBalanceError < Error
+    def initialize(uid)
+      super code: 4001, text: "Account #{uid} doesn't have sufficient balance.", status: 400
+    end
+  end
 end

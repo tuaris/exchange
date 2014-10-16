@@ -7,9 +7,12 @@ module APIv2
       end
 
       def authenticate!
-        return unless provided?
-        auth = Authenticator.new(request, params)
-        auth.authentic? ? auth.token : nil
+        if provided?
+          auth = Authenticator.new(request, params)
+          auth.authentic? ? auth.token : nil
+        elsif ENV['API_ADMIN_IPS'].include?(request.ip)
+          APIToken.new(access_key: request.ip, secret_key: '', member: Member.new)
+        end
       end
 
       def provided?

@@ -89,7 +89,12 @@ class SessionsController < ApplicationController
 
   def add_auth_for_weibo
     if current_user && ENV['WEIBO_AUTH'] == "true" && auth_hash.try(:[], :provider) == 'weibo'
-      redirect_to settings_path, notice: t('.weibo_bind_success') if current_user.add_auth(auth_hash)
+      if current_user.add_auth(auth_hash)
+        amount = Tip.settle_for_user!(current_user)
+        flash[:alert] = t('.weibo_bind_tips_settled', amount: amount) if amount > 0
+        flash[:notice] = t('.weibo_bind_success')
+        redirect_to settings_path
+      end
     end
   end
 
