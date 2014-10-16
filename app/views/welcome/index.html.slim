@@ -28,6 +28,8 @@
                         = link_to "忘了密码?", new_reset_password_path
                         '|
                         = link_to '注册新帐号', signup_path
+                  .col-xs-4
+                    a href="/auth/weibo" class="btn btn-primary btn-lg btn-block" role="button" = t("header.login_via_weibo")
 
   .main-section
     .container
@@ -91,4 +93,3 @@
             td.text-left = market.ticker[:high]
             td.text-left = market.ticker[:low]
             td.text-left = market.ticker[:volume]
-
