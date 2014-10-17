@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006172601) do
+ActiveRecord::Schema.define(version: 20141015034040) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20141006172601) do
     t.integer  "member_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "nickname"
   end
 
   add_index "authentications", ["member_id"], name: "index_authentications_on_member_id", using: :btree
@@ -118,9 +119,9 @@ ActiveRecord::Schema.define(version: 20141006172601) do
     t.datetime "done_at"
     t.string   "memo"
     t.string   "type"
+    t.string   "blockid"
     t.integer  "payment_transaction_id"
     t.integer  "txout"
-    t.string   "blockid"
   end
 
   add_index "deposits", ["txid", "txout"], name: "index_deposits_on_txid_and_txout", using: :btree
@@ -203,6 +204,7 @@ ActiveRecord::Schema.define(version: 20141006172601) do
     t.boolean  "phone_number_verified"
     t.boolean  "disabled",              default: false
     t.boolean  "api_disabled",          default: false
+    t.string   "nickname"
   end
 
   create_table "orders", force: true do |t|
@@ -263,9 +265,9 @@ ActiveRecord::Schema.define(version: 20141006172601) do
     t.datetime "dont_at"
     t.integer  "currency"
     t.string   "type",          limit: 60
-    t.integer  "txout"
     t.string   "payer"
     t.string   "blockid"
+    t.integer  "txout"
   end
 
   add_index "payment_transactions", ["txid", "txout"], name: "index_payment_transactions_on_txid_and_txout", using: :btree
@@ -397,6 +399,7 @@ ActiveRecord::Schema.define(version: 20141006172601) do
     t.string   "aasm_state"
     t.decimal  "sum",        precision: 32, scale: 16, default: 0.0, null: false
     t.string   "type"
+    t.string   "memo"
   end
 
 end
