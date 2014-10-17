@@ -21,10 +21,48 @@ class SystemMailer < BaseMailer
   def daily_stats(ts, stats, base)
     @stats = stats
     @base  = base
+
+    @changes = {
+      signup: compare(@base['member_stats'][1], @stats['member_stats'][1]),
+      activation: compare(@base['member_stats'][2], @stats['member_stats'][2]),
+      assets: Currency.all.map {|c| [c, compare(@base['asset_stats'][c.code], @stats['asset_stats'][c.code]) ] },
+      trades: Market.all.map {|m| [m, compare(@base['trade_users'][m.id][1], @stats['trade_users'][m.id][1]) ] }
+    }
+
     from   = Time.at(ts)
     to     = Time.at(ts + 1.day - 1)
     mail subject: "Daily Summary (#{from} - #{to})",
          to: ENV['OPERATE_MAIL_TO']
+  end
+
+  private
+
+  def compare(before, now)
+    if before.nil? || now.nil?
+      [ '-', '-' ]
+    else
+      [ pretty_change(now-before), percentage_compare(before, now) ]
+    end
+  end
+
+  def percentage_compare(before, now)
+    if before == 0
+      pretty_change '-', 0
+    else
+      v = 100*(now-before) / before.to_f
+      pretty_change("%.2f%%" % v, v)
+    end
+  end
+
+  def pretty_change(change, direction=nil)
+    direction ||= change
+    if direction > 0
+      "#{change} <span style='color:#0F0;'>&#11014;</span>".html_safe
+    elsif direction < 0
+      "#{change} <span style='color:#F00;'>&#11015;</span>".html_safe
+    else
+      change
+    end
   end
 
 end
