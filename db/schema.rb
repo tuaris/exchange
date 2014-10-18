@@ -201,9 +201,8 @@ ActiveRecord::Schema.define(version: 20141015034040) do
     t.boolean  "activated"
     t.integer  "country_code"
     t.string   "phone_number"
-    t.boolean  "phone_number_verified"
-    t.boolean  "disabled",              default: false
-    t.boolean  "api_disabled",          default: false
+    t.boolean  "disabled",     default: false
+    t.boolean  "api_disabled", default: false
     t.string   "nickname"
   end
 
@@ -334,7 +333,7 @@ ActiveRecord::Schema.define(version: 20141015034040) do
     t.string   "token"
     t.datetime "expire_at"
     t.integer  "member_id"
-    t.boolean  "is_used"
+    t.boolean  "is_used",    default: false
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
