@@ -74,6 +74,8 @@ defaults: &defaults
   MIXPANEL_TOKEN: YOUR_MIXPANEL_TOKEN
   MIXPANEL_POOL: 20
 
+  SLACK_URI: YOUR_SLACK_API_URI
+
 development:
   <<: *defaults
 
