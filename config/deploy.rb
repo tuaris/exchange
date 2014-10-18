@@ -157,7 +157,7 @@ task :del_daemons do
   when 'yunbi-web-01'
     queue! "rm -rf #{deploy_to}/current/lib/daemons"
   when 'peatio-redis'
-    keeps = ['daemons', 'k.rb', 'k_ctl']
+    keeps = ['daemons', 'k.rb', 'k_ctl', 'stats.rb', 'stats_ctl']
   end
 
   if not keeps.empty?
