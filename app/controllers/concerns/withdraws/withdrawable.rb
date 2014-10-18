@@ -16,6 +16,9 @@ module Withdraws
       if two_factor_auth_verified?
         if @withdraw.save
           @withdraw.submit!
+
+          AMQPQueue.enqueue(:slack_notification, channel: '#service', message: I18n.t('private.withdraws.create.slack_notify', url: admin_withdraw_url(@withdraw)))
+
           render nothing: true
         else
           render text: @withdraw.errors.full_messages.join, status: 403
@@ -59,6 +62,11 @@ module Withdraws
       params[:withdraw][:currency] = channel.currency
       params[:withdraw][:member_id] = current_user.id
       params.require(:withdraw).permit(:fund_source, :member_id, :currency, :sum, :memo)
+    end
+
+    def admin_withdraw_url(w)
+      type =  w.class.name.split('::').last.underscore.pluralize
+      "#{ENV['ADMIN_URL']}/admin/withdraws/#{type}/#{w.id}"
     end
 
   end
