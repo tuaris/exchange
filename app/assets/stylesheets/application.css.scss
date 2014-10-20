@@ -24,6 +24,7 @@
 @import 'features/funds';
 @import 'features/custom';
 @import 'features/sprites';
+@import 'features/docs';
 
 /* layouts
 -------------------------------------------------------------- */
@@ -38,7 +39,6 @@ html, body {
 #wrap {
   height: auto !important;
   min-height: 100%;
-  margin: 0 auto 0 - $footer-height;
 
   & + iframe { display: none; }
 
@@ -78,20 +78,6 @@ html, body {
       }
     }
   }
-}
-
-#push, footer {
-  height: $footer-height;
-  box-sizing: 'border-box';
-}
-
-footer {
-  color: $footer-color;
-  height: $footer-height;
-  box-sizing: 'border-box';
-  padding-top: 20px;
-  background-color: $footer-bg;
-  border-top: 1px solid $footer-border;
 }
 
 /* ticker

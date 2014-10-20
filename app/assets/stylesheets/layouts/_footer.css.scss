@@ -1,20 +1,47 @@
 .global-footer {
+  color: $footer-color-light;
+  font-size: 14px;
+  padding: 20px 0 10px;
+  border-top: 1px solid $footer-border;
+  .powered-by
+   {
+    img {
+      max-width: 80px;
+      margin-bottom: 10px;
+      opacity: .3;
+    }
+    a {
+      color: $footer-color-light;
+      font-weight: bold;
+      &:hover {
+        color: darken($footer-color-light, 20%);
+      }
+    }
+  }
+  .footer-copyright {
+    font-size: 12px;
+    color: $footer-color-light;
+    .beian {
+      color: $footer-color-light;
+      text-decoration: none;
+    }
+  }
   p {
     font-size: 14px;
+    margin-bottom: 8px;
   }
   .footer-nav {
-    color: #ddd;
+    list-style: none;
+    padding: 0;
+    li {
+      margin-bottom: 5px;
+    }
   }
-  a {
-    font-size: 14px;
-    padding: 0 5px;
-  }
-  .beian {
-    font-size: 14px;
-    color: #bbb;
-  }
-  .text-bigger {
+  .hotline {
+    color: #333;
     font-size: 16px;
-    margin: -3px 5px 0 0;
+    strong {
+      font-size: 18px;
+    }
   }
 }
