@@ -45,6 +45,9 @@ queue:
   sms:
     name: peatio.notification.sms
     durable: true
+  slack:
+    name: peatio.notification.slack
+    durable: true
 
 binding:
   matching:
@@ -78,6 +81,9 @@ binding:
     exchange: notification
   sms_notification:
     queue: sms
+    exchange: notification
+  slack_notification:
+    queue: slack
     exchange: notification
 
 channel:
