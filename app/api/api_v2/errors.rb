@@ -57,15 +57,18 @@ module APIv2
     end
   end
 
-  class UserNotFoundError < Error
+  # Errors used by inner app that needs admin privilege have code start from 3000
+  # This error used for tipping api
+  class InsufficientBalanceError < Error
     def initialize(uid)
-      super code: 3001, text: "User##{uid} doesn't exist.", status: 404
+      super code: 3001, text: "Account weibo##{uid} doesn't have sufficient balance.", status: 400
     end
   end
 
-  class InsufficientBalanceError < Error
+  # This error used for tipping api
+  class UserNotFoundError < Error
     def initialize(uid)
-      super code: 4001, text: "Account #{uid} doesn't have sufficient balance.", status: 400
+      super code: 3002, text: "User weibo##{uid} doesn't exist.", status: 404
     end
   end
 end
