@@ -12,7 +12,8 @@ module APIv2
       post "/tipping" do
         begin
           tip = Tip.create payer: params[:payer], payee: params[:payee],
-            amount: params[:amount], msg: params[:msg], currency: :yun, source: :weibo
+            amount: params[:amount], msg: params[:msg], reason: params[:reason],
+            currency: :yun, source: :weibo
 
           present tip, with: APIv2::Entities::Tip
         rescue Account::AccountError => e
