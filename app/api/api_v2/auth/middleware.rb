@@ -10,7 +10,7 @@ module APIv2
         if provided?
           auth = Authenticator.new(request, params)
           auth.authentic? ? auth.token : nil
-        elsif ENV['API_ADMIN_IPS'].include?(request.ip)
+        elsif ENV['API_ADMIN_IPS'] and ENV['API_ADMIN_IPS'].include?(request.ip) and env["action_dispatch.remote_ip"].to_s() == request.ip
           APIToken.new(access_key: request.ip, secret_key: '', member: Member.new)
         end
       end
