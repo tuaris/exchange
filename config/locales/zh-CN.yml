@@ -62,6 +62,8 @@ zh-CN:
           :true: "#%{id} 撤单成功"
           :false: "#%{id} 撤单失败"
     withdraws:
+      create:
+        slack_notify: "收到新的提现请求, 请立刻处理: <%{url}>"
       update:
         request_accepted: 提现申请提交成功
       destroy:
