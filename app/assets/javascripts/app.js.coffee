@@ -89,7 +89,7 @@ $ ->
   MarketChartUI.attachTo('.market-chart')
   OrderBookUI.attachTo('#order_book')
 
-  VerifyMobileNumberUI.attachTo('#new_token_sms_token')
+  SmsAuthVerifyUI.attachTo('#edit_sms_auth')
   FlashMessageUI.attachTo('.flash-message')
   TwoFactorAuth.attachTo('.two-factor-auth-container')
 

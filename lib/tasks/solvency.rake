@@ -56,4 +56,9 @@ namespace :solvency do
     puts "Complete."
   end
 
+
+  desc "Publish liability proof to weibo"
+  task :publish => :environment do
+    SolvencyMailer.publish.deliver
+  end
 end

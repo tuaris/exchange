@@ -31,6 +31,7 @@ module APIv2
     mount OrderBooks
     mount Trades
     mount K
+    mount Admin::Tips
 
     base_path = Rails.env.production? ? "#{ENV['URL_SCHEMA']}://#{ENV['URL_HOST']}" : nil
     add_swagger_documentation base_path: base_path,

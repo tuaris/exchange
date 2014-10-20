@@ -7,7 +7,6 @@ require 'mina/slack/tasks'
 set :repository, 'git@github.com:peatio/peatio_beijing.git'
 set :user, 'deploy'
 set :deploy_to, '/home/deploy/peatio'
-set :keep_releases, 20
 
 branch = ENV['branch'] || 'production'
 case ENV['to']

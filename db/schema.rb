@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015034040) do
+ActiveRecord::Schema.define(version: 20141020045900) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -330,11 +330,26 @@ ActiveRecord::Schema.define(version: 20141015034040) do
     t.datetime "updated_at"
   end
 
+  create_table "tips", force: true do |t|
+    t.string   "payer"
+    t.string   "payee"
+    t.decimal  "amount",        precision: 10, scale: 0
+    t.integer  "currency"
+    t.string   "msg"
+    t.string   "source"
+    t.boolean  "payer_settled",                          default: false
+    t.boolean  "payee_settled",                          default: false
+    t.datetime "deleted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "reason"
+  end
+
   create_table "tokens", force: true do |t|
     t.string   "token"
     t.datetime "expire_at"
     t.integer  "member_id"
-    t.boolean  "is_used"
+    t.boolean  "is_used",    default: false
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
