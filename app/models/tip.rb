@@ -3,7 +3,7 @@ class Tip < ActiveRecord::Base
 
   extend Enumerize
 
-  paranoid
+  #paranoid
 
   enumerize :currency, in: Currency.hash_codes
 
@@ -15,8 +15,9 @@ class Tip < ActiveRecord::Base
   def self.settle_for_user!(user)
     tips = Tip.for_user(user).unsettled.collect do |tip|
       tip.settle!
+      tip
     end
-    tips.sum(:amount)
+    tips.map(&:amount).reduce(&:+).to_f
   end
 
   def settle!

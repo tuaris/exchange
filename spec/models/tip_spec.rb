@@ -1,20 +1,20 @@
 require 'spec_helper'
 
 describe Tip do
+  let(:currency) { :cny }
+  let(:payer) { create(:authentication).member }
+  let(:payee) { create(:authentication).member }
+  let(:escrow) { Member.find_by_email('escrow@escrow.escrow').ac(currency) }
+
   describe "#settle!" do
-    let(:currency) { :cny }
-    let(:payer) { create(:authentication).member }
-    let(:payee) { create(:authentication).member }
-    let(:escrow) { Member.find_by_email('escrow@escrow.escrow').ac(currency) }
-
     subject { build :tip, payer: payer.auth(:weibo).uid, amount: 100 }
-
-    before do
-      payer.ac(currency).plus_funds 1000
-    end
 
     def bind_payee!
       payee.auth(:weibo).update_attribute :uid, subject.attributes['payee']
+    end
+
+    before do
+      payer.ac(currency).plus_funds 1000
     end
 
     it "should raise not found exception if payer account not exists" do
@@ -50,7 +50,24 @@ describe Tip do
       expect(escrow.reload.balance).to eq(0)
       expect(payee.ac(currency).balance).to eq(100)
 
-      expect { subject.settle! }.to not_change{ AccountVersion.count }
+      expect { subject.settle! }.to_not change{ AccountVersion.count }
+    end
+  end
+
+  describe "#settle_for_user!" do
+    before do
+      payer.ac(currency).plus_funds 1000
+      create_list :tip, 4, payer: payer.auth(:weibo).uid, payee: '12234', amount: 10
+    end
+
+    def bind_payee!
+      payee.auth(:weibo).update_attribute :uid, Tip.first.attributes['payee']
+    end
+
+    it "should return sum of tip's amount" do
+      bind_payee!
+
+      expect(Tip.settle_for_user!(payee)).to eq(Tip.all.to_a.sum(&:amount))
     end
   end
 end
