@@ -201,9 +201,8 @@ ActiveRecord::Schema.define(version: 20141020045900) do
     t.boolean  "activated"
     t.integer  "country_code"
     t.string   "phone_number"
-    t.boolean  "phone_number_verified"
-    t.boolean  "disabled",              default: false
-    t.boolean  "api_disabled",          default: false
+    t.boolean  "disabled",     default: false
+    t.boolean  "api_disabled", default: false
     t.string   "nickname"
   end
 
