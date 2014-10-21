@@ -41,6 +41,6 @@
 - id: 999
   key: yun
   currency: yun
-  fixed: 5
-  fee: 0.1
+  fixed: 0
+  fee: 0
   sort_order: 99
