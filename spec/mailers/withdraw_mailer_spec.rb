@@ -15,7 +15,7 @@ describe WithdrawMailer do
     end
 
     it "renders the body" do
-      mail.body.encoded.should match("canceled")
+      mail.body.encoded.should match(withdraw.aasm_state_text)
     end
   end
 
