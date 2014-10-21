@@ -63,7 +63,7 @@
   rpc: http://username:password@127.0.0.1:0/rpc
   blockchain: http://www.bitsharesblocks.com/blocks/block?id=#{txid}
 - id: 21
-  key: dns
+  key: keyid
   code: dns
   coin: true
   handler: BTSX
