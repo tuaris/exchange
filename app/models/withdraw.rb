@@ -179,7 +179,8 @@ class Withdraw < ActiveRecord::Base
                                               currency: currency_text,
                                               time: I18n.l(Time.now.localtime),
                                               amount: amount,
-                                              balance: account.balance)
+                                              balance: account.balance,
+                                              locked: account.locked)
 
     AMQPQueue.enqueue(:sms_notification, phone: member.phone_number, message: sms_message)
   end
