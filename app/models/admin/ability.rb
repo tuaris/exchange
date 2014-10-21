@@ -22,6 +22,7 @@ module Admin
       can :manage, ::Deposits::Dogecoin
       can :manage, ::Deposits::Bitsharesx
       can :manage, ::Deposits::Keyid
+      can :manage, ::Deposits::Yun
 
       can :menu, Withdraw
       can :manage, ::Withdraws::Bank
