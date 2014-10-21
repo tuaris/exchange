@@ -70,3 +70,12 @@
   deposit_account: janx
   rpc: http://dns:dnshelloworld@127.0.0.1:20152/rpc
   blockchain: http://104.131.241.162/blocks/block?id=#{txid}
+- id: 999
+  key: yun
+  code: yun
+  coin: true
+  symbol: 'YUN'
+  handler: BTSX
+  deposit_account: janx
+  rpc: http://dns:dnshelloworld@127.0.0.1:20152/rpc
+  blockchain: http://104.131.241.162/blocks/block?id=#{txid}
