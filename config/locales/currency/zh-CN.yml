@@ -12,6 +12,8 @@ zh-CN:
       key: BTSX
     keyid:
       key: DNS
+    yun:
+      key: YUN
 
     name:
       cny: 人民币
@@ -20,6 +22,7 @@ zh-CN:
       doge: 狗狗币
       btsx: Bitshares X
       dns: KeyID DNS
+      yun: 云朵
     code:
       cny: CNY
       btc: BTC
@@ -27,6 +30,7 @@ zh-CN:
       doge: DOGE
       btsx: BTSX
       dns: DNS
+      yun: YUN
     format:
       zero: 'N/A'
       cny: '0.00'

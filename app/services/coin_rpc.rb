@@ -177,6 +177,11 @@ class CoinRPC
   end
 
   class DNS < BTSX; end
-  class YUN < BTSX; end
+
+  class YUN < BTSX
+    def settxfee(fee)
+      # do nothing, use default bitshares fee
+    end
+  end
 
 end

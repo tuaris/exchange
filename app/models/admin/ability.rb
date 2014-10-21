@@ -30,6 +30,7 @@ module Admin
       can :manage, ::Withdraws::Dogecoin
       can :manage, ::Withdraws::Bitsharesx
       can :manage, ::Withdraws::Keyid
+      can :manage, ::Withdraws::Yun
     end
   end
 end
