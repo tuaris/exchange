@@ -163,3 +163,14 @@ header #languages {
   min-width: 64px;
   li > a{ padding-top: 8px; }
 }
+
+
+div.WB_loginButton a {
+  color: rgba(255, 255, 255, 0.75);
+  background-color: transparent;
+  text-decoration: none !important;
+  font-size: 16px;
+  padding: 24px 10px;
+  line-height: 22px !important;
+  display: inline-block;
+}
