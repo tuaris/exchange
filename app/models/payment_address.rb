@@ -13,7 +13,7 @@ class PaymentAddress < ActiveRecord::Base
   def gen_address
     return if address
 
-    if account && %w(btsx dns).include?(account.currency)
+    if account && %w(btsx dns yun).include?(account.currency)
       self.address = "#{currency_obj.deposit_account}|#{self.class.construct_memo(account)}"
       save
     else
