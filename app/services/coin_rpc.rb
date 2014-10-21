@@ -59,8 +59,8 @@ class CoinRPC
   end
 
   BITSHARES_ASSETS = {
-    BTSX: {id: 0, precision: 1000000},
-    DNS:  {id: 0, precision: 1000000},
+    BTSX: {id: 0, precision: 100000},
+    DNS:  {id: 0, precision: 100000},
     YUN:  {id: 41, precision: 100}
   }.freeze
 
