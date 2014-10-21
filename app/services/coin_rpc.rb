@@ -139,17 +139,7 @@ class CoinRPC
 
     def get_deposit_transactions(from, to=-1)
       txs = wallet_account_transaction_history(@currency.deposit_account, asset_name, 0, from, to)
-      txs.select do |tx|
-        return false unless tx['is_confirmed'] && !tx['is_virtual'] && !tx['is_market'] && !tx['is_market_cancel']
-
-        entry = tx['ledger_entries'].first
-        return false unless entry['to_account'] == @currency.deposit_account
-
-        transfers = entry['running_balances'].find {|(account, _)| account == @currency.deposit_account }.try(:last)
-        return false unless transfers
-
-        transfers.any? {|(id, transfer)| id == asset_id && transfer['amount'] > 0}
-      end
+      txs.select {|tx| valid_deposit?(tx) }
     end
 
     def gettransaction(txid)
@@ -172,6 +162,18 @@ class CoinRPC
 
     def asset_precision
       @asset_precision ||= BITSHARES_ASSETS[asset_name.to_sym][:precision]
+    end
+
+    def valid_deposit?(tx)
+      return false unless tx['is_confirmed'] && !tx['is_virtual'] && !tx['is_market'] && !tx['is_market_cancel']
+
+      entry = tx['ledger_entries'].first
+      return false unless entry['to_account'] == @currency.deposit_account
+
+      transfers = entry['running_balances'].find {|(account, _)| account == @currency.deposit_account }.try(:last)
+      return false unless transfers
+
+      transfers.any? {|(id, transfer)| id == asset_id && transfer['amount'] > 0}
     end
 
   end
