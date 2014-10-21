@@ -31,5 +31,12 @@ module APIv2
       optional :order_by,     type: String, values: %w(asc desc), default: 'desc', desc: "If set, returned trades will be sorted in specific order, default to 'desc'."
     end
 
+    params :tip do
+      requires :payer, type: String
+      requires :payee, type: String
+      requires :amount, type: Float
+      requires :msg, type: String
+    end
+
   end
 end

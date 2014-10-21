@@ -5,7 +5,7 @@
 <table>
   <tr>
     <td><%= t('withdraw_mailer.withdraw_account') %></td>
-    <td><%= [@withdraw.fund_extra_text, '@', @withdraw.fund_uid].join(' ') %></td>
+    <td><%= [@withdraw.fund_extra, '@', @withdraw.fund_uid].join(' ') %></td>
   </tr>
   <tr>
     <td><%= t('withdraw_mailer.withdraw_amount') %></td>

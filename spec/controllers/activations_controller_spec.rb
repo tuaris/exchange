@@ -7,7 +7,7 @@ module Private
       describe 'non-login user' do
         before { get :new }
 
-        it { expect(response).to redirect_to(root_path) }
+        it { expect(response).to redirect_to(signin_path) }
         it { expect(flash[:alert]).to match('login required') }
       end
 

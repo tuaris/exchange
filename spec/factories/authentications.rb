@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :authentication do
-    provider "MyString"
-    uid "MyString"
-    token "MyString"
-    secret "MyString"
-    member_id 1
+    provider "weibo"
+    uid { Faker::Number.number(15).to_s }
+    token "2.0token"
+    secret "secret"
+    member { create(:member) }
   end
 end

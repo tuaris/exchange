@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015034040) do
+ActiveRecord::Schema.define(version: 20141020045900) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -201,8 +201,9 @@ ActiveRecord::Schema.define(version: 20141015034040) do
     t.boolean  "activated"
     t.integer  "country_code"
     t.string   "phone_number"
-    t.boolean  "disabled",     default: false
-    t.boolean  "api_disabled", default: false
+    t.boolean  "phone_number_verified"
+    t.boolean  "disabled",              default: false
+    t.boolean  "api_disabled",          default: false
     t.string   "nickname"
   end
 
@@ -327,6 +328,21 @@ ActiveRecord::Schema.define(version: 20141015034040) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "tips", force: true do |t|
+    t.string   "payer"
+    t.string   "payee"
+    t.decimal  "amount",        precision: 10, scale: 0
+    t.integer  "currency"
+    t.string   "msg"
+    t.string   "source"
+    t.boolean  "payer_settled",                          default: false
+    t.boolean  "payee_settled",                          default: false
+    t.datetime "deleted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "reason"
   end
 
   create_table "tokens", force: true do |t|

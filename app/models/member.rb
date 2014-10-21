@@ -230,7 +230,7 @@ class Member < ActiveRecord::Base
   end
 
   def deactive_phone_number!
-    update phone_number: '', phone_number_verified: false
+    update phone_number: ''
   end
 
   def memo
