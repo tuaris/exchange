@@ -58,7 +58,11 @@ class CoinRPC
     end
   end
 
-  ASSET_IDS = { BTSX: 0, DNS: 0 }.freeze
+  BITSHARES_ASSETS = {
+    BTSX: {id: 0, precision: 1000000},
+    DNS:  {id: 0, precision: 1000000},
+    YUN:  {id: 41, precision: 100}
+  }.freeze
 
   class BTSX < self
     def handle(name, *args)
@@ -83,7 +87,7 @@ class CoinRPC
 
     def getbalance
       balances = wallet_account_balance(@currency.deposit_account).first[1]
-      balance  = balances.find {|(id, _)| id == ASSET_IDS[asset_name.to_sym] }.last
+      balance  = balances.find {|(id, _)| id == asset_id }.last
       fmt_amount balance
     rescue
       Rails.logger.warn "Failed to get balance (currency: #{@currency.code} account: #{@currency.deposit_account}): #{$!}"
@@ -135,7 +139,17 @@ class CoinRPC
 
     def get_deposit_transactions(from, to=-1)
       txs = wallet_account_transaction_history(@currency.deposit_account, asset_name, 0, from, to)
-      txs.select {|tx| tx['is_confirmed'] && !tx['is_virtual'] && !tx['is_market'] && !tx['is_market_cancel'] && tx['ledger_entries'].first['to_account'] == @currency.deposit_account }
+      txs.select do |tx|
+        return false unless tx['is_confirmed'] && !tx['is_virtual'] && !tx['is_market'] && !tx['is_market_cancel']
+
+        entry = tx['ledger_entries'].first
+        return false unless entry['to_account'] == @currency.deposit_account
+
+        transfers = entry['running_balances'].find {|(account, _)| account == @currency.deposit_account }.try(:last)
+        return false unless transfers
+
+        transfers.any? {|(id, transfer)| id == asset_id && transfer['amount'] > 0}
+      end
     end
 
     def gettransaction(txid)
@@ -145,14 +159,24 @@ class CoinRPC
     end
 
     def fmt_amount(amt)
-      amt.to_d / 100000
+      amt.to_d / asset_precision
     end
 
     def asset_name
       @asset_name ||= self.class.name.split('::').last
     end
+
+    def asset_id
+      @asset_id ||= BITSHARES_ASSETS[asset_name.to_sym][:id]
+    end
+
+    def asset_precision
+      @asset_precision ||= BITSHARES_ASSETS[asset_name.to_sym][:precision]
+    end
+
   end
 
   class DNS < BTSX; end
+  class YUN < BTSX; end
 
 end
