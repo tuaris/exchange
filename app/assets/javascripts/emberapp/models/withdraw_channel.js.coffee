@@ -10,6 +10,7 @@ class WithdrawChannel extends PeatioModel.Model
       when "bitsharesx" then @resources_name = "bitsharesxes"
       when "dogecoin" then @resources_name = 'dogecoins'
       when "keyid" then @resources_name = 'keyids'
+      when "yun" then @resources_name = 'yuns'
 
   @initData: (records) ->
     PeatioModel.Ajax.disable ->
