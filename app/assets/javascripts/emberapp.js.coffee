@@ -6,7 +6,7 @@
 #= require ./lib/ajax
 #= require app
 #= require pusher.min
-#= require pusher
+#= require pusher_subscriber
 #= require_self
 #= require ./emberapp/peatio
 
