@@ -47,10 +47,10 @@
     git checkout peatio
     git pull
 
-    # merge peatio:master to peatio_beijing:master
+    # merge peatio:master (open-source) to peatio_beijing:master (yunbi.com)
     git checkout master
     git pull
-    git merge master
+    git merge peatio
 
     # git push remote_name local_branch:remote_branch
     git push peatio_beijing peatio_beijing:master
