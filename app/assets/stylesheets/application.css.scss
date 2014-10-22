@@ -42,10 +42,6 @@ html, body {
 
   & + iframe { display: none; }
 
-  #guide {
-    padding-left: 26px;
-  }
-
   #content {
     border-left: 1px solid $content-split;
     padding-top: 15px;
