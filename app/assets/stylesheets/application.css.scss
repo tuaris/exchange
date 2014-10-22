@@ -16,6 +16,7 @@
 @import 'layouts/footer';
 
 @import 'features/welcome';
+@import 'features/users';
 @import 'features/market';
 @import 'features/market_chart';
 @import 'features/assets';
@@ -103,12 +104,6 @@ form.simple_form {
     input[type=submit] + a, a + a {
       margin-right: $btn-gutter-width;
     }
-  }
-
-  hr.split {
-    border-top-color: #DDD;
-    margin-left: 10px;
-    margin-right: 54px;
   }
 }
 /* flash message element

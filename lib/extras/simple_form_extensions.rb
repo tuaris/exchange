@@ -17,7 +17,7 @@ module WrappedButton
         options = args.extract_options!
         loading = self.object.new_record? ? I18n.t('simple_form.creating') : I18n.t('simple_form.updating')
         options[:"data-loading-text"] = [loading, options[:"data-loading-text"]].compact
-        options[:class] = ['btn btn-default btn-lg pull-right', options[:class]].compact
+        options[:class] = ['btn btn-success pull-right', options[:class]].compact
 
         args << options
 
@@ -26,7 +26,7 @@ module WrappedButton
 
         cancel_view =
           if cancel_link = options.delete(:cancel)
-            class_text = 'btn btn-info btn-lg pull-right'
+            class_text = 'btn btn-info pull-right'
             cancel_text = options.delete(:cancel_text) || I18n.t('simple_form.buttons.cancel')
             template.link_to(cancel_text, cancel_link, class: class_text)
           end
