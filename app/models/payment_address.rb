@@ -2,25 +2,28 @@ class PaymentAddress < ActiveRecord::Base
   include Currencible
   belongs_to :account
 
-  after_commit :gen_address, on: :create
-
-  after_update :sync_create
+  before_create :bts_gen_address, if: :bts_address?
+  after_commit :gen_address, on: :create, unless: :bts_address?
 
   has_many :transactions, class_name: 'PaymentTransaction', foreign_key: 'address', primary_key: 'address'
 
   validates_uniqueness_of :address, allow_nil: true
 
+  def bts_address?
+    account && %w(btsx dns yun).include?(account.currency)
+  end
+
+  def bts_gen_address
+    return if address
+    self.address = "#{currency_obj.deposit_account}|#{self.class.construct_memo(account)}"
+  end
+
   def gen_address
     return if address
 
-    if account && %w(btsx dns).include?(account.currency)
-      self.address = "#{currency_obj.deposit_account}|#{self.class.construct_memo(account)}"
-      save
-    else
-      payload = { payment_address_id: id, currency: currency }
-      attrs   = { persistent: true }
-      AMQPQueue.enqueue(:deposit_coin_address, payload, attrs)
-    end
+    payload = { payment_address_id: id, currency: currency }
+    attrs   = { persistent: true }
+    AMQPQueue.enqueue(:deposit_coin_address, payload, attrs)
   end
 
   def memo
@@ -29,6 +32,10 @@ class PaymentAddress < ActiveRecord::Base
 
   def deposit_address
     currency_obj[:deposit_account] || address
+  end
+
+  def trigger_deposit_address
+    ::Pusher["private-#{account.member.sn}"].trigger_async('deposit_address', {type: 'create', attributes: as_json})
   end
 
   def self.construct_memo(obj)
@@ -45,13 +52,6 @@ class PaymentAddress < ActiveRecord::Base
     return nil unless member
     return nil unless member.created_at.to_i.to_s[-3..-1] == checksum
     member
-  end
-
-  private
-  def sync_create
-    if self.address_changed?
-      ::Pusher["private-#{account.member.sn}"].trigger_async('deposit_address', { type: 'create', attributes: self.as_json})
-    end
   end
 
 end

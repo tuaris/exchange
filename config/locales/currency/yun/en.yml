@@ -1,0 +1,7 @@
+en:
+  currency:
+    yun:
+      key: YUN
+      code: YUN
+      name: YUN
+      format: '0,0.0000'

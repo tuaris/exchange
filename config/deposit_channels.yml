@@ -38,3 +38,9 @@
   sort_order: 4
   min_confirm: 10
   max_confirm: 51
+- id: 999
+  key: yun
+  currency: yun
+  sort_order: 99
+  min_confirm: 10
+  max_confirm: 51

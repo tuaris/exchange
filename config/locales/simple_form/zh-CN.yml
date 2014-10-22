@@ -73,6 +73,8 @@ zh-CN:
           fund_source_address: 狗狗币钱包地址
         dns:
           fund_source_address: KeyID DNS账号
+        yun:
+          fund_source_address: YUN账号(BTSX帐号)
 
         name: 账户名
       member:
