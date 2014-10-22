@@ -22,14 +22,40 @@
     git push peatio_beijing peatio_beijing:master
 
 **How to merge code back to master**
-
 > NEVER
 
 **Should I push peatio_beijing branch to master?**
-
 > NEVER
 
+
 ***
+
+
+#### 在本地开发的分离版本`Git`流程
+
+**clone project**
+
+    git clone git@github.com:peatio/peatio_beijing.git yunbi
+    cd yunbi
+    git remote add peatio git@github.com:peatio/peatio.git
+    git fetch peatio
+    git checkout -b peatio --trac peatio/master
+
+**How to merge from peatio:master**
+
+    # update to latest version of master
+    git checkout peatio
+    git pull
+
+    # merge peatio:master to peatio_beijing:master
+    git checkout master
+    git pull
+    git merge master
+
+    # git push remote_name local_branch:remote_branch
+    git push peatio_beijing peatio_beijing:master
+
+*** 
 
 #### 代码合并的原则
 
