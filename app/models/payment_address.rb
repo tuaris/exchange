@@ -2,7 +2,8 @@ class PaymentAddress < ActiveRecord::Base
   include Currencible
   belongs_to :account
 
-  after_commit :gen_address, on: :create
+  before_create :bts_gen_address, if: :bts_address?
+  after_commit :gen_address, on: :create, unless: :bts_address?
 
   after_update :sync_create
 
@@ -10,17 +11,21 @@ class PaymentAddress < ActiveRecord::Base
 
   validates_uniqueness_of :address, allow_nil: true
 
+  def bts_address?
+    account && %w(btsx dns yun).include?(account.currency)
+  end
+
+  def bts_gen_address
+    return if address
+    self.address = "#{currency_obj.deposit_account}|#{self.class.construct_memo(account)}"
+  end
+
   def gen_address
     return if address
 
-    if account && %w(btsx dns yun).include?(account.currency)
-      self.address = "#{currency_obj.deposit_account}|#{self.class.construct_memo(account)}"
-      save
-    else
-      payload = { payment_address_id: id, currency: currency }
-      attrs   = { persistent: true }
-      AMQPQueue.enqueue(:deposit_coin_address, payload, attrs)
-    end
+    payload = { payment_address_id: id, currency: currency }
+    attrs   = { persistent: true }
+    AMQPQueue.enqueue(:deposit_coin_address, payload, attrs)
   end
 
   def memo
@@ -48,6 +53,7 @@ class PaymentAddress < ActiveRecord::Base
   end
 
   private
+
   def sync_create
     if self.address_changed?
       ::Pusher["private-#{account.member.sn}"].trigger_async('deposit_address', { type: 'create', attributes: self.as_json})
