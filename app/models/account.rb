@@ -165,7 +165,7 @@ class Account < ActiveRecord::Base
   def as_json(options = {})
     super.merge({
       # check if there is a useable address, but don't touch it to create the address now.
-      "deposit_address" => payment_addresses.empty? ? "" : payment_address.deposit_address,
+      "deposit_address" => deposit_address,
       "code_text" => currency_obj.code_text,
       "name_text" => currency_obj.name_text
     })
@@ -174,6 +174,14 @@ class Account < ActiveRecord::Base
   private
   def sync_update
     ::Pusher["private-#{member.sn}"].trigger_async('accounts', { type: 'update', id: self.id, attributes: self.changes_attributes_as_json })
+  end
+
+  def deposit_address
+    if %w(btsx dns yun).include?(self.currency)
+      payment_address.deposit_address
+    else
+      payment_addresses.empty? ? "" : payment_address.deposit_address
+    end
   end
 
 end
