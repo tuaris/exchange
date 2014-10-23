@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Account do
-  before { Account.any_instance.stubs(:sync_balance_and_locked) }
 
   subject { create(:account, locked: "10.0".to_d, balance: "10.0") }
 
