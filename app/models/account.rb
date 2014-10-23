@@ -152,6 +152,7 @@ class Account < ActiveRecord::Base
     self.locked  += delta_l
     self.class.connection.execute "update accounts set balance = balance + #{delta_b}, locked = locked + #{delta_l} where id = #{id}"
     add_to_transaction # so after_commit will be triggered
+    sync_balance_and_locked
     self
   end
 
@@ -174,6 +175,10 @@ class Account < ActiveRecord::Base
   private
   def sync_update
     ::Pusher["private-#{member.sn}"].trigger_async('accounts', { type: 'update', id: self.id, attributes: self.changes_attributes_as_json })
+  end
+
+  def sync_balance_and_locked
+    ::Pusher["private-#{member.sn}"].trigger_async('accounts', { type: 'update', id: self.id, attributes: {balance: self.reload.balance,  locked: self.reload.locked}})
   end
 
   def deposit_address

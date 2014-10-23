@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Ordering do
+  before { Account.any_instance.stubs(:sync_balance_and_locked) }
   let(:order) { create(:order_bid, volume: '1.23456789', price: '1.23456789') }
   let(:account) { create(:account, balance: 100.to_d, locked: 100.to_d) }
 

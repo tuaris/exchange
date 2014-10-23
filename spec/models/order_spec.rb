@@ -98,6 +98,8 @@ describe Order, "#done" do
   end
 
   describe Order do
+    before { Account.any_instance.stubs(:sync_balance_and_locked) }
+
     describe "#state" do
       it "should be keep wait state" do
         expect do
