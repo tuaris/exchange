@@ -302,6 +302,16 @@ header {
   top: $gutter; left: $gutter + $nav_stacked_width; 
 }
 
+#chart_switch {
+  position: absolute;
+  top: 300px;
+  left: 15px;
+
+  a { color: #333; }
+  a.active { color: #777; }
+  a:hover { color: #eee; }
+}
+
 
 /* order entry
 -----------------------------------------------------*/
@@ -405,6 +415,10 @@ header {
       border: none;
     }
 
+    tr.highlight {
+      font-weight: bolder;
+    }
+
     td {
       &.price, &.amount, &.volume {
         text-align: right;
@@ -426,6 +440,33 @@ header {
 .panel-heading {
   .pull-right + .pull-right {
     margin-right: 10px;
+  }
+}
+
+.chart-ticker {
+  border: 0px;
+  background-color: rgba(0,0,0,0) !important;
+  color: #777;
+  font-size: 14px;
+
+  & > div { display: inline-block; width: 100px; }
+  & > div.tooltip-ma { width: 104px; margin-top: 3px; }
+  & > div.tooltip-ticker { margin-top: 5px; }
+
+  span.t-title {
+    display: block;
+    text-align: rigth;
+    width: 60px;
+    min-width: 60px;
+  }
+
+  span.t-value {
+    color: #ccc !important;
+    font-family: $font-family-monospace;
+    width: 70px;
+    min-width: 70px;
+    text-align: right;
+    margin-right: 15px;
   }
 }
 
