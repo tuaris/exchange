@@ -1,7 +1,8 @@
 header.navbar.navbar-default.navbar-static-top role = "navigation"
   .container-fluid
     ul#menu.nav.navbar-nav.navbar-left
-      a.navbar-brand href='#{root_path}' 云币网交易平台
+      a.navbar-brand href='#{root_path}' = t('.title')
+
       p.navbar-text
         span.market
         span: small: a.hand-point.switch-market = t('.switch')
@@ -14,12 +15,16 @@ header.navbar.navbar-default.navbar-static-top role = "navigation"
           span.low.text-up
       
     ul.nav.navbar-nav.navbar-right
-      p.navbar-text
-        span = t('.sound')
-        span: input type="checkbox" name="sound-checkbox" data-size='mini' data-on-text="#{t('.switch_on')}" data-off-text="#{t('.switch_off')}" data-on-color='success'
-      p.navbar-text
-        span = t('.notification')
-        span: input type="checkbox" name="notification-checkbox" data-size='mini' data-on-text="#{t('.switch_on')}" data-off-text="#{t('.switch_off')}" data-on-color='success'
+      - if current_user
+        p.navbar-text
+          span = t('.sound')
+          span: input type="checkbox" name="sound-checkbox" data-size='mini' data-on-text="#{t('.switch_on')}" data-off-text="#{t('.switch_off')}" data-on-color='success'
+        p.navbar-text
+          span = t('.notification')
+          span: input type="checkbox" name="notification-checkbox" data-size='mini' data-on-text="#{t('.switch_on')}" data-off-text="#{t('.switch_off')}" data-on-color='success'
+      - else
+        p.navbar-text
+          == t('private.markets.mask.warning')
       p.navbar-text
         span = t('.network')
         span: i.fa.fa-wifi

@@ -36,17 +36,17 @@ zh-CN:
       bid_entry:
         title: " [买入] "
         action: 提交 [买入] 委单
-        price: 价格
+        price: 买入价
+        amount: 买入量
+        total: 总金额
         last_price: 最新价格
-        amount: 数量
-        total: 金额
       ask_entry:
         title: " [卖出] "
         action: 提交 [卖出] 委单
-        price: 价格
+        price: 卖出价
         last_price: 最新价格
-        amount: 数量
-        total: 金额
+        amount: 卖出量
+        total: 总金额
       place_order:
         price_high: 高
         price_low: 低
@@ -66,6 +66,7 @@ zh-CN:
         volume: 成交量
         amount: 总价
       header:
+        title: 云币网交易平台
         sound: 音效
         network: 连接状态
         switch_on: 开
