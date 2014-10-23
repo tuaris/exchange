@@ -30,7 +30,7 @@ class Account < ActiveRecord::Base
   validates :member_id, uniqueness: { scope: :currency }
   validates_numericality_of :balance, :locked, greater_than_or_equal_to: ZERO
 
-  after_commit :trigger
+  after_commit :trigger, :sync_update
 
   def payment_address
     payment_addresses.last || payment_addresses.create(currency: self.currency)
@@ -154,7 +154,6 @@ class Account < ActiveRecord::Base
     self.balance += delta_b
     self.locked  += delta_l
     self.class.connection.execute "update accounts set balance = balance + #{delta_b}, locked = locked + #{delta_l} where id = #{id}"
-    sync_balance_and_locked
     add_to_transaction # so after_commit will be triggered
     self
   end
@@ -177,7 +176,7 @@ class Account < ActiveRecord::Base
 
   private
 
-  def sync_balance_and_locked
+  def sync_update
     ::Pusher["private-#{member.sn}"].trigger_async('accounts', { type: 'update', id: self.id, attributes: {balance: balance, locked: locked} })
   end
 
