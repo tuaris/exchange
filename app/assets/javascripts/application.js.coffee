@@ -78,6 +78,7 @@ $ ->
       width:  $el.data('width')
       height: $el.data('height')
 
+  SignUpUI.attachTo('#new_identity')
   SmsAuthVerifyUI.attachTo('#edit_sms_auth')
   FlashMessageUI.attachTo('.flash-message')
   TwoFactorAuth.attachTo('.two-factor-auth-container')
