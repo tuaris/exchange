@@ -143,7 +143,7 @@ task :del_admin do
 end
 
 def remove_daemons(daemons)
-  damones.each {|d| queue! "rm -rf #{deploy_to}/current/lib/daemons/#{d}" }
+  daemons.each {|d| queue! "rm -rf #{deploy_to}/current/lib/daemons/#{d}" }
 end
 
 def remove_except(daemons)
