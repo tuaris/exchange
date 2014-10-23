@@ -158,7 +158,7 @@ def remove_except(daemons)
   end
 end
 
-redis_daemons = ['k.rb', 'k_ctl', 'stats.rb', 'stats_ctl']
+redis_daemons = ['k.rb', 'k_ctl', 'stats.rb', 'stats_ctl', 'slack_ctl', 'amqp_daemon.rb']
 
 desc 'delete daemons'
 task :del_daemons do
