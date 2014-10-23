@@ -42,5 +42,5 @@
   key: yun
   currency: yun
   sort_order: 99
-  min_confirm: 10
+  min_confirm: 1
   max_confirm: 51
