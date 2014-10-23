@@ -30,6 +30,8 @@ module Worker
         withdraw.whodunnit('Worker::WithdrawCoin') do
           withdraw.update_column :txid, txid
           withdraw.succeed!
+          #TODO: Find the reason why 'withdraw.succeed!' desn't trigger after_commit callback in Account model.
+          withdraw.account.send(:sync_update)
         end
       end
     end
