@@ -170,5 +170,7 @@ task :del_daemons do
     queue! "rm -rf #{deploy_to}/current/lib/daemons"
   when 'peatio-redis'
     remove_except redis_daemons
+  when 'peatio-stg'
+    remove_daemons %w(stats.rb stats_ctl slack_ctl)
   end
 end
