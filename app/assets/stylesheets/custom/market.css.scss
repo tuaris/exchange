@@ -1,0 +1,13 @@
+header {
+  a.navbar-brand {
+    height: 24px;
+    margin: 0px;
+    margin-top: 3px;
+    padding: 0px;
+    padding-top: 3px;
+    padding-left: 28px;
+    background-repeat: no-repeat;
+    background-image: url(/market_logo@1x.png);
+    background-image: -webkit-image-set(url(/market_logo@1x.png) 1x, url(/market_logo@2x.png) 2x);
+  }
+}
