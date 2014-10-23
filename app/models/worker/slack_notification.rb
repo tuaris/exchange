@@ -12,7 +12,10 @@ module Worker
 
     def process(payload, metadata, delivery_info)
       payload.symbolize_keys!
-      notify! payload[:channel], payload[:message]
+
+      Thread.new do
+        notify! payload[:channel], payload[:message]
+      end
     end
 
     def notify!(channel, message)
