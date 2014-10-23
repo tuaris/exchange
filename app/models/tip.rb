@@ -3,8 +3,6 @@ class Tip < ActiveRecord::Base
 
   extend Enumerize
 
-  #paranoid
-
   enumerize :currency, in: Currency.hash_codes
 
   scope :for_user, ->(u, provider = :weibo) { where payee: u.auth(provider).try(:uid) }
@@ -34,6 +32,12 @@ class Tip < ActiveRecord::Base
     end
   end
 
+  def refund!
+    Tip.transaction do
+      escrow2payer if payer and !payee_settled?
+    end
+  end
+
   def payer
     Authentication.locate('uid' => self[:payer], 'provider' => source).try(:member).try(:ac, currency)
   end
@@ -45,29 +49,36 @@ class Tip < ActiveRecord::Base
 
   private
   def escrow
-    m = Member.find_or_create_by display_name: 'escrow', email: 'escrow@escrow.escrow', nickname: 'escrow'
+    m = Member.find_or_create_by display_name: 'tipping_bot_escrow', email: 'escrow@escrow.escrow', nickname: 'escrow'
     m.ac(currency)
   end
 
   def payer2escrow
-    payer.sub_funds amount, reason: 'TIP', ref: id
+    payer.sub_funds amount, reason: Account::TIP, ref: self
     update_attribute :payer_settled, true
 
-    escrow.plus_funds amount, reason: 'ESCROW IN', ref: id
+    escrow.plus_funds amount, reason: Account::ESCROW_IN, ref: self
+  end
+
+  def escrow2payer
+    payer.plus_funds amount, reason: Account::REFUND, ref: self
+    escrow.sub_funds amount, reason: Account::REFUND, ref: self
+
+    update_attribute :payee_settled, true
   end
 
   def payer2payee
-    payer.sub_funds amount, reason: 'TIP', ref: id
+    payer.sub_funds amount, reason: Account::TIP, ref: self
     update_attribute :payer_settled, true
 
-    payee.plus_funds amount, reason: 'TIP', ref: id
+    payee.plus_funds amount, reason: Account::TIP, ref: self
     update_attribute :payee_settled, true
   end
 
   def escrow2payee
-    escrow.sub_funds amount, reason: 'ESCROW OUT', ref: id
+    escrow.sub_funds amount, reason: Account::ESCROW_OUT, ref: self
 
-    payee.plus_funds amount, reason: 'TIP', ref: id
+    payee.plus_funds amount, reason: Account::TIP, ref: self
     update_attribute :payee_settled, true
   end
 end

@@ -37,6 +37,24 @@ describe Tip do
       expect(payee.ac(currency).balance).to eq(100)
     end
 
+    it "can prevent duplicate call to settle!" do
+      bind_payee!
+
+      expect { subject.save }.to change{ payer.ac(currency).balance }.by(-100)
+
+      expect(payer.ac(currency).balance).to eq(1000 - 100)
+      expect(payee.ac(currency).balance).to eq(100)
+
+      expect { subject.settle! }.to_not change{ payer.ac(currency).balance }
+      expect { subject.settle! }.to_not change{ payee.ac(currency).balance }
+      expect { subject.settle! }.to_not change{ AccountVersion.count }
+
+      subject.settle!
+
+      expect(payer.ac(currency).balance).to eq(1000 - 100)
+      expect(payee.ac(currency).balance).to eq(100)
+    end
+
     it "should transfer money from escrow to payee's account if settle! called after creating payee account" do
       subject.save
 
@@ -68,6 +86,31 @@ describe Tip do
       bind_payee!
 
       expect(Tip.settle_for_user!(payee)).to eq(Tip.all.to_a.sum(&:amount))
+    end
+  end
+
+  describe "#refund!" do
+    subject { create :tip, payer: payer.auth(:weibo).uid, payee: '12234', amount: 99, currency: currency }
+
+    before do
+      payer.ac(currency).plus_funds 1000
+    end
+
+    it "should return sum of tip's amount" do
+      expect { subject.settle! }.to change { payer.ac(currency).balance }.by(-99)
+
+      expect(payer.ac(currency).balance).to eq(901)
+      expect(escrow.balance).to eq(99)
+
+      subject.refund!
+
+      expect(payer.ac(currency).balance).to eq(1000)
+      expect(escrow.reload.balance).to eq(0)
+      expect(subject.payee_settled?).to be_true
+
+      subject.refund!
+      expect(payer.ac(currency).balance).to eq(1000)
+      expect(escrow.balance).to eq(0)
     end
   end
 end

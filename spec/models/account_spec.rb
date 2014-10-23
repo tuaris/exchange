@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Account do
+
   subject { create(:account, locked: "10.0".to_d, balance: "10.0") }
 
   it { expect(subject.amount).to be_d '20' }

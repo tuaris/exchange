@@ -15,6 +15,10 @@ class Account < ActiveRecord::Base
   DEPOSIT = :deposit
   WITHDRAW = :withdraw
   ZERO = 0.to_d
+  TIP = :tip
+  REFUND = :refund
+  ESCROW_IN = :escrow_in
+  ESCROW_OUT = :escrow_out
 
   FUNS = {:unlock_funds => 1, :lock_funds => 2, :plus_funds => 3, :sub_funds => 4, :unlock_and_sub_funds => 5}
 
@@ -26,8 +30,7 @@ class Account < ActiveRecord::Base
   validates :member_id, uniqueness: { scope: :currency }
   validates_numericality_of :balance, :locked, greater_than_or_equal_to: ZERO
 
-  after_commit :trigger
-  after_update :sync_update
+  after_commit :trigger, :sync_update
 
   def payment_address
     payment_addresses.last || payment_addresses.create(currency: self.currency)
@@ -172,8 +175,9 @@ class Account < ActiveRecord::Base
   end
 
   private
+
   def sync_update
-    ::Pusher["private-#{member.sn}"].trigger_async('accounts', { type: 'update', id: self.id, attributes: self.changes_attributes_as_json })
+    ::Pusher["private-#{member.sn}"].trigger_async('accounts', { type: 'update', id: self.id, attributes: {balance: balance, locked: locked} })
   end
 
   def deposit_address
