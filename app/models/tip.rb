@@ -34,7 +34,7 @@ class Tip < ActiveRecord::Base
 
   def refund!
     Tip.transaction do
-      escrow2payer unless payee_settled?
+      escrow2payer if payer and !payee_settled?
     end
   end
 

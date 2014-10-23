@@ -14,8 +14,8 @@ Signal.trap("TERM") do
 end
 
 while($running) do
-  Tip.unsettled.each do
-
+  Tip.unsettled.where('created_at < ?', 2.days.ago).each do |tip|
+    tip.refund!
   end
 
   sleep 5
