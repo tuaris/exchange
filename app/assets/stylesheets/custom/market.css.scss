@@ -11,3 +11,19 @@ header {
     background-image: -webkit-image-set(url(/market_logo@1x.png) 1x, url(/market_logo@2x.png) 2x);
   }
 }
+
+[data-lang=zh-cn] {
+  #ask_entry, #bid_entry {
+    label.input-group-addon {
+      min-width: 50px !important;
+    }
+
+    .hint-price-disadvantage, .hint-positions  {
+      top: 2px;
+      left: 53px;
+      margin-left: 0px;
+      position: absolute;
+      z-index: 10;
+    }
+  }
+}

@@ -64,6 +64,7 @@ en:
         volume: Volume
         amount: Amount
       header:
+        title: YUNBI Trading
         sound: Sound
         network: Conn State
         switch_on: ON
