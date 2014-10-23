@@ -15,8 +15,16 @@ zh-CN:
         my_active_order: 有效委单
         my_done_order: 成交委单
         trades: 委单成交
-        market_switch: 市场动态
+        market_switch: 交易品种
         chat: 聊天频道
+        switch_1: 分线
+        switch_5: 5分钟
+        switch_15: 15分钟
+        switch_30: 30分钟
+        switch_60: 时线
+        switch_120: 2小时
+        switch_360: 6小时
+        switch_1440: 日线
       depths:
         price: 价格
         amount: 数量
@@ -77,7 +85,7 @@ zh-CN:
         low: 最低
         notification: 桌面实时通知
       market_switch:
-        title: 市场动态
+        title: 交易品种
         name: 交易对
         ask: 卖出价
         bid: 买入价

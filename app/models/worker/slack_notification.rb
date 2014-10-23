@@ -7,12 +7,15 @@ module Worker
   class SlackNotification
 
     def initialize
-      @uri = URI.parse ENV['SLACK_URI']
+      @uri = URI.parse ENV['SLACK_URI'] rescue nil
     end
 
     def process(payload, metadata, delivery_info)
       payload.symbolize_keys!
-      notify! payload[:channel], payload[:message]
+
+      Thread.new do
+        notify! payload[:channel], payload[:message]
+      end
     end
 
     def notify!(channel, message)

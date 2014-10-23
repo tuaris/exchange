@@ -16,6 +16,7 @@ describe 'Sign in' do
   end
 
   it "sends notification email after user sign in" do
+    pending
     signin identity
 
     mail = ActionMailer::Base.deliveries.last

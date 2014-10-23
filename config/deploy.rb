@@ -142,29 +142,35 @@ task :del_admin do
   end
 end
 
+def remove_daemons(daemons)
+  damones.each {|d| queue! "rm -rf #{deploy_to}/current/lib/daemons/#{d}" }
+end
+
+def remove_except(daemons)
+  unless daemons.empty?
+    Dir[File.dirname(__FILE__)+'/../lib/daemons/*'].each do |path|
+      filename = File.basename(path)
+      if not daemons.include?(filename)
+        queue! "rm -rf #{deploy_to}/current/lib/daemons/#{filename}"
+      end
+    end
+  end
+end
+
+redis_daemons = ['k.rb', 'k_ctl', 'stats.rb', 'stats_ctl', 'slack_ctl', 'amqp_daemon.rb']
+
 desc 'delete daemons'
 task :del_daemons do
-
-  keeps = []
-
   case domain
   when 'peatio-admin'
     queue! "rm -rf #{deploy_to}/current/lib/daemons"
   when 'peatio-daemon'
-    queue! "rm -rf #{deploy_to}/current/lib/daemons/k.rb"
-    queue! "rm -rf #{deploy_to}/current/lib/daemons/k_ctl"
+    remove_daemons redis_daemons
   when 'yunbi-web-01'
     queue! "rm -rf #{deploy_to}/current/lib/daemons"
   when 'peatio-redis'
-    keeps = ['daemons', 'k.rb', 'k_ctl', 'stats.rb', 'stats_ctl']
-  end
-
-  if not keeps.empty?
-    Dir[File.dirname(__FILE__)+'/../lib/daemons/*'].each do |path|
-      filename = File.basename(path)
-      if not keeps.include?(filename)
-        queue! "rm -rf #{deploy_to}/current/lib/daemons/#{filename}"
-      end
-    end
+    remove_except redis_daemons
+  when 'peatio-stg'
+    remove_daemons %w(stats.rb stats_ctl slack_ctl)
   end
 end
