@@ -77,11 +77,6 @@ en:
           all: Last 24 hours
           empty: No data
         show:
-          process: Accepted
-          succeed: Withdraw
-          reject: Reject
-          succeed_confirm: Process withdrawal?
-          reject_confirm: Reject withdrawal?
           withdraw: Withdrawals
 
   simple_form:
