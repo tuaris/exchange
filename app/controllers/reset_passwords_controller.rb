@@ -15,7 +15,7 @@ class ResetPasswordsController < ApplicationController
       clear_all_sessions @reset_password.member_id
       redirect_to signin_path, notice: t('.success')
     else
-      redirect_to url_for(action: :new), alert: @reset_password.errors.full_messages.join(', ')
+      redirect_to url_for(action: :new), alert: @reset_password.errors.full_messages_for(:email).join(', ')
     end
   end
 
