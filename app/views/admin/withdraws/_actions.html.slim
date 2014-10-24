@@ -1,0 +1,10 @@
+ul.list-inline.pull-right
+  - if withdraw.currency_obj.balance.to_d >= withdraw.sum
+    - if withdraw.may_reject?
+      li
+        = link_to t('.reject'), url_for([:admin, withdraw]), class: 'btn btn-danger', method: 'DELETE', confirm: t('.reject_confirm')
+    - if withdraw.may_process?
+      li
+        = link_to t('.process'), url_for([:admin, withdraw]), class: 'btn btn-primary', method: 'PATCH'
+  - else
+    li: span.label.label-warning = t('.insufficient')

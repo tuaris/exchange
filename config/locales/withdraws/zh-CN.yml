@@ -1,0 +1,9 @@
+zh-CN:
+  admin:
+    withdraws:
+      actions:
+        process: 受理
+        succeed: 提现
+        reject: 驳回
+        reject_confirm: 确定驳回提现？
+        insufficient: 热钱包余额不足，请在补充热钱包之后处理。

@@ -77,11 +77,6 @@ zh-CN:
           all: 二十四小时内订单
           empty: 无任何数据
         show:
-          process: 受理
-          succeed: 提现
-          reject: 驳回
-          succeed_confirm: 确定处理提现？
-          reject_confirm: 确定驳回提现？
           withdraw: 比特币提现
 
   simple_form:
