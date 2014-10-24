@@ -81,7 +81,6 @@ task deploy: :environment do
       invoke :del_admin
       invoke :del_daemons
       invoke :'passenger:restart'
-      invoke :'deploy:cleanup'
     end
   end
 end
