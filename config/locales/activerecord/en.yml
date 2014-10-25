@@ -89,7 +89,7 @@ en:
         modifiable_type: LINK
         created_at : Created At
       token/reset_password:
-        email: Sign in email
+        email: Email
       trade:
         bid: Bid
         ask: Ask
@@ -159,7 +159,7 @@ en:
             base:
               too_soon: Visit too soon
             email:
-              not-member: Invalid Email
+              not-member: doesn't exist.
               match: Invalid Sign in Email
             password:
               invalid: Invalid Password
