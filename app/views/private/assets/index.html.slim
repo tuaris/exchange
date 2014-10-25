@@ -1,16 +1,12 @@
 = content_for :frame do
   .container
-    ul.nav.nav-justified.assets-nav
-      li.active data-scroll-nav='0'
-        a = t('.liability-proof')
-      li        data-scroll-nav='1'
-        a = t('.btc-assets')
-      li        data-scroll-nav='2'
-        a = t('.cny-assets')
-
-    - if current_user
-      div data-scroll-index=0 = render 'liability_proof'
-
-    div data-scroll-index=1 = render 'btc_assets'
-    div data-scroll-index=2 = render 'cny_assets'
-
+    .hero
+      h2
+        span.iconic: i.sprite.sprite-money
+        = t('.title')
+      p
+        = t('.intro')
+        = link_to t('.how-to-verify'), t('.how-to-verify-uri'), :target => '_blank'
+ 
+    = render 'btc_assets'
+    = render 'cny_assets'
