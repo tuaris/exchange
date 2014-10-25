@@ -2,6 +2,8 @@ zh-CN:
   authentications:
     emails:
       new:
+        title: 设置邮箱地址
+        setup_email: 请设置你的邮箱地址
         warning: 设置邮件后, 请查收你的收件箱并进行激活
         email_address: 邮箱地址
         save: 保存
