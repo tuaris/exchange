@@ -37,7 +37,14 @@ class SessionsController < ApplicationController
   end
 
   def failure
-    increase_failed_logins
+    if env['omniauth.error.strategy'].is_a?(OmniAuth::Strategies::Weibo)
+      oauth_error = env['omniauth.error']
+      if oauth_error.code == "applications over the unaudited use restrictions!"
+        redirect_to signin_path, alert: '微博登录目前仅限内测用户，请关注云币官方微博http://t.yunbi.com，稍后几天再做尝试' and return
+      end
+    else
+      increase_failed_logins
+    end
     redirect_to signin_path, alert: t('.error')
   end
 
