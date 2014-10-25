@@ -152,7 +152,7 @@ zh-CN:
             base:
               too_soon: 访问过于频繁，请稍后再试。
             email:
-              not-member: 请输入有效的邮箱地址。
+              not-member: 不存在。
               match: 登录邮件地址错误。
             password:
               invalid: 密码格式错误

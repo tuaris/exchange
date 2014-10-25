@@ -2,14 +2,19 @@ class DocumentsController < ApplicationController
   def show
     @doc = Document.find_by_key(params[:id])
 
-    if not @doc
-      redirect_to(request.referer || root_path)
-      return
-    end
+    # if not @doc
+    #   redirect_to(request.referer || root_path)
+    #   return
+    # end
 
-    if @doc.is_auth and !current_user
-      render :nothing => true
-    end
+    # if @doc.is_auth and !current_user
+    #   render :nothing => true
+    # end
+    render params[:id]
+  end
+
+  def about
+    
   end
 
   def api_v2
