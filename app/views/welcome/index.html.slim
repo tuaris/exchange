@@ -2,7 +2,7 @@
   .masthead
     .container: .row
       .col-md-16: .slogan
-        p.brand= image_tag "site-logo@2x.png", height: "70"
+        p#brand-logo.brand= image_tag "site-logo@2x.png", height: "70"
         h1 比特基金 旗下数字资产交易平台
         p A crypto-currency exchange co-funded by BitFundPE
       .col-md-7.col-md-offset-1: .users-form-container
@@ -130,3 +130,25 @@
                   h5.name 亦非VIP
                   div.from: a href="http://weibo.com/yifiz" target="_blank"  @亦非VIP
 
+  javascript:
+    var didScroll = false;
+    window.addEventListener('scroll', function(event) {
+      if(!didScroll) {
+        didScroll = true;
+        setTimeout(scrollPage, 250);
+      }
+    }, false);
+    function scrollPage() {
+      var sy = window.pageYOffset || document.documentElement.scrollTop;
+      if ( sy >= 80 ) {
+        $('.global-nav').css('background', '#007ac7');
+        $('#brand-logo').css('opacity', 0);
+        $('.global-nav .navbar-brand').css('opacity', 1);
+      }
+      else {
+        $('.global-nav .navbar-brand').css('opacity', 0);
+        $('#brand-logo').css('opacity', 1);
+        $('.global-nav').css('background', 'none');
+      }
+      didScroll = false;
+    }
