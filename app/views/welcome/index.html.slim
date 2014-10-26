@@ -2,7 +2,7 @@
   .masthead
     .container: .row
       .col-md-16: .slogan
-        p.brand= image_tag "site-logo.png", height: "60"
+        p.brand= image_tag "site-logo@2x.png", height: "70"
         h1 比特基金 旗下数字资产交易平台
         p A crypto-currency exchange co-funded by BitFundPE
       .col-md-7.col-md-offset-1: .users-form-container
@@ -59,9 +59,10 @@
 
   .announcement
     p.oneline
-      strong 云币网100%准备金
-      '  BTC总资产：฿894.80；CNY总资产：￥1304062.99
-      a.more-info href='/exchange_assets' class='' 查看详情 >
+      span: strong 云币网100%准备金
+      span BTC总资产：฿894.80
+      span CNY总资产：￥1304062.99
+      a.more-info href='/exchange_assets' class='' 查看详情 &raquo;
 
   .main-section.tickers.main-section-lighter
     .container
@@ -110,6 +111,16 @@
                 .author-info
                   h5.name 多多鱼
                   div.from: a href="http://weibo.com/u/5017076479" target="_blank" @多多鱼stan
+          .speech-item
+            .speech-bubble
+              span.arrow
+              blockquote 无可否认，在这个问题上（100%验证数字货币和人民币准备金），云币的逼格最高！
+              cite.author
+                = image_tag "/assets/customers/bitegc.png"
+                .author-info
+                  h5.name 比特广场
+                  div.from: a href="http://weibo.com/u/5181182865" target="_blank" @比特广场
+
         .col-md-12.right-col
           .speech-item
             .speech-bubble

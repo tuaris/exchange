@@ -71,6 +71,10 @@
     p {
       font-size: 20px;
       padding: 40px 0;
+
+    }
+    span {
+      padding: 0 20px;
     }
     .more-info {
       font-size: 16px;
@@ -146,34 +150,6 @@
       font-weight: 900;
       padding-top: 30px;
       font-size: 40px;
-    }
-  }
-
-  #homepage-carousel {
-    text-align: center;
-    min-height: 331px;
-    border: 1px solid #d8dee3;
-    border-radius: 5px;
-    background-color: #f0f0f0;
-    img {
-      max-height: 100%;  
-      max-width: 100%;
-    }
-    .carousel-indicators {
-      left: auto;
-      right: 20px;
-      margin: 0;
-      width: auto;
-      li {
-        width: 12px;
-        height: 12px;
-        border: none;
-        margin: 1px 3px;
-        background-color: #fff;
-      }
-      .active {
-        background-color: #09c;
-      }
     }
   }
 
