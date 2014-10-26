@@ -105,12 +105,12 @@ zh-CN:
 
   footer:
     about: 关于我们
-    terms_and_service: 声明及用户协议
+    terms_and_service: 服务条款
     questions: 常见问题
-    price: 资费说明
-    liability_proof: 偿付能力验证
+    price: 费用说明
+    liability_proof: 偿付能力
     contact: 联系我们
-    api: API接口
+    api: 程序接口
     opensource: 开放源码
     blog: 博客
 
