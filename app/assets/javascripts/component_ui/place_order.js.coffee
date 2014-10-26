@@ -80,10 +80,10 @@
   @allIn = (event)->
     switch @panelType()
       when 'ask'
-        @trigger 'place_order::input::price', {price: @getLastPrice()}
+        @trigger 'place_order::input::price', {price: @getLastPrice(), no_overwrite: true}
         @trigger 'place_order::input::volume', {volume: @getBalance()}
       when 'bid'
-        @trigger 'place_order::input::price', {price: @getLastPrice()}
+        @trigger 'place_order::input::price', {price: @getLastPrice(), no_overwrite: true}
         @trigger 'place_order::input::total', {total: @getBalance()}
 
   @refreshBalance = (event, data) ->
