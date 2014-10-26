@@ -1,73 +1,67 @@
 - content_for :frame do
-  .main-section.main-section-lighter
-    .container
-      .row
-        .col-xs-15 class='#{current_user ? 'col-xs-offset-4' : ''}'
-          #homepage-carousel.carousel.slide data-ride="carousel"
-            ol.carousel-indicators
-              <li data-target="#homepage-carousel" data-slide-to="0" class="active"></li>
-              <li data-target="#homepage-carousel" data-slide-to="1" class=""></li>
-            .carousel-inner
-              .item.active
-                = image_tag "homepage-pitch-1.jpg"
-              .item
-                = image_tag "homepage-pitch-2.jpg"
-        - unless current_user
-          .col-xs-8.col-xs-offset-1
-            .login-box.panel.panel-default
-              .panel-heading 登录云币网
-              .panel-body
-                = simple_form_for Identity.new, url: '/auth/identity/callback', method: :post, wrapper: :login do |f|
-                  .flash-messages &nbsp;
-                  = f.input :email, input_html: {name: 'auth_key', autofocus: 'true'}, label: t('.email'), placeholder: t('simple_form.placeholders.session.email')
-                  = f.input :password, as: 'password', input_html: {name: 'password'}, label: t('.password'), placeholder: t('simple_form.placeholders.session.password'), hint: ''
-                  .form-group
-                    .col-xs-20.col-xs-offset-4
-                      = f.button :submit, class: 'btn btn-lg btn-block btn-success', value: t("header.signin")
-                      h6.inline-links
-                        = link_to "忘了密码?", new_reset_password_path
-                        '|
-                        = link_to '注册新帐号', signup_path
-                        '|
-                        = link_to t("header.login_via_weibo"), '/auth/weibo'
+  .masthead
+    .container: .row
+      .col-md-16: .slogan
+        p.brand= image_tag "site-logo.png", height: "60"
+        h1 中国比特基金旗下数字资产交易平台
+        p A cryptocurrency exchange co-funded by BitFundPE
+      .col-md-7.col-md-offset-1: .users-form-container
+        = simple_form_for Identity.new, url: '/auth/identity/callback', method: :post, wrapper: :login do |f|
+          .flash-messages
+          = f.input :email, input_html: {name: 'auth_key', autofocus: 'true'}, label: t('.email'), placeholder: t('simple_form.placeholders.session.email')
+          = f.input :password, as: 'password', input_html: {name: 'password'}, label: t('.password'), placeholder: t('simple_form.placeholders.session.password'), hint: ''
+          .form-group
+            = f.button :submit, class: 'btn btn-block btn-success', value: t("header.signin")
+          p.inline-links
+            = link_to t("header.login_via_weibo"), '/auth/weibo'
+            ' • 
+            = link_to '注册新帐号', signup_path
+            ' • 
+            = link_to "忘了密码?", new_reset_password_path
+            
+    .highlights
+      .container: .row
+        .col-xs-6.feature-highlight
+          span.iconic
+            i.sprite.sprite-lightbulb
+          h4.heading 手续费全免
+          p.cnt
+            | 充值、提现及交易手续费全免
+            br
+            | 注：提现矿工费由云币网代扣
 
-  .main-section
-    .container
-      .col-xs-6.feature-highlight
-        span.iconic
-          i.sprite.sprite-lightbulb
-        h4.heading 手续费全免
-        p.cnt
-          | 充值、提现及交易手续费全免
-          br
-          | 注：提现矿工费由云币网代扣
+        .col-xs-6.feature-highlight
+          span.iconic
+            i.sprite.sprite-magnifier
+          h4.heading 公开透明
+          p.cnt
+            | 源代码开源
+            br
+            | 规则透明
 
-      .col-xs-6.feature-highlight
-        span.iconic
-          i.sprite.sprite-magnifier
-        h4.heading 公开透明
-        p.cnt
-          | 源代码开源
-          br
-          | 规则透明
+        .col-xs-6.feature-highlight
+          span.iconic
+            i.sprite.sprite-phone
+          h4.heading 7x24小时服务
+          p.cnt
+            | 7x24小时，VIP服务
+            br
+            | 人民币充值10分钟，比特币1分钟确认
 
-      .col-xs-6.feature-highlight
-        span.iconic
-          i.sprite.sprite-phone
-        h4.heading 7x24小时服务
-        p.cnt
-          | 7x24小时，VIP服务
-          br
-          | 人民币充值10分钟，比特币1分钟确认
+        .col-xs-6.feature-highlight
+          span.iconic
+            i.sprite.sprite-money
+          h4.heading 准备金
+          p.cnt
+            | 不挪用资金
+            br
+            | 不虚报数据
 
-      .col-xs-6.feature-highlight
-        span.iconic
-          i.sprite.sprite-money
-        h4.heading 准备金
-        p.cnt
-          | 不挪用资金
-          br
-          | 不虚报数据
+  .announcement
+    p.oneline
+      strong 云币网100%准备金
+      '  BTC总资产：฿894.80；CNY总资产：￥1304062.99
+      a.more-info href='/exchange_assets' class='' 查看详情 >
 
   .main-section.tickers.main-section-lighter
     .container
@@ -93,3 +87,38 @@
             td.text-left = market.ticker[:high]
             td.text-left = market.ticker[:low]
             td.text-left = market.ticker[:volume]
+
+  .testimonials
+    .container
+      h2.section-title 媒体及客户点评
+      .row
+        .col-md-12
+          .speech-item
+            .speech-bubble
+              span.arrow
+              blockquote 针对国内比特币交易所乱象，貔貅（云币）CEO邱亮表示，“我们希望以通过开放开源和公开资产的方式，来推动比特币生态圈的健康发展，做交易所该做的事，以改善比特币市场乱象。
+            cite.author
+              = image_tag "/assets/customers/techweb.jpeg"
+              .author-info
+                h5.name CEO
+                p.from @weibo
+
+
+    #pitchCarousel.carousel.slide data-ride="carousel"
+      .carousel-inner
+        .item.active
+          p 针对国内比特币交易所乱象，貔貅（云币）CEO邱亮表示，“我们希望以通过开放开源和公开资产的方式，来推动比特币生态圈的健康发展，做交易所该做的事，以改善比特币市场乱象。
+        .item
+          p 几个大招出来后，云币交易所总资产量和交易量迅速上升，加油！继续努力！这只是开始！
+        .item
+          p 大家需要云币网，用起来很有世界感的交易所，放之四海而皆好用的平台。
+        .item
+          p 希望云币改了名字后走的越来越好，我以前以为新东方老师里名气最大的是老罗，原来最牛的是李笑来
+        .item
+          p 云币的服务超级好啊~大额交易还有客服电话安全确认，好有情怀~~
+      ol.carousel-indicators
+        li.active data-target="#pitchCarousel" data-slide-to="0"
+        li data-target="#pitchCarousel" data-slide-to="1"
+        li data-target="#pitchCarousel" data-slide-to="2"
+        li data-target="#pitchCarousel" data-slide-to="3"
+        li data-target="#pitchCarousel" data-slide-to="4"

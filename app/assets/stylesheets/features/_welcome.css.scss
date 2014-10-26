@@ -1,14 +1,130 @@
 #welcome-index {
+  
   .account-balance {
     display: none;
   }
 
-  .navbar {
-    margin-bottom: 15px;
+  .masthead {
+    background-image: image-url('hero-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+  }
+
+  .masthead {
+    margin-top: -70px;
+    padding: 120px 0 0;
+    color: #fff;
+    .slogan {
+      margin: -20px 0 0 80px;
+      .brand {
+        margin-bottom: 30px;
+      }
+      h1 {
+        font-size: 30px;
+        font-weight: bold;
+      }
+      p {
+        color: rgba(255,255,255,.8);
+        font-size: 20px;
+      }
+    }
+    .users-form-container {
+      padding: 30px;
+      border-radius: 5px;
+      background-color: #8bbbd4;
+      background-color: rgba(255,255,255,.5);
+      label {
+        display: none;
+      }
+      .form-group {
+        margin-bottom: 20px;
+        input {
+          height: 40px;
+        }
+      }
+      .inline-links {
+        text-align: center;
+        color: #318BD5;
+        a {
+          color: #318BD5;
+          padding: 0 5px;
+        }
+      }
+    }
+
+    .highlights {
+      color: #333;
+      padding: 30px 0;
+      background-color: #fff;
+      background-color: rgba(255,255,255,.5);
+    }
+
+  }
+
+  .announcement {
+    text-align: center;
+    background-color: #E8F2F7;
+    p {
+      font-size: 20px;
+      padding: 40px 0;
+    }
+    .more-info {
+      font-size: 16px;
+    }
+  }
+
+  .testimonials {
+    .section-title {
+      font-size: 24px;
+      text-align: center;
+    }
+    .speech-item {
+      .speech-bubble {
+        background: #F2F8FB;
+        border-radius: 3px;
+        text-align: left;
+        position: relative;
+        padding: 20px;
+        margin-bottom: 10px;
+        blockquote {
+          font-size: 16px;
+          border: none;
+          margin: 0;
+          padding: 0;
+        }
+        .arrow {
+          content: "";
+          position: absolute;
+          display: block;
+          left: 0;
+          bottom: -1.285em;
+          height: 0;
+          width: 0;
+          border: 0.857em solid rgba(0, 0, 0, 0);
+          border-left-color: #F2F8FB;
+          border-top-color: #F2F8FB;
+        }
+      }
+      .author {
+        img { 
+          max-height: 80px;
+          float: left;
+        }
+        .author-info {
+          float: left;
+          margin-left: 10px;
+          .name {
+            margin: 0 0 5px;
+          }
+        }
+      }
+    }
   }
 
   .main-section {
     padding: 15px 0;
+    background: #fff;
   }
 
   #site-title {
@@ -101,7 +217,7 @@
       margin-bottom: 20px;
       width: 80px;
       height: 80px;
-      border: 1px solid #ddd;
+      border: 1px solid #333;
       border-radius: 50%;
       .sprite-lightbulb {
         margin-top: 16px;
@@ -122,7 +238,7 @@
       font-weight: normal;
     }
     .cnt {
-      color: #777;
+      color: #000;
       font-size: 14px;
       line-height: 1.8;
     }
