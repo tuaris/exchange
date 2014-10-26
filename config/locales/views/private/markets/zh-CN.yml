@@ -12,19 +12,21 @@ zh-CN:
         confirm: 确认
         ask_order: '卖 ##sn#'
         bid_order: '买 ##sn#'
-        my_active_order: 有效委单
-        my_done_order: 成交委单
-        trades: 委单成交
-        market_switch: 交易品种
+        my_active_order: <v>有</v><v>效</v><v>委</v><v>单</v>
+        my_done_order: <v>成</v><v>交</v><v>委</v><v>单</v>
+        market_switch: <v>交</v><v>易</v><v>品</v><v>种</v>
+        trades: <v>委</v><v>单</v><v>成</v><v>交</v>
         chat: 聊天频道
-        switch_1: 分线
-        switch_5: 5分钟
-        switch_15: 15分钟
-        switch_30: 30分钟
-        switch_60: 时线
-        switch_120: 2小时
-        switch_360: 6小时
-        switch_1440: 日线
+        switch_1: 1m
+        switch_5: 5m
+        switch_15: 15m
+        switch_30: 30m
+        switch_60: 1h
+        switch_120: 2h
+        switch_360: 6h
+        switch_1440: 1d
+        switch_4320: 3d
+        switch_10080: 1w
       depths:
         price: 价格
         amount: 数量
@@ -78,15 +80,13 @@ zh-CN:
         title: 云币网交易平台
         sound: 音效
         network: 连接状态
-        switch_on: 开
-        switch_off: 关
-        switch: '[切换]'
+        switch: '[选择交易品种]'
         vol: 二十四小时 成交量
         high: 最高
         low: 最低
         notification: 桌面实时通知
       market_switch:
-        title: 交易品种
+        title: 选择交易品种
         name: 交易对
         ask: 卖出价
         bid: 买入价
