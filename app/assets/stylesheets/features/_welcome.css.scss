@@ -225,7 +225,7 @@
     text-align: center;
     .iconic {
       display: inline-block;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
       width: 80px;
       height: 80px;
       border: 1px solid #333;
@@ -245,11 +245,13 @@
     }
     .heading {
       font-size: 22px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       font-weight: normal;
+      color: #666;
+      font-weight: bolder;
     }
     .cnt {
-      color: #000;
+      color: #777;
       font-size: 14px;
       line-height: 1.8;
     }
