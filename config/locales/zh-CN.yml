@@ -78,7 +78,7 @@ zh-CN:
     admin: 后台管理
     market: 交易大厅
     settings: 账户
-    signin: 登录
+    signin: 登录账户
     signout: 安全退出
     signup: 创建账户
     login_via_weibo: 微博登陆
