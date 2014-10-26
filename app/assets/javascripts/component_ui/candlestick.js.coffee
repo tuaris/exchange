@@ -67,16 +67,29 @@ RANGE_DEFAULT =
       style:
         color: '#eee'
 
+INDICATOR = {MA: false, EMA: false}
+
 @CandlestickUI = flight.component ->
   @refresh = (event, data) ->
     @$node.highcharts()?.destroy()
     @initHighStock(data)
     @initTooltip()
 
+  @switch = (event, data) ->
+    INDICATOR[key] = false for key, val of INDICATOR
+    INDICATOR[data.x] = true
+
+    if chart = @$node.highcharts()
+      for indicator, visible of INDICATOR
+        for s in chart.series
+          if s.userOptions.algorithm? && (s.userOptions.algorithm == indicator)
+            s.setVisible(visible, false)
+      chart.redraw()
+
   @initTooltip = ->
     chart = @$node.highcharts()
     tooltips = []
-    for i in [0..3]
+    for i in [0..1]
       if chart.series[i].points.length > 0
         tooltips.push chart.series[i].points[chart.series[i].points.length - 1]
     chart.tooltip.refresh tooltips
@@ -94,6 +107,7 @@ RANGE_DEFAULT =
 
     @$node.highcharts "StockChart",
       chart:
+        animation: true
         marginTop: 95
         backgroundColor: 'rgba(0,0,0, 0.0)'
 
@@ -114,7 +128,7 @@ RANGE_DEFAULT =
         useHTML: true
         shared: true
         headerFormat: "<div class='chart-ticker'><span class='tooltip-title'>{point.key}</span><br />"
-        footerFormat: '</div>'
+        footerFormat: '<ul></div>'
         positioner: -> {x: 0, y: 0}
 
       plotOptions:
@@ -139,8 +153,23 @@ RANGE_DEFAULT =
           tooltip:
             pointFormat:
               """
-              <div class='tooltip-ticker'><span class=t-title>#{gon.i18n.chart.volume}</span><span class=t-value>{point.y}</span></div><br/>
+              <div class='tooltip-ticker'><span class=t-title>#{gon.i18n.chart.volume}</span><span class=t-value>{point.y}</span></div><ul class='list-inline'>
               """
+        trendline:
+          lineWidth: 1
+          tooltip:
+            pointFormat:
+              """
+              <li><span style='color: {series.color};'>{series.name}: <b>{point.y}</b></span></li>
+              """
+        histogram:
+          lineWidth: 1
+          tooltip:
+            pointFormat:
+              """
+              <li><span style='color: {series.color};'>{series.name}: <b>{point.y}</b></span></li>
+              """
+        
       scrollbar:
         buttonArrowColor: '#333'
         barBackgroundColor: '#202020'
@@ -175,39 +204,24 @@ RANGE_DEFAULT =
           gridLineColor: '#222'
           gridLineDashStyle: 'ShortDot'
           top: "0%"
-          height: "60%"
+          height: "70%"
+          lineColor: '#fff'
         }
         {
           labels:
             enabled: false
-          top: "60%"
+          top: "70%"
           gridLineColor: '#000'
-          height: "20%"
+          height: "15%"
         }
         {
           labels:
             enabled: false
-          top: "80%"
+          top: "85%"
           gridLineColor: '#000'
-          height: "20%"
+          height: "15%"
         }
       ]
-
-      legend:
-        align: 'right'
-        floating: true
-        y: 18
-        verticalAlign: 'top'
-        enabled: true
-        symbolWidth: 0
-        itemDistance: 0
-        margin: 2
-        itemStyle: 
-          color: '#777'
-        itemHoverStyle:
-          color: '#eee'
-        itemHiddenStyle:
-          color: '#333'
 
       series: [
         {
@@ -225,35 +239,31 @@ RANGE_DEFAULT =
           showInLegend: false
         }
         {
-          name: 'MA5'
-          type: 'spline'
-          data: data['ma5']
-          color: '#7c9aaa'
-        }
-        {
-          name: 'MA10'
-          type: 'spline'
-          data: data['ma10']
-          color: '#be8f53'
-        }
-        {
-          name: 'MA15'
-          type: 'spline'
-          data: data['ma15']
-          visible: false
-        }
-        {
-          name: 'MA30'
-          type: 'spline'
-          data: data['ma30']
-          visible: false
-        }
-        {
           type: 'spline'
           data: data['close']
           visible: false
           id: 'close'
           showInLegend: false
+        }
+        {
+          name: 'MA5',
+          linkedTo: 'close',
+          showInLegend: true,
+          type: 'trendline',
+          algorithm: 'MA',
+          periods: 5
+          color: '#7c9aaa'
+          visible: INDICATOR['MA']
+        }
+        {
+          name: 'MA10'
+          linkedTo: 'close',
+          showInLegend: true,
+          type: 'trendline',
+          algorithm: 'MA',
+          periods: 10
+          color: '#be8f53'
+          visible: INDICATOR['MA']
         }
         {
           name: 'EMA7',
@@ -262,7 +272,8 @@ RANGE_DEFAULT =
           type: 'trendline',
           algorithm: 'EMA',
           periods: 7
-          visible: false
+          color: '#7c9aaa'
+          visible: INDICATOR['EMA']
         }
         {
           name: 'EMA30',
@@ -271,7 +282,8 @@ RANGE_DEFAULT =
           type: 'trendline',
           algorithm: 'EMA',
           periods: 30
-          visible: false
+          color: '#be8f53'
+          visible: INDICATOR['EMA']
         }
         {
           name : 'MACD',
@@ -280,25 +292,27 @@ RANGE_DEFAULT =
           showInLegend: true,
           type: 'trendline',
           algorithm: 'MACD'
-
+          color: '#7c9aaa'
         }
         {
-          name : 'Signal line',
+          name : 'SIG',
           linkedTo: 'close',
           yAxis: 2,
           showInLegend: true,
           type: 'trendline',
           algorithm: 'signalLine'
-
+          color: '#be8f53'
         }
         {
-          name: 'Histogram',
+          name: 'HIST',
           linkedTo: 'close',
           yAxis: 2,
           showInLegend: true,
           type: 'histogram'
+          color: '#990f0f'
         }
       ]
 
   @after 'initialize', ->
     @on document, 'market::candlestick::response', @refresh
+    @on document, 'switch::main_indicator_switch', @switch

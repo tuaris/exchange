@@ -21,7 +21,6 @@
 #= require ./lib/pusher_connection
 
 #= require highstock
-#= require highsotck_ex
 #= require_tree ./highcharts/
 
 #= require_tree ./helpers
@@ -57,6 +56,6 @@ $ ->
   MemberData.attachTo(document, {pusher: window.pusher}) if gon.accounts
 
   CandlestickUI.attachTo('#candlestick')
-  ChartSwitchUI.attachTo('#chart_switch')
+  SwitchUI.attachTo('#range_switch, #indicator_switch, #main_indicator_switch')
 
   window.notifier = new Notifier()
