@@ -13,11 +13,13 @@
           .form-group
             = f.button :submit, class: 'btn btn-block btn-success', value: t("header.signin")
           p.inline-links
-            = link_to t("header.login_via_weibo"), '/auth/weibo'
+            = link_to "忘记密码", new_reset_password_path
             ' • 
-            = link_to '注册新帐号', signup_path
+            = link_to '创建账户', signup_path
             ' • 
-            = link_to "忘了密码?", new_reset_password_path
+            = link_to '/auth/weibo' do
+              i.fa.fa-weibo
+              span = t("header.login_via_weibo")
             
     .highlights
       .container: .row
