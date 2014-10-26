@@ -16,21 +16,24 @@
     padding: 120px 0 0;
     color: #fff;
     .slogan {
-      margin: -20px 0 0 80px;
+      margin: 35px 0 0 80px;
       .brand {
+        opacity: .95;
         margin-bottom: 30px;
       }
       h1 {
+        color: rgba(245, 245, 245, .95);
         font-size: 30px;
         font-weight: bold;
       }
       p {
-        color: rgba(255,255,255,.8);
+        color: rgba(245, 245, 245,.8);
         font-size: 20px;
       }
     }
     .users-form-container {
       padding: 30px;
+      margin-top: 0px;
       border-radius: 5px;
       background-color: #8bbbd4;
       background-color: rgba(255,255,255,.5);
