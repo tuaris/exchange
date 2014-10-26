@@ -66,8 +66,7 @@
   .main-section.tickers.main-section-lighter
     .container
       hr
-      h2.section-heading
-        span.outline 最新价格
+      .section-heading: h2 最新价格
 
       table.table.table-bordered.table-striped.table-hover
         tr
@@ -90,35 +89,53 @@
 
   .testimonials
     .container
-      h2.section-title 媒体及客户点评
+      .section-heading: h2 媒体及用户点评
       .row
-        .col-md-12
+        .col-md-12.left-col
           .speech-item
             .speech-bubble
               span.arrow
               blockquote 针对国内比特币交易所乱象，貔貅（云币）CEO邱亮表示，“我们希望以通过开放开源和公开资产的方式，来推动比特币生态圈的健康发展，做交易所该做的事，以改善比特币市场乱象。
-            cite.author
-              = image_tag "/assets/customers/techweb.jpeg"
-              .author-info
-                h5.name CEO
-                p.from @weibo
+              cite.author
+                = image_tag "/assets/customers/techweb.jpeg"
+                .author-info
+                  h5.name Techweb
+                  div.from: a href="http://www.techweb.com.cn/internet/2014-04-01/2023603.shtml" target="_blank" 媒体报道
+          .speech-item
+            .speech-bubble
+              span.arrow
+              blockquote 希望云币改了名字后走的越来越好，我以前以为新东方老师里名气最大的是老罗，原来最牛的是李笑来
+              cite.author
+                = image_tag "/assets/customers/duoduoyu.jpeg"
+                .author-info
+                  h5.name 多多鱼
+                  div.from: a href="http://weibo.com/u/5017076479" target="_blank" @多多鱼stan
+        .col-md-12.right-col
+          .speech-item
+            .speech-bubble
+              span.arrow
+              blockquote 几个大招出来后，云币交易所总资产量和交易量迅速上升，加油！继续努力！这只是开始！
+              cite.author
+                = image_tag "/assets/customers/zhaoletian.jpeg"
+                .author-info
+                  h5.name 赵乐天
+                  div.from: a href="http://weibo.com/n/%E8%B5%B5%E4%B9%90%E5%A4%A9" target="_blank" @赵乐天
+          .speech-item
+            .speech-bubble
+              span.arrow
+              blockquote 大家需要云币网，用起来很有世界感的交易所，放之四海而皆好用的平台。
+              cite.author
+                = image_tag "/assets/customers/yuanmoving.jpeg"
+                .author-info
+                  h5.name yuan_moving
+                  div.from: a href="http://weibo.com/u/3188351102" target="_blank"  @yuan_moving
+          .speech-item
+            .speech-bubble
+              span.arrow
+              blockquote 云币的服务超级好啊~大额交易还有客服电话安全确认，好有情怀~~
+              cite.author
+                = image_tag "/assets/customers/yifeivip.jpeg"
+                .author-info
+                  h5.name 亦非VIP
+                  div.from: a href="http://weibo.com/n/%E4%BA%A6%E9%9D%9EVIP" target="_blank"  @亦非VIP
 
-
-    #pitchCarousel.carousel.slide data-ride="carousel"
-      .carousel-inner
-        .item.active
-          p 针对国内比特币交易所乱象，貔貅（云币）CEO邱亮表示，“我们希望以通过开放开源和公开资产的方式，来推动比特币生态圈的健康发展，做交易所该做的事，以改善比特币市场乱象。
-        .item
-          p 几个大招出来后，云币交易所总资产量和交易量迅速上升，加油！继续努力！这只是开始！
-        .item
-          p 大家需要云币网，用起来很有世界感的交易所，放之四海而皆好用的平台。
-        .item
-          p 希望云币改了名字后走的越来越好，我以前以为新东方老师里名气最大的是老罗，原来最牛的是李笑来
-        .item
-          p 云币的服务超级好啊~大额交易还有客服电话安全确认，好有情怀~~
-      ol.carousel-indicators
-        li.active data-target="#pitchCarousel" data-slide-to="0"
-        li data-target="#pitchCarousel" data-slide-to="1"
-        li data-target="#pitchCarousel" data-slide-to="2"
-        li data-target="#pitchCarousel" data-slide-to="3"
-        li data-target="#pitchCarousel" data-slide-to="4"

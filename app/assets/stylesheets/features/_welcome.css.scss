@@ -64,7 +64,7 @@
 
   .announcement {
     text-align: center;
-    background-color: #E8F2F7;
+    background-color: #F2F8FB;
     p {
       font-size: 20px;
       padding: 40px 0;
@@ -75,22 +75,27 @@
   }
 
   .testimonials {
-    .section-title {
-      font-size: 24px;
-      text-align: center;
+    margin-bottom: 40px;
+    .left-col {
+      padding-right: 15px;
+    }
+    .right-col {
+      padding-left: 15px;
     }
     .speech-item {
+      margin-bottom: 30px;
       .speech-bubble {
         background: #F2F8FB;
         border-radius: 3px;
         text-align: left;
         position: relative;
-        padding: 20px;
-        margin-bottom: 10px;
+        padding: 25px 30px;
+        margin: 0 0 20px 0;
         blockquote {
           font-size: 16px;
+          line-height: 1.8;
           border: none;
-          margin: 0;
+          margin: 0 0 20px;
           padding: 0;
         }
         .arrow {
@@ -107,14 +112,19 @@
         }
       }
       .author {
+        @include clearfix;
         img { 
-          max-height: 80px;
+          border-radius: 50%;
+          max-height: 40px;
           float: left;
         }
         .author-info {
+          font-size: 14px;
           float: left;
           margin-left: 10px;
           .name {
+            font-size: 14px;
+            font-weight: bold;
             margin: 0 0 5px;
           }
         }
@@ -188,15 +198,16 @@
   }
 
   .section-heading {
-    color: #333;
-    font-size: 22px;
-    font-weight: normal;
     text-align: center;
-    margin-bottom: 20px;
-    .outline {
+    > h2 {
       display: inline-block;
-      border: 1px solid #ddd;
-      padding: 10px 80px;
+      color: #74858E;
+      font-size: 24px;
+      font-weight: bold;
+      padding-bottom: 20px;
+      margin-bottom: 2em;
+      text-align: center;
+      background: transparent image-url('hr-stripes.png') repeat-x center bottom;
     }
   }
 
