@@ -59,37 +59,6 @@
             br
             | 100% 法币资产保证金
 
-  .announcement
-    p.oneline
-      span: strong 云币网100%准备金
-      span BTC总资产：฿894.80
-      span CNY总资产：￥1304062.99
-      a.more-info href='/exchange_assets' class='' 查看详情 &raquo;
-
-  .main-section.tickers.main-section-lighter
-    .container
-      hr
-      .section-heading: h2 最新价格
-
-      table.table.table-bordered.table-striped.table-hover
-        tr
-          th.text-center 市场
-          th.text-left 最新价格
-          th.text-left 买入
-          th.text-left 卖出
-          th.text-left 最高
-          th.text-left 最低
-          th.text-left 成交量
-        - @markets.each do |market|
-          tr
-            td.text-center = market.name
-            td.text-left = market.ticker[:last]
-            td.text-left = market.ticker[:buy]
-            td.text-left = market.ticker[:sell]
-            td.text-left = market.ticker[:high]
-            td.text-left = market.ticker[:low]
-            td.text-left = market.ticker[:volume]
-
   .testimonials
     .container
       .section-heading: h2 媒体及用户点评
@@ -98,7 +67,7 @@
           .speech-item
             .speech-bubble
               span.arrow
-              blockquote 针对国内比特币交易所乱象，貔貅（云币）CEO邱亮表示，“我们希望以通过开放开源和公开资产的方式，来推动比特币生态圈的健康发展，做交易所该做的事，以改善比特币市场乱象。
+              blockquote 针对国内比特币交易所乱象，云币网 CEO 邱亮表示：“我们希望以通过开放开源和公开资产的方式，来推动比特币生态圈的健康发展，做交易所该做的事，以改善比特币市场乱象。”
               cite.author
                 = image_tag "/assets/customers/techweb.jpeg"
                 .author-info
@@ -107,7 +76,7 @@
           .speech-item
             .speech-bubble
               span.arrow
-              blockquote 希望云币改了名字后走的越来越好，我以前以为新东方老师里名气最大的是老罗，原来最牛的是李笑来
+              blockquote 希望云币改了名字后走的越来越好，我以前以为新东方老师里名气最大的是老罗，原来最牛的是李笑来。
               cite.author
                 = image_tag "/assets/customers/duoduoyu.jpeg"
                 .author-info
@@ -130,9 +99,18 @@
               blockquote 几个大招出来后，云币交易所总资产量和交易量迅速上升，加油！继续努力！这只是开始！
               cite.author
                 = image_tag "/assets/customers/zhaoletian.jpeg"
+                  h5.name 赵东
                 .author-info
-                  h5.name 赵乐天
-                  div.from: a href="http://weibo.com/n/%E8%B5%B5%E4%B9%90%E5%A4%A9" target="_blank" @赵乐天
+                  div.from: a href="http://weibo.com/zhaodong1982" target="_blank" @赵乐天
+          .speech-item
+            .speech-bubble
+              span.arrow
+              blockquote 云币团队非常牛，而且不断磨练内功，相信云币会越来越好！
+              cite.author
+                = image_tag "/assets/customers/zhibite.png"
+                .author-info
+                  h5.name 智比特
+                  div.from: a href="http://weibo.com/zhibite" target="_blank"  @智比特
           .speech-item
             .speech-bubble
               span.arrow
@@ -150,5 +128,5 @@
                 = image_tag "/assets/customers/yifeivip.jpeg"
                 .author-info
                   h5.name 亦非VIP
-                  div.from: a href="http://weibo.com/n/%E4%BA%A6%E9%9D%9EVIP" target="_blank"  @亦非VIP
+                  div.from: a href="http://weibo.com/yifiz" target="_blank"  @亦非VIP
 
