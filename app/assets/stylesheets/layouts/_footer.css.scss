@@ -2,13 +2,12 @@
   color: $footer-color-light;
   font-size: 14px;
   padding: 20px 0 10px;
-  border-top: 1px solid $footer-border;
+  border-top: 1px solid lighten($footer-color-light, 20%);
   .powered-by
    {
     img {
-      max-width: 80px;
       margin-bottom: 10px;
-      opacity: .3;
+      opacity: .4;
     }
     a {
       color: $footer-color-light;
@@ -18,7 +17,7 @@
       }
     }
   }
-  .footer-copyright {
+  .footer-copyright, .footer-icp {
     font-size: 12px;
     color: $footer-color-light;
     .beian {
