@@ -1,5 +1,6 @@
 @MarketData = flight.component ->
   @refresh = (event, data) ->
+    @trigger 'market::candlestick::request'
     @reqK(gon.market.id, data['x'])
 
   @reqK = (market = gon.market.id, minutes = 60, limit = 5000) ->
@@ -23,7 +24,7 @@
 
       close_price.push [time, close]
       candlestick.push [time, open, high, low, close]
-      volume.push {x: time, y: vol, color: if trend then 'rgba(255, 0, 0, 0.5)' else 'rgba(0, 255, 0, 0.5)'}
+      volume.push {x: time, y: vol, color: if trend then 'rgba(0, 255, 0, 0.5)' else 'rgba(255, 0, 0, 0.5)'}
 
     result = candlestick: candlestick, volume: volume, orig: data, minutes: minutes, close: close_price
 
