@@ -79,13 +79,20 @@ zh-CN:
         amount: 总价
       header:
         title: 云币网交易平台
-        sound: 音效
         network: 连接状态
         switch: '[选择交易品种]'
         vol: 二十四小时 成交量
         high: 最高
         low: 最低
+      settings:
+        sound: 音效
         notification: 桌面实时通知
+        title: 设置
+      account_summary:
+        account: 账户
+        title: 总资产约
+        amount: 总计
+        locked: 冻结
       market_switch:
         title: 选择交易品种
         name: 交易对
