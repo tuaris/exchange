@@ -8,8 +8,8 @@
       .col-md-7.col-md-offset-1: .users-form-container
         = simple_form_for Identity.new, url: '/auth/identity/callback', method: :post, wrapper: :login do |f|
           .flash-messages
-          = f.input :email, input_html: {name: 'auth_key', autofocus: 'true'}, label: t('.email'), placeholder: t('simple_form.placeholders.session.email')
-          = f.input :password, as: 'password', input_html: {name: 'password'}, label: t('.password'), placeholder: t('simple_form.placeholders.session.password'), hint: ''
+          = f.input :email, input_html: {name: 'auth_key', autofocus: 'true'}, label: t('.email'), placeholder: '登录账户'
+          = f.input :password, as: 'password', input_html: {name: 'password'}, label: t('.password'), placeholder: '账户密码', hint: ''
           .form-group
             = f.button :submit, class: 'btn btn-block btn-success', value: t("header.signin")
           p.inline-links
@@ -28,7 +28,7 @@
             i.sprite.sprite-lightbulb
           h4.heading 费用全免
           p.cnt
-            | 2015年4约1日前
+            | 2015年4月1日前
             br
             | 所有交易及提现费全免
 
