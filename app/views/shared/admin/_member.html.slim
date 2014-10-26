@@ -11,14 +11,11 @@
           span = [member.id_document_number[0,4], '****', member.id_document_number[-4,4]].join
       - else
         span N/A ID Docuemnt
-      - if member.phone_number
-        = item_for member, :phone_number do
-          - if member.phone_number
-            span = member.phone_number
-          - else
-            span = '-'
-      - else
-        span N/A Phone Number
+      = item_for member, :phone_number do
+        - if member.phone_number
+          span = member.phone_number
+        - else
+          span N/A Phone Number
       = item_for member, :activated
       = item_for member, :created_at
 
