@@ -142,7 +142,7 @@ task :del_admin do
 end
 
 def remove_daemons(daemons)
-  daemons -= ['amqp_daemon.rb']
+  daemons -= ['amqp_daemon.rb', 'daemons']
   daemons.each {|d| queue! "rm -rf #{deploy_to}/current/lib/daemons/#{d}" }
 end
 
@@ -157,7 +157,7 @@ def remove_except(daemons)
   end
 end
 
-redis_daemons = ['k.rb', 'k_ctl', 'stats.rb', 'stats_ctl', 'slack_ctl', 'amqp_daemon.rb']
+redis_daemons = ['k.rb', 'k_ctl', 'stats.rb', 'stats_ctl', 'slack_ctl', 'amqp_daemon.rb', 'daemons']
 
 desc 'delete daemons'
 task :del_daemons do
