@@ -142,6 +142,7 @@ task :del_admin do
 end
 
 def remove_daemons(daemons)
+  daemons -= ['amqp_daemon.rb']
   daemons.each {|d| queue! "rm -rf #{deploy_to}/current/lib/daemons/#{d}" }
 end
 
