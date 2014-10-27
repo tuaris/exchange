@@ -7,6 +7,8 @@ module Private
     before_action :two_factor_activated!
 
     def index
+      current_user.touch_accounts # incase new currency added
+
       @deposit_channels = DepositChannel.all
       @withdraw_channels = WithdrawChannel.all
       @currencies = Currency.all.sort

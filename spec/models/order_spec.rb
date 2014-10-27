@@ -98,6 +98,7 @@ describe Order, "#done" do
   end
 
   describe Order do
+
     describe "#state" do
       it "should be keep wait state" do
         expect do

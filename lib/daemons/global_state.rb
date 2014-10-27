@@ -14,9 +14,14 @@ Signal.trap("TERM") do
 end
 
 while($running) do
-  Market.enumerize.each_key do |currency|
-    Global[currency].tap { |global| global.trigger_ticker }
+  all_tickers = {}
+  Market.all.each do |market|
+    global = Global[market.id]
+    global.trigger_ticker
+    market_unit = {base_unit: market.base_unit, quote_unit: market.quote_unit}
+    all_tickers[market.id] = global.ticker.merge(market_unit)
   end
+  Global.trigger 'tickers', all_tickers
 
-  sleep 3
+  sleep 1
 end

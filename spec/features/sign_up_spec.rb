@@ -6,7 +6,9 @@ describe 'Sign up', js: true do
 
   def fill_in_sign_up_form
     visit root_path
-    click_on I18n.t('header.signup')
+    within("header") do
+      find('li.signup-link a').trigger('click')
+    end
 
     within('form#new_identity') do
       fill_in 'email', with: identity.email

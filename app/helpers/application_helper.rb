@@ -115,19 +115,15 @@ module ApplicationHelper
     end
   end
 
-  def top_nav_link(link_text, link_path, link_icon, controllers: [], counter: 0, target: '')
+  def top_nav_link(link_text, link_path, css_class, controllers: [], counter: 0, target: '')
     merged = (controllers & controller_path.split('/'))
-    class_name = current_page?(link_path) ? 'active' : nil
-    class_name ||= merged.empty? ? nil : 'active'
-    class_name ||= ''
-    class_name << ' site-logo' if controllers.include?('welcome')
+    class_name = current_page?(link_path) ? 'active' : ''
+    class_name ||= merged.empty? ? '' : 'active'
+    class_name << css_class
 
     content_tag(:li, :class => class_name) do
       link_to link_path, target: target do
-        content_tag(:i, :class => "fa fa-#{link_icon}") do
-          content_tag(:span, counter,class: "counter") if counter != 0
-        end +
-        content_tag(:span, link_text)
+        content_tag(:span, link_text) + (content_tag(:span, counter,class: "counter") if counter != 0)
       end
     end
   end
@@ -181,7 +177,7 @@ module ApplicationHelper
     end
   end
 
-  def locale_name 
+  def locale_name
     I18n.locale.to_s.downcase
   end
 
@@ -280,15 +276,20 @@ module ApplicationHelper
   end
 
   def two_factor_tag(user)
-    app_activated = user.two_factors.by_type(:app).activated?
-    sms_activated = user.two_factors.by_type(:sms).activated?
-
-    if !sms_activated and user.phone_number_verified?
-      user.two_factors.by_type(:sms).active!
-      sms_activated = true
-    end
-
-    locals = {app_activated: app_activated, sms_activated: sms_activated}
+    locals = {
+      app_activated: user.app_two_factor.activated?,
+      sms_activated: user.sms_two_factor.activated?
+    }
     render partial: 'shared/two_factor_auth', locals: locals
   end
+
+  def format_currency(number, currency, n: nil)
+    currency_obj = Currency.find_by_code(currency.to_s)
+    digit = n || currency_obj.decimal_digit
+    decimal = (number || 0).to_d.round(0, digit)
+    decimal = number_with_precision(decimal, precision: digit, delimiter: ',')
+    "<span class='decimal'><small>#{currency_obj.symbol}</small>#{decimal}</span>"
+  end
+
+  alias_method :d, :format_currency
 end

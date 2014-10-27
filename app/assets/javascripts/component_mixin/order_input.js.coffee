@@ -68,6 +68,7 @@
       true
 
   @onInput = (e, data) ->
+    return if data.no_overwrite && @value?
     @$node.val @roundValueToText(data[@attr.variables.input])
     @process()
 

@@ -59,6 +59,7 @@
     @cleanMsg()
     @select('successSel').append(JST["hint_order_success"]({msg: data.message})).show()
     @resetForm(event)
+    window.sfx_success()
     @enableSubmit()
 
   @handleError = (event, data) ->
@@ -67,6 +68,7 @@
     json = JSON.parse(data.responseText)
     @select('dangerSel').append(JST["hint_order_warning"]({msg: json.message})).show()
       .addClass(ef_class).wait(500).removeClass(ef_class)
+    window.sfx_warning()
     @enableSubmit()
 
   @getBalance = ->
@@ -78,10 +80,10 @@
   @allIn = (event)->
     switch @panelType()
       when 'ask'
-        @trigger 'place_order::input::price', {price: @getLastPrice()}
+        @trigger 'place_order::input::price', {price: @getLastPrice(), no_overwrite: true}
         @trigger 'place_order::input::volume', {volume: @getBalance()}
       when 'bid'
-        @trigger 'place_order::input::price', {price: @getLastPrice()}
+        @trigger 'place_order::input::price', {price: @getLastPrice(), no_overwrite: true}
         @trigger 'place_order::input::total', {total: @getBalance()}
 
   @refreshBalance = (event, data) ->

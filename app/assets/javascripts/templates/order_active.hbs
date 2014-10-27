@@ -1,9 +1,10 @@
 <tr data-id="{{id}}" data-kind="{{kind}}" class="order {{kind}}">
-  <td class='time text-left col-xs-7'>{{{format_fulltime at}}}</td>
-  <td class='kind text-left col-xs-3 {{{format_trend kind}}}'>{{{format_short_trade kind}}}</td>
-  <td class='price text-right col-xs-5'>{{format_fix_bid price}}</td>
-  <td class='volume text-right col-xs-5'>{{format_volume origin_volume volume}}</td>
-  <td class='col-xs-4 text-right'>
-    <a class='wait text-info' data-method='delete' data-remote='true' data-confirm='您确定要撤销委单么?' rel='nofollow' href='/markets/{{market}}/orders/{{id}}'>[{{format_cancel}}]</a>
+  <td class='time text-left col-xs-6'>{{{format_fulltime at}}}</td>
+  <td class='kind text-left col-xs-2 {{{format_trend kind}}}'>{{{format_short_trade kind}}}</td>
+  <td class='price text-right col-xs-4'>{{format_fix_bid price}}</td>
+  <td class='volume text-right col-xs-4'>{{format_volume origin_volume volume}}</td>
+  <td class='amount text-right col-xs-5'>{{{format_amount volume price}}}</td>
+  <td class='col-xs-4 text-center'>
+    <a class='wait text-info' data-method='delete' data-remote='true' data-confirm='您确定要撤销委单么?' rel='nofollow' href='/markets/{{market}}/orders/{{id}}'><i class='fa fa-trash'></i></a>
   </td>
 </tr>

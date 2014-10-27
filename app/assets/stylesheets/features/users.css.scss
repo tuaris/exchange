@@ -1,0 +1,43 @@
+.users-form-container {
+  max-width: 640px;
+  margin: 30px auto;
+  .guide-title {
+    font-size: 20px;
+  }
+  .guide-intro {
+    color: #777;
+    font-size: 14px;
+  }
+  form {
+    abbr { display: none; }
+    .hint {
+      color: $footer-color-light;
+      font-size: 14px;
+    }
+    .control-label {
+      color: #777;
+    }
+    .btn {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .btn-info {
+      color: #aaa;
+      &:hover {
+        color: #777;
+        background: none;
+      }
+    }
+    .small-text {
+      font-size: 14px;
+    }
+  }
+  .footer-link {
+    color: $footer-color-light;
+    position: relative;
+    display: inline-block;
+    font-size: 13px;
+    top: -45px;
+    a { margin: 0 5px;}
+  }
+}

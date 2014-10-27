@@ -4,7 +4,8 @@ class SessionsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
 
   before_action :auth_member!, only: :destroy
-  before_action :auth_anybody!, only: [:new, :create, :failure]
+  before_action :auth_anybody!, only: [:new, :failure]
+  before_action :add_auth_for_weibo
 
   helper_method :require_captcha?
 
@@ -14,7 +15,7 @@ class SessionsController < ApplicationController
 
   def create
     if !require_captcha? || simple_captcha_valid?
-      @member = Member.from_auth(env["omniauth.auth"])
+      @member = Member.from_auth(auth_hash)
     end
 
     if @member
@@ -36,7 +37,14 @@ class SessionsController < ApplicationController
   end
 
   def failure
-    increase_failed_logins
+    if env['omniauth.error.strategy'].is_a?(OmniAuth::Strategies::Weibo)
+      oauth_error = env['omniauth.error']
+      if oauth_error.code == "applications over the unaudited use restrictions!"
+        redirect_to signin_path, alert: '微博登录目前仅限内测用户，请关注云币官方微博http://t.yunbi.com，稍后几天再做尝试' and return
+      end
+    else
+      increase_failed_logins
+    end
     redirect_to signin_path, alert: t('.error')
   end
 
@@ -80,6 +88,21 @@ class SessionsController < ApplicationController
       ua_version: browser.version,
       ua_platform: browser.platform
     }
+  end
+
+  def auth_hash
+    @auth_hash ||= env["omniauth.auth"]
+  end
+
+  def add_auth_for_weibo
+    if current_user && ENV['WEIBO_AUTH'] == "true" && auth_hash.try(:[], :provider) == 'weibo'
+      if current_user.add_auth(auth_hash)
+        amount = Tip.settle_for_user!(current_user)
+        flash[:alert] = t('.weibo_bind_tips_settled', amount: amount) if amount > 0
+        flash[:notice] = t('.weibo_bind_success')
+        redirect_to settings_path
+      end
+    end
   end
 
 end

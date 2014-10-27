@@ -5,7 +5,7 @@
 <table>
   <tr>
     <td><%= t('deposit_mailer.deposit_account') %></td>
-    <td><%= [@deposit.fund_extra_text, '@', @deposit.fund_uid].join(' ') %></td>
+    <td><%= [@deposit.fund_extra, '@', @deposit.fund_uid].join(' ') %></td>
   </tr>
   <tr>
     <td><%= t('deposit_mailer.deposit_amount') %></td>

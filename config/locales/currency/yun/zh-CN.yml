@@ -1,0 +1,7 @@
+zh-CN:
+  currency:
+    yun:
+      key: YUN
+      code: YUN
+      name: 云朵
+      format: '0,0'

@@ -59,14 +59,23 @@
   code: btsx
   coin: true
   handler: BTSX
-  deposit_account: dev.taimei
+  deposit_account: btsx.chongzhi.yunbi
   rpc: http://username:password@127.0.0.1:0/rpc
   blockchain: http://www.bitsharesblocks.com/blocks/block?id=#{txid}
 - id: 21
-  key: dns
+  key: keyid
   code: dns
   coin: true
   handler: BTSX
-  deposit_account: janx
+  deposit_account: chongzhi-yunbi
   rpc: http://dns:dnshelloworld@127.0.0.1:20152/rpc
   blockchain: http://104.131.241.162/blocks/block?id=#{txid}
+- id: 999
+  key: yun
+  code: yun
+  coin: true
+  symbol: 'YUN'
+  handler: YUN
+  deposit_account: yun.chongzhi.yunbi # must be different from any other bitshares assets, including BTSX
+  rpc: http://btsx:btsxhelloworld@127.0.0.1:20150/rpc
+  blockchain: http://www.bitsharesblocks.com/blocks/block?id=#{txid}

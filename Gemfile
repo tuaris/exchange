@@ -1,7 +1,7 @@
 #source 'https://rubygems.org'
-source 'https://ruby.taobao.org'
+source 'http://ruby.taobao.org'
 
-gem 'rails'
+gem 'rails', '~> 4.0.2'
 gem 'rails-i18n'
 
 gem 'mysql2'
@@ -15,6 +15,7 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 
 gem 'omniauth'
 gem 'omniauth-identity'
+gem 'omniauth-weibo-oauth2'
 
 gem 'figaro'
 gem 'settingslogic'
@@ -43,7 +44,7 @@ gem 'thread', '~> 0.1.4'
 gem 'eventmachine', '~> 1.0.3'
 gem 'em-websocket', '~> 0.5.1'
 
-gem 'simple_form', '3.0.1'
+gem 'simple_form', '~> 3.0.1'
 gem 'slim-rails'
 gem 'sass-rails'
 gem 'coffee-rails'

@@ -6,18 +6,10 @@ zh-CN:
         page_keywords: "资产,比特币,人民币,网上交易,账目,交易记录"
         page_description: "云币网打造的是一个阳光透明的加密数字货币交易平台，公开公布交易所偿付能力，资金流向,比特币总资产,人民币总资产。平台的每一笔资金和收入都有据可查，用户可在任何时候对云币网的服务进行监督。"
         liability-proof: '100%准备金'
-        btc-assets: BTC资产清单
-        cny-assets: CNY资产清单
-      liability_tabs:
-        verify-btc: 验证我的BTC资产
-        verify-cny: 验证我的CNY资产
-        btc-assets-total: 交易所BTC总资产：
-        cny-assets-total: 交易所CNY总资产：
-      liability_proof:
-        title: '100%准备金'
+        title: '100% 全准备金 资产无风险'
         intro: 我们将银行账户，比特币钱包地址，以及用户存款总额公开以便用户时刻了解我们的资产状况；我们提供的数字证明能证明我们提供的存款总额数据是真实的。我们通过技术手段来保证您的资金处于随时能够提取的状态。
         how-to-verify: 如何验证交易所具备偿付能力？
-        how-to-verify-uri: 'https://peatio.com/documents/liability_proof'
+        how-to-verify-uri: '/documents/liability_proof'
       liability_data:
         liability-proof-generating: "100%准备金自证数据正在生成中，请30分钟后再来。"
         root-json: 交易所总资产验证代码
@@ -26,19 +18,26 @@ zh-CN:
         timestamp: "当前操作仅针对您在%{time}的资产验证。"
         go-verify: 去验证
       btc_assets:
-        title: BTC资产清单
-        intro: 查看交易所全部BTC资产清单
+        title: 云币网冷钱包BTC资产
+        intro: 你可以点击以上「冷钱包」地址查看余额数量，以验证并监督云币网的偿付能力。
+        alert-info:  "注意：我们将大约80%的BTC存量转移到更安全的「冷钱包」保存，最大限度的保证用户资产不会丢失。所以以上冷钱包总额应该大约等于所有用户存量（右栏）的80%。"
+        verify-info: "我们提供「默克树验证法」(Merkle Tree)，用以验证我们公布的用户总存量的真实性。"
         total: BTC总资产
         address: 钱包地址
+        balance: 钱包余额
+        btc-assets-total: 云币网用户BTC总存量
+        require-signin: "请先登录再验证"
       cny_assets:
-        title: CNY资产清单
+        title: 云币网银行账户CNY资产
         intro: 查看交易所全部CNY资产清单
         total: CNY总资产
+        cny-assets-total: 云币网用户CNY总存量
+        require-signin: "请先登录再验证"
         description: "
-          <p>每位登录云币网的用户可通过查询云币网唯一开户银行余额监督我们的服务。</p>
-          <p>开户银行： %{bank}</p>
-          <p>开户帐号： %{address}</p>
-          <p>查询密码： %{password}</p>
-          <p>查询电话： %{tel}</p>"
+          <p>云币网向 VIP 用户公开查询余额，欢迎监督我们的服务。</p>
+          <table class='bank-account'>
+          <tr><td>开户银行</td><td>%{bank}</td></tr>
+          <tr><td>开户帐号</td><td>%{address}</td></tr>
+          <tr><td>查询电话</td><td>%{tel}</td></tr></table>"
       partial_tree:
         success: '获取成功！验证数据生成时间为：%{timestamp}'

@@ -103,13 +103,14 @@ class Deposit < ActiveRecord::Base
   end
 
   def send_sms
-    return true if not member.phone_number_verified?
+    return true if not member.sms_two_factor.activated?
 
     sms_message = I18n.t('sms.deposit_done', email: member.email,
                                              currency: currency_text,
                                              time: I18n.l(Time.now.localtime),
                                              amount: amount,
-                                             balance: account.balance)
+                                             balance: account.balance,
+                                             locked: account.locked)
 
     AMQPQueue.enqueue(:sms_notification, phone: member.phone_number, message: sms_message)
   end

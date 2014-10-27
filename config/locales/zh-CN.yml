@@ -41,8 +41,8 @@ zh-CN:
   sms:
     verification_code: "云币网验证码：%{code}，30分钟内有效。（提示：为了您的财产安全，千万不要向其他人泄露！云币网工作人员不会向您索要验证码，么么哒~）【云币网yunbi.com】"
     password_changed: "%{email} 您好，您已成功修改账户密码，若非本人操作，您的账户可能存在被盗风险，请立即联系客服！【云币网yunbi.com】"
-    deposit_done: "%{email} 您好，您于%{time}进行了（%{currency}）充值操作，金额为%{amount}。最新余额为：%{balance}。（若非本人操作，请及时联系我们！）【云币网yunbi.com】"
-    withdraw_done: "%{email} 您好，您于%{time}进行了（%{currency}）提现操作，金额为%{amount}。最新余额为：%{balance}。（若非本人操作，请立即联系客服！）【云币网yunbi.com】"
+    deposit_done: "%{email} 您好，您于%{time}进行了（%{currency}）充值操作，金额为%{amount}。最新余额为：%{balance}，锁定余额为：%{locked}。（若非本人操作，请及时联系我们！）【云币网yunbi.com】"
+    withdraw_done: "%{email} 您好，您于%{time}进行了（%{currency}）提现操作，金额为%{amount}。最新余额为：%{balance}。锁定余额为：%{locked}（若非本人操作，请立即联系客服！）【云币网yunbi.com】"
 
   private:
     trade:
@@ -78,12 +78,13 @@ zh-CN:
     admin: 后台管理
     market: 交易大厅
     settings: 账户
-    signin: 登录
+    signin: 登录账户
     signout: 安全退出
     signup: 创建账户
+    login_via_weibo: 微博登录
     funds: 我的资产
     getstart: 前往交易大厅
-    assets: "100%准备金"
+    assets: 全准备金
     history: 历史记录
     order_history: 委托记录
     trade_history: 成交记录
@@ -104,12 +105,12 @@ zh-CN:
 
   footer:
     about: 关于我们
-    terms_and_service: 声明及用户协议
+    terms_and_service: 服务条款
     questions: 常见问题
-    price: 资费说明
-    liability_proof: 偿付能力验证
+    price: 费用说明
+    liability_proof: 偿付能力
     contact: 联系我们
-    api: API接口
+    api: 程序接口
     opensource: 开放源码
     blog: 博客
 
@@ -139,18 +140,25 @@ zh-CN:
       done: 复制成功
 
   chart:
-    open: 开盘
-    high: 最高
-    low: 最低
-    close: 收盘
+    open: 开盘价
+    high: 最高价
+    low: 最低价
+    close: 收盘价
     price: 价格
     volume: 成交量
+    candlestick: 'K线图'
     minute: 分
     hour: 小时
     day: 日
     week: 周
     month: 月
     year: 年
+    zoom: 缩放
+    ask: 买单
+    bid: 卖单
+    depth: 累计深度
+    depth_title: 市场深度
+
 
   'yes': 是
   'no': 否

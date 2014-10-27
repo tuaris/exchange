@@ -3,7 +3,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :is_admin?, :current_market, :muut_enabled?, :gon
   before_action :set_language, :set_timezone, :set_gon
+  after_action :allow_iframe
   rescue_from CoinRPC::ConnectionRefusedError, with: :coin_rpc_connection_refused
+
+  include TwoFactorHelper
 
   def currency
     "#{params[:ask]}#{params[:bid]}".to_sym
@@ -23,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def auth_member!
-    redirect_to signin_path unless current_user
+    redirect_to signin_path, alert: t('.login_required') unless current_user
   end
 
   def auth_activated!
@@ -59,7 +62,7 @@ class ApplicationController < ActionController::Base
 
   def two_factor_activated!
     if not current_user.two_factors.activated?
-      redirect_to settings_path, alert: t('private.two_factors.auth.please_active_two_factor')
+      redirect_to settings_path, alert: t('two_factors.auth.please_active_two_factor')
     end
   end
 
@@ -70,7 +73,7 @@ class ApplicationController < ActionController::Base
     return false if not two_factor
 
     two_factor.assign_attributes params.require(:two_factor).permit(:otp)
-    two_factor.verify
+    two_factor.verify?
   end
 
   def set_language
@@ -127,7 +130,11 @@ class ApplicationController < ActionController::Base
         open: I18n.t('chart.open'),
         high: I18n.t('chart.high'),
         low: I18n.t('chart.low'),
-        close: I18n.t('chart.close')
+        close: I18n.t('chart.close'),
+        candlestick: I18n.t('chart.candlestick'),
+        zoom: I18n.t('chart.zoom'),
+        depth: I18n.t('chart.depth'),
+        depth_title: I18n.t('chart.depth_title')
       },
       place_order: {
         confirm_submit: I18n.t('private.markets.show.confirm'),
@@ -151,9 +158,12 @@ class ApplicationController < ActionController::Base
     end
     gon.fiat_currency = Currency.first.code
 
-    gon.tickers = Market.all.inject({}) do |memo, market|
-      memo[market.id] = market.ticker
-      memo
+    gon.tickers = {}
+    Market.all.each do |market|
+      global = Global[market.id]
+      global.trigger_ticker
+      market_unit = {base_unit: market.base_unit, quote_unit: market.quote_unit}
+      gon.tickers[market.id] = global.ticker.merge(market_unit)
     end
 
     if current_user
@@ -185,4 +195,7 @@ class ApplicationController < ActionController::Base
     Rails.cache.delete_matched "peatio:sessions:#{member_id}:*"
   end
 
+  def allow_iframe
+    response.headers.except! 'X-Frame-Options' if Rails.env.development?
+  end
 end

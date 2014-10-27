@@ -1,0 +1,4 @@
+en:
+  admin:
+    withdraws:
+      insufficient: Insufficient amount in hot wallet.

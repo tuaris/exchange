@@ -3,18 +3,10 @@ en:
     assets:
       index:
         liability-proof: Proof of Liabilities
-        btc-assets: BTC Assets
-        cny-assets: CNY Assets
-      liability_tabs:
-        verify-btc: Verify My BTC Assets
-        verify-cny: Verify My CNY Assets
-        btc-assets-total: 'Total BTC assets of exchange: '
-        cny-assets-total: 'Total CNY assets of exchange: '
-      liability_proof:
         title: Proof of Liabilities
         intro: As an exchange, our liabilities refer to the sum of money (in both crypto currencies and fiat currencies) that our users trust us with. On this page, we present you our liabilities. We also provide you a way to verify that your account balance is indeed part of our liabilities.
         how-to-verify: 'How to verify an exchange is solvent?'
-        how-to-verify-uri: 'https://peatio.com/documents/liability_proof'
+        how-to-verify-uri: '/documents/liability_proof'
       liability_data:
         liability-proof-generating: Proof of Liability generation in process, please come back after 30 minutes.
         root-json: Root node
@@ -25,17 +17,24 @@ en:
       btc_assets:
         title: BTC Assets
         intro: All of exchange's BTC assets are listed here.
+        alert-info: TODO
+        verify-info: TODO
         total: Total BTC Assets
         address: Address
+        btc-assets-total: Total BTC Assets
+        require-signin: Signin Required
       cny_assets:
         title: CNY Assets
         intro: All of exchange's CNY assets are listed here.
         total: Total CNY Assets
+        cny-assets-total:
+        require-signin: Signin Required
         description: "
           <p>For supervision, you can inquiry the balance of our deposit account:</p>
-          <p>Bank: China Merchants Bank</p>
-          <p>Account： %{address}</p>
-          <p>Inquiry Password：In order to prevent malicious operations, the password is only accessible to our VIP customers. If you're VIP user please contact our customer service to get the password. Thanks for your understanding.</p>
-          <p>Inquiry Tel.： %{tel}</p>"
+          <table class='bank-account'>
+          <tr><td>Bank</td><td>China Merchants Bank</td></tr>
+          <tr><td>Account</td><td>%{address}</td></tr>
+          <tr><td>Inquiry Password</td><td>In order to prevent malicious operations, the password is only accessible to our VIP customers. If you're VIP user please contact our customer service to get the password. Thanks for your understanding.</td></tr>
+          <tr><td>Inquiry Tel</td><td>%{tel}</td></tr></table>"
       partial_tree:
         success: 'Success! Verification data generated at: %{timestamp}'

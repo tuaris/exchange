@@ -2,11 +2,8 @@ en:
   private:
     markets:
       show:
-        on: ON
-        off: OFF
-        notification: Desktop Real Notification
-        error: Failed to submit order
-        success: Order submitted successfully
+        error: Place Failed
+        success: Place Success
         analysis_panel: Analysis
         help_panel: Help
         done: DONE
@@ -15,19 +12,31 @@ en:
         confirm: CONFIRM
         ask_order: 'ASK ##sn#'
         bid_order: 'BID ##sn#'
+        my_active_order: Active
+        my_done_order: Done
+        trades: Trading
+        market_switch: Markets Switch
+        chat: Chat Channel
+      range_switch:
+        switch_1: 1m
+        switch_5: 5m
+        switch_15: 15m
+        switch_30: 30m
+        switch_60: 1h
+        switch_120: 2h
+        switch_360: 6h
+        switch_1440: 1d
+        switch_4320: 3d
+        switch_10080: 1w
       depths:
         price: Price
         amount: Amount
         buy: Buy
         sell: Sell
       ticker:
-        title: Realtime Ticker
         last: Last Price
-        high: 24h High
-        low: 24h Low
-        volume: 24h Volume
-        ask: Ask Price
-        bid: Bid Price
+        ask: ASK
+        bid: BID
       account_balance:
         title: Account Balance
         available: Available %{currency}
@@ -59,13 +68,33 @@ en:
         amount: Amount
         ask: ASK
         bid: BID
-      trades:
-        title: Trades
+        fade_toggle_depth: Market Depth
       market_trades:
-        title: Market Trades
-        time: Time
+        title: Market Tradeing
+        time: Trading Time
         price: Price
         volume: Volume
+        amount: Amount
+      header:
+        title: YUNBI Trading
+        network: Connection State
+        switch: '[Switch Market]'
+        vol: 24h Volume
+        high: High
+        low: Low
+      settings:
+        sound: Sound
+        notification: Desktop Real Notification
+        title: Settings
+      account_summary:
+        title: Summary
+        amount: Amount
+        locked: Freeze
+      market_switch:
+        title: Switch Market
+        name: Market
+        ask: ASK
+        bid: BID
       my_done_orders:
         title: My [Done Orders]
         filter: Filter
@@ -95,7 +124,7 @@ en:
         time: Place Time
         operation: Opt.
       mask:
-        warning: Please <span class=text-up>Sign up</span> or <span class=text-up>Sign in</span> for operation
+        warning: Please <a class=text-up href='/'>Sign up</a> or <a class=text-up href='/'>Sign in</a> for operation
       klime_chart:
         title: Candlestick Charts
       global:

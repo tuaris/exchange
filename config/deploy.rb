@@ -7,7 +7,6 @@ require 'mina/slack/tasks'
 set :repository, 'git@github.com:peatio/peatio_beijing.git'
 set :user, 'deploy'
 set :deploy_to, '/home/deploy/peatio'
-set :keep_releases, 20
 
 branch = ENV['branch'] || 'production'
 case ENV['to']
@@ -82,7 +81,6 @@ task deploy: :environment do
       invoke :del_admin
       invoke :del_daemons
       invoke :'passenger:restart'
-      invoke :'deploy:cleanup'
     end
   end
 end
@@ -144,7 +142,7 @@ task :del_admin do
 end
 
 def remove_daemons(daemons)
-  damones.each {|d| queue! "rm -rf #{deploy_to}/current/lib/daemons/#{d}" }
+  daemons.each {|d| queue! "rm -rf #{deploy_to}/current/lib/daemons/#{d}" }
 end
 
 def remove_except(daemons)
@@ -171,5 +169,7 @@ task :del_daemons do
     queue! "rm -rf #{deploy_to}/current/lib/daemons"
   when 'peatio-redis'
     remove_except redis_daemons
+  when 'peatio-stg'
+    remove_daemons %w(stats.rb stats_ctl slack_ctl)
   end
 end

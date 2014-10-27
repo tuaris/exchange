@@ -79,6 +79,7 @@ en:
     signin: Sign In
     signout: Exit
     signup: Sign Up
+    login_via_weibo: Login via Weibo
     funds: Funds
     getstart: Get Start
     assets: Solvency
@@ -143,12 +144,18 @@ en:
     close: Close
     price: Price
     volume: Volume
+    candlestick: 'Candle Stick'
     minute: m
     hour: Hour
     day: Day
     week: Week
     month: Month
     year: Year
+    zoom: Zoom
+    ask: ASK
+    bid: BID
+    depth: Depth
+    depth_title: Market Depth
 
   'yes': 'Yes'
   'no': 'No'

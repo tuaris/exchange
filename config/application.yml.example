@@ -21,7 +21,7 @@ defaults: &defaults
   # below settings only in production env
   # system notify mail settings
   # --------------------------------------------------------------
-  SMTP_PORT: 25
+  SMTP_PORT: YOUR_SMTP_PORT
   SMTP_DOMAIN: YOUR_SMTP_DOMAIN
   SMTP_ADDRESS: YOUR_SMTP_ADDRESS
   SMTP_USERNAME: YOUR_SMTP_USERNAME
@@ -63,6 +63,10 @@ defaults: &defaults
   # Airbrake settings
   # --------------------------------------------------------------
   AIRBRAKE_KEY: YOUR_AIRBRAKE_KEY
+  #
+  TWILIO_NUMBER: YOUR_TWILIO_NUMBER
+  TWILIO_SID: YOUR_TWILIO_SID
+  TWILIO_TOKEN: YOUR_TWILIO_TOKEN
 
   # Chuang shi man dao sms service settings
   # --------------------------------------------------------------
@@ -71,10 +75,17 @@ defaults: &defaults
   CHUANGSHIMANDAO_PASSWORD: YOUR_PASSWORD
 
   # MixPanel
-  MIXPANEL_TOKEN: YOUR_MIXPANEL_TOKEN
-  MIXPANEL_POOL: 20
 
-  SLACK_URI: YOUR_SLACK_API_URI
+  # Weibo
+  # --------------------------------------------------------------
+  WEIBO_AUTH: on # on/off
+  WEIBO_KEY: 3820920586
+  WEIBO_SECRET: 2d6174dc698e86860c75d75b1e8a01c8
+
+  # chat setting
+  # --------------------------------------------------------------
+  # Do you want chat feature in your exchange ?
+  # send mail to community@peatio.com
 
 development:
   <<: *defaults

@@ -1,8 +1,49 @@
-#assets-index {
+$panel-margin-bottom: 60px;
 
-  header {
-    .navbar-fixed-top {
-      background-color: #f2f2f2;
+#assets-index {
+  .hero {
+    text-align: center;
+    max-width: 720px;
+    margin: 30px auto 50px;
+    h2 {
+      font-size: 27px;
+      margin: 20px 0;
+      i { vertical-align: middle; margin-right: 10px; }
+    }
+    p {
+      color: #999;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+  }
+  .panel {
+    min-height: 285px;
+    margin: 0 20px $panel-margin-bottom;
+  }
+  .panel-body {
+    text-align: left;
+    padding: 30px;
+    .total {
+      .lbl {
+        font-size: 16px;
+        font-weight: normal;
+        color: $footer-color-light;
+      }
+      .num {
+        font-size: 32px;
+      }
+    }
+    .bank-account {
+      width: 100%;
+      margin: 15px;
+      font-size: 14px;
+      td:first-child {
+        width: 70px;
+        vertical-align: top;
+      }
+      td:last-child {
+        font-weight: bold;
+      }
     }
   }
 
@@ -11,7 +52,7 @@
   }
 
   .assets {
-    margin: 30px 0 10px 0;
+    margin: 0 0 10px 0;
 
     .title {
       width: 200px;
@@ -24,11 +65,19 @@
   }
 
   .proof {
+    color: #999;
+    font-size: 14px;
     .json {
-      margin-top: 30px;
-      code {
-        font-size: .8em;
-        color: #666;
+      margin-top: 20px;
+      pre {
+        font-size: .625em;
+        color: #777;
+        background-color: #F7FBFD;
+        max-height: 80px;
+        overflow: auto;
+      }
+      h5, .assets {
+        font-size: 14px;
       }
     }
 
@@ -42,49 +91,58 @@
   .proof-bottom {
     text-align: center;
   }
-
-  ul.assets-nav {
-    margin-bottom: 20px;
-
-    li {
-      font-size: 18px;
-      text-align: center;
-      padding: 10px 15px 0 10px;
-      height: 36px;
-      border-bottom: 3px solid #999;
-
-      a {
-        width: 190px;
-        color: #ccc;
-        font-weight: bold;
-      }
-
-      a:after {
-        content: "";
-        width: 16px;
-        height: 16px;
-        color: #ccc;
-        background-color: #f2f2f2;
-        border: 2px solid #ccc;
-        border-radius: 8px;
+  
+  .assets-proof {
+    .panel {
+      position: relative;
+      &:before {
+        content: '';
+        height: $panel-margin-bottom;
+        width: 3px;
+        background-color: #ddd;
         position: absolute;
-        top: 38px;
         left: 50%;
+        top: -$panel-margin-bottom;
       }
     }
-
-    li.active {
-      a {
-        color: #999;
-      }
-
-      a:after {
-        width: 16px;
-        height: 16px;
-        border: 3px solid #fdbb00;
-        border-radius: 8px;
-        top: 38px;
-        border-color: #fdbb00;
+  }
+  .left-col {
+    margin-right: -1px;
+    padding-right: 30px;
+    border-right: 1px solid #ddd;
+  }
+  .right-col {
+    padding-left: 30px;
+    border-left: 1px solid #ddd;
+  }
+  .currency-icon {
+    position: absolute;
+    top: -60px;
+    left: -60px;
+    img {
+      max-width: 60px;
+    }
+  }
+  .alert {
+    margin-bottom: 0;
+    font-size: 14px;
+    padding: 10px;
+    &.alert-info {
+      background-color: #E9F3F9;
+    }
+  }
+  .signin-link {
+    margin: 50px 0 0;
+    text-align: center;
+    a {
+      color: #999;
+      padding: 10px 30px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      &:hover {
+        color: #333;
+        border-color: #aaa;
+        text-decoration: none;
       }
     }
   }

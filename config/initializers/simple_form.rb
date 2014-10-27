@@ -72,10 +72,10 @@ SimpleForm.setup do |config|
     b.optional :readonly
 
     ## Inputs
-    b.use :label, wrap_with: { tag: :div, class: 'col-xs-4 text-right'}
-    b.use :input, wrap_with: { tag: :div, class: 'col-xs-20'}
-    b.use :error, wrap_with: { tag: :span, class: 'error text-danger col-xs-20 col-xs-offset-4' }
-    b.use :hint,  wrap_with: { tag: :span, class: 'hint col-xs-20 col-xs-offset-4' }
+    b.use :label
+    b.use :input
+    b.use :error, wrap_with: { tag: :span, class: 'error text-danger' }
+    b.use :hint,  wrap_with: { tag: :span, class: 'hint' }
   end
 
   # The default wrapper to be used by the FormBuilder.
@@ -91,7 +91,7 @@ SimpleForm.setup do |config|
   config.boolean_style = :nested
 
   # Default class for buttons
-  config.button_class = 'btn'
+  config.button_class = ''
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.

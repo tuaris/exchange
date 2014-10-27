@@ -1,5 +1,25 @@
-= render 'shared/pusher'
-.navbar.navbar-default.navbar-static-top role = "navigation"
-  .container
-    = render 'shared/menu'
+header.navbar.navbar-default.navbar-static-top role = "navigation"
+  .container-fluid
+    ul#menu.nav.navbar-nav.navbar-left
+      a.navbar-brand href='#{root_path}' = t('.title')
 
+      p.navbar-text
+        span.text-up.market
+        span: a.hand-point.switch-market = t('.switch')
+      p.navbar-text
+        span data-title="#{t('.vol')}"
+          span.vol.text-up
+        span data-title='#{t('.high')}'
+          span.high.text-up
+        span data-title='#{t('.low')}'
+          span.low.text-up
+      
+    ul.nav.navbar-nav.navbar-right
+      - if current_user
+        = render partial: 'account_summary'
+        = render partial: 'settings'
+      - else
+        p.navbar-text
+          == t('private.markets.mask.warning')
+      p.navbar-text
+        span: i.fa.fa-wifi

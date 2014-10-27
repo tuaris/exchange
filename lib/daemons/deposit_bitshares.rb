@@ -18,6 +18,7 @@ Rails.logger = Logger.new STDOUT
 
 btsx_deposit = Worker::DepositBitshares.new 'btsx'
 dns_deposit  = Worker::DepositBitshares.new 'dns'
+yun_deposit  = Worker::DepositBitshares.new 'yun'
 
 def safe_process(worker)
   worker.process
@@ -29,5 +30,6 @@ end
 while($running) do
   safe_process btsx_deposit
   safe_process dns_deposit
+  safe_process yun_deposit
   sleep 5 # half of block production time
 end

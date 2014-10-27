@@ -1,6 +1,6 @@
 - content_for :frame do
-  .container
-    ul.nav.nav-tabs role='tablist'
+  .container.history-pages
+    ul.nav.nav-pills role='tablist'
       li = link_to t('header.order_history'), order_history_path
       li = link_to t('header.trade_history'), trade_history_path
       li.active = link_to t('header.account_history'), account_history_path
@@ -20,3 +20,4 @@
               = render partial: 'transaction', collection: @transactions
           .pull-right
             = paginate @transactions
+
