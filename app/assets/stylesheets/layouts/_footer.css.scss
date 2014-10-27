@@ -3,8 +3,8 @@
   font-size: 14px;
   padding: 20px 0 10px;
   border-top: 1px solid lighten($footer-color-light, 20%);
-  .powered-by
-   {
+  .powered-by {
+    margin-top: 43px;
     img {
       margin-bottom: 10px;
       opacity: .4;
@@ -37,10 +37,11 @@
     }
   }
   .hotline {
-    color: #333;
-    font-size: 16px;
+
+    font-size: 1.1em;
     strong {
-      font-size: 18px;
+      color: $text-color;
+      font-size: 1.3em;
     }
   }
 }
