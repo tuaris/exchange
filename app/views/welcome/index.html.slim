@@ -6,16 +6,19 @@
         h1 比特基金 旗下数字资产交易平台
         p A crypto-currency exchange co-funded by BitFundPE
       .col-md-7.col-md-offset-1: .users-form-container
-        = simple_form_for Identity.new, url: '/auth/identity/callback', method: :post, wrapper: :login do |f|
-          .flash-messages
-          = f.input :email, input_html: {name: 'auth_key', autofocus: 'true'}, label: t('.email'), placeholder: '账户邮箱'
-          = f.input :password, as: 'password', input_html: {name: 'password'}, label: t('.password'), placeholder: '账户密码', hint: ''
-          .form-group
-            = f.button :submit, class: 'btn btn-block btn-success', value: t("header.signin")
-          p.inline-links
-            = link_to "忘记密码", new_reset_password_path
-            ' • 
-            = link_to '创建账户', signup_path
+        - unless current_user
+          = simple_form_for Identity.new, url: '/auth/identity/callback', method: :post, wrapper: :login do |f|
+            .flash-messages
+            = f.input :email, input_html: {name: 'auth_key', autofocus: 'true'}, label: t('.email'), placeholder: '账户邮箱'
+            = f.input :password, as: 'password', input_html: {name: 'password'}, label: t('.password'), placeholder: '账户密码', hint: ''
+            .form-group
+              = f.button :submit, class: 'btn btn-block btn-success', value: t("header.signin")
+            p.inline-links
+              = link_to "忘记密码", new_reset_password_path
+              ' • 
+              = link_to '创建账户', signup_path
+        - else
+          = current_user.email
             
     .highlights
       .container: .row
