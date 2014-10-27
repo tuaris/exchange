@@ -5,8 +5,7 @@
     dl.total
       dt.lbl= t('.title')
       dd.num
-        == t("currency.icon.cny")
-        = @cny_proof.balance
+        == d(@cny_proof.balance, :cny)
 
     == t('.description', @cny_assets['accounts'].first.symbolize_keys)
 
@@ -14,8 +13,7 @@
     dl.total
       dt.lbl = t('.cny-assets-total')
       dd.num
-        == t("currency.icon.cny")
-        = @cny_proof.sum
+        == d(@cny_proof.sum, :cny)
     - if current_user
       = render 'liability_data', account: @cny_account, proof: @cny_proof
     - else

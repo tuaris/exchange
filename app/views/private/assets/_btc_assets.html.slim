@@ -5,23 +5,22 @@
     dl.total
       dt.lbl= t('.title')
       dd.num
-        == t("currency.icon.btc")
-        = @btc_proof.asset_sum
+        == d(@btc_proof.asset_sum, :btc)
 
     table.table
       thead
         tr
           th
             = t('.address')
-          th
+          th.text-right
             = t('.balance')
-      tbody
+      tbody.small
         - @btc_proof.addresses.each do |entry|
           tr
             td.wallet
               = link_to entry['address'], @btc_proof.address_url(entry['address'])
-            td.balance
-              = entry['balance']
+            td.balance.text-right
+              == d(entry['balance'], :btc)
 
     p.desc = t('.intro')
     p.alert.alert-info = t('.alert-info')
@@ -32,8 +31,7 @@
     dl.total
       dt.lbl = t('.btc-assets-total')
       d.num
-        == t("currency.icon.btc")
-        = @btc_proof.sum
+        == d(@btc_proof.sum, :btc)
     p.desc = t('.verify-info')
     - if current_user
       = render 'liability_data', account: @btc_account, proof: @btc_proof
