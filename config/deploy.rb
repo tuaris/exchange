@@ -141,11 +141,16 @@ task :del_admin do
   end
 end
 
+required_daemons = %w(amqp_daemon.rb daemons)
+redis_daemons = %w(k.rb k_ctl stats.rb stats_ctl slack_ctl amqp_daemon.rb daemons)
+
 def remove_daemons(daemons)
+  daemons -= required_daemons
   daemons.each {|d| queue! "rm -rf #{deploy_to}/current/lib/daemons/#{d}" }
 end
 
 def remove_except(daemons)
+  daemons |= required_daemons
   unless daemons.empty?
     Dir[File.dirname(__FILE__)+'/../lib/daemons/*'].each do |path|
       filename = File.basename(path)
@@ -156,7 +161,6 @@ def remove_except(daemons)
   end
 end
 
-redis_daemons = ['k.rb', 'k_ctl', 'stats.rb', 'stats_ctl', 'slack_ctl', 'amqp_daemon.rb']
 
 desc 'delete daemons'
 task :del_daemons do
