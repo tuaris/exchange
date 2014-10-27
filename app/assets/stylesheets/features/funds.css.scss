@@ -9,6 +9,12 @@
   .currencies-container {
     min-height: $funds-panel-height;
     border-right: 1px solid #ddd;
+
+    div:last-of-type {
+    .table.table-currencies {
+      td { border-bottom: 0px; }
+    }
+  }
   }
   .details-container {
     padding: 20px 20px 0;
