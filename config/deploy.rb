@@ -141,16 +141,16 @@ task :del_admin do
   end
 end
 
-required_daemons = %w(amqp_daemon.rb daemons)
-redis_daemons = %w(k.rb k_ctl stats.rb stats_ctl slack_ctl amqp_daemon.rb daemons)
+@required_daemons = %w(amqp_daemon.rb daemons)
+@redis_daemons = %w(k.rb k_ctl stats.rb stats_ctl slack_ctl amqp_daemon.rb daemons)
 
 def remove_daemons(daemons)
-  daemons -= required_daemons
+  daemons -= @required_daemons
   daemons.each {|d| queue! "rm -rf #{deploy_to}/current/lib/daemons/#{d}" }
 end
 
 def remove_except(daemons)
-  daemons |= required_daemons
+  daemons |= @required_daemons
   unless daemons.empty?
     Dir[File.dirname(__FILE__)+'/../lib/daemons/*'].each do |path|
       filename = File.basename(path)
@@ -168,11 +168,11 @@ task :del_daemons do
   when 'peatio-admin'
     queue! "rm -rf #{deploy_to}/current/lib/daemons"
   when 'peatio-daemon'
-    remove_daemons redis_daemons
+    remove_daemons @redis_daemons
   when 'yunbi-web-01'
     queue! "rm -rf #{deploy_to}/current/lib/daemons"
   when 'peatio-redis'
-    remove_except redis_daemons
+    remove_except @redis_daemons
   when 'peatio-stg'
     remove_daemons %w(stats.rb stats_ctl slack_ctl)
   end
