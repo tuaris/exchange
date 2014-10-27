@@ -120,4 +120,13 @@ form.simple_form {
   h5 i.fa { margin-right: 10px; }
 }
 
+/* decimal
+------------------------------------------------------- */
+span.decimal {
+  color: #555;
+  font-family: $font-family-monospace;
+  font-size: 1em;
+  small { font-size: 0.8em; color: #555; }
+}
+
 @import 'layouts/custom';
