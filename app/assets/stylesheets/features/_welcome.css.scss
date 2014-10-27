@@ -152,7 +152,11 @@
           font-size: 14px;
           float: left;
           margin-left: 10px;
+          .from {
+            padding-top: 10px;
+          }
           .name {
+            display: none;
             font-size: 14px;
             font-weight: bold;
             margin: 0 0 5px;

@@ -127,6 +127,9 @@ $panel-margin-bottom: 60px;
     margin-bottom: 0;
     font-size: 14px;
     padding: 10px;
+    &.alert-info {
+      background-color: #E9F3F9;
+    }
   }
   .signin-link {
     margin: 50px 0 0;
