@@ -6,7 +6,7 @@ en:
         title: Proof of Liabilities
         intro: As an exchange, our liabilities refer to the sum of money (in both crypto currencies and fiat currencies) that our users trust us with. On this page, we present you our liabilities. We also provide you a way to verify that your account balance is indeed part of our liabilities.
         how-to-verify: 'How to verify an exchange is solvent?'
-        how-to-verify-uri: 'https://peatio.com/documents/liability_proof'
+        how-to-verify-uri: '/documents/liability_proof'
       liability_data:
         liability-proof-generating: Proof of Liability generation in process, please come back after 30 minutes.
         root-json: Root node
