@@ -13,8 +13,7 @@
       .assets
         span.title = t('.partial-tree', currency: proof.currency.upcase)
         span.currency
-          == t("currency.icon.#{proof.currency}")
-          = partial_tree.sum
+          == d(partial_tree.sum, proof.currency)
       pre id=partial_tree_target = partial_tree.json.to_json
 
     .timestamp
