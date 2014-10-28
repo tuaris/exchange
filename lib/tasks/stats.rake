@@ -3,7 +3,10 @@ namespace :stats do
   def asset_value(ts, currency, amount)
     if currency.code != 'cny'
       redis = KlineDB.redis
-      market = Market.find "#{currency.code}cny"
+
+      market = Market.find "#{currency.code}cny" rescue nil
+      return [] unless market
+
       key = "peatio:#{market.id}:k:60"
       last_hour = 23.hours.since(Time.at ts)
 
