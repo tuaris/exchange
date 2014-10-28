@@ -1,50 +1,68 @@
 footer.global-footer: .container: .row
-  .col-md-6
-    p.hotline
-      '客服热线: 
-      strong 400-835-1183
-    p.footer-copyright
-      '&copy;2014 北京比天创行科技有限公司
-    p.footer-icp
-      a target='_blank' href='http://www.beianbeian.com/beianxinxi/aacfc7ce-0935-4fe7-993b-af67ef5b7f69.html' class='beian' 京ICP备13047168
+  .col-md-7.text-left
+    p.powered-by
+      a target='_blank' href='http://www.peat.io'
+        img src='/PEATIO.png' alt='Powered By PEATIO'
+      a target='_blank' href='http://www.bitfundpe.com'
+        img src='/BITFUNDPE.png' alt='BitFundPE'
   .col-md-3
     ul.footer-nav
-      li= link_to t('footer.about'), document_path('about')
-      li= link_to t('footer.contact'), document_path('contact')
-      li= link_to t('footer.terms_and_service'), document_path('terms_and_service')
-      li= link_to t('footer.questions'), document_path('questions')
-
-  .col-md-3
-    ul.footer-nav
-      li= link_to t('footer.price'), document_path('price')
-      li= link_to t('footer.liability_proof'), document_path('liability_proof')
-      li= link_to t('footer.api'), '/documents/api_v2'
-      li= link_to t('footer.opensource'), 'https://github.com/peatio/peatio', target: '_blank'
+      li
+        i.fa.fa-cloud.fa-fw
+        = link_to t('footer.about'), document_path('about')
+      li
+        i.fa.fa-phone.fa-fw
+        = link_to t('footer.contact'), document_path('contact')
+      li
+        i.fa.fa-tasks.fa-fw
+        = link_to t('footer.terms_and_service'), document_path('terms_and_service')
+      li
+        i.fa.fa-question-circle.fa-fw
+        = link_to t('footer.questions'), document_path('questions')
 
   .col-md-3
     ul.footer-nav
       li
-        i.fa.fa-comments
+        i.fa.fa-money.fa-fw
+        = link_to t('footer.price'), document_path('price')
+      li
+        i.fa.fa-bank.fa-fw
+        = link_to t('footer.liability_proof'), document_path('liability_proof')
+      li
+        i.fa.fa-code.fa-fw
+        = link_to t('footer.api'), '/documents/api_v2'
+      li
+        i.fa.fa-github.fa-fw
+        = link_to t('footer.opensource'), 'https://github.com/peatio/peatio', target: '_blank'
+
+  .col-md-3
+    ul.footer-nav
+      li
+        i.fa.fa-comments.fa-fw
         = link_to "在线客服", 'http://wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzkzODAxMzE0Nl8xODQ3MzhfNDAwODM1MTE4M18yXw', target: '_blank'
       li
-        i.fa.fa-weibo
+        i.fa.fa-weibo.fa-fw
         = link_to '云币微博', 'http://t.yunbi.com', target: '_blank'
       li
-        i.fa.fa-newspaper-o
+        i.fa.fa-newspaper-o.fa-fw
         = link_to '云币博客', 'http://blog.peatio.com', target: '_blank'
   .col-md-3
     ul.footer-nav
       li.qq
-        i.fa.fa-qq
+        i.fa.fa-qq.fa-fw
         span: a target='_blank' href='http://shang.qq.com/wpa/qunwpa?idkey=21091be558c07f2b93fe30872c2051e86fc4687e929c666a880c569ebf5694c7' 云币网一群
         br 
         span.qq-number 2442579
       li.qq
-        i.fa.fa-qq
+        i.fa.fa-qq.fa-fw
         span: a target='_blank' href='http://shang.qq.com/wpa/qunwpa?idkey=30f3fae64145d0c4b77839722537f816c69da36dff3c317cc16d65bca46049dd' 量化交易群
         br 
         span.qq-number 338686220
-  .col-md-6.text-right
-    p.powered-by
-      = link_to image_tag("powered_by_peatio.png"), "http://www.peat.io", target: '_blank'
-  
+  .col-md-5.text-right
+    p.hotline
+      '客服热线: 
+      strong 400-835-1183
+    p.footer-icp
+      a target='_blank' href='http://www.beianbeian.com/beianxinxi/aacfc7ce-0935-4fe7-993b-af67ef5b7f69.html' class='beian' 京ICP备13047168
+    p.footer-copyright
+      '&copy;2014 北京比天创行科技有限公司

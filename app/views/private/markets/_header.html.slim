@@ -5,7 +5,9 @@ header.navbar.navbar-default.navbar-static-top role = "navigation"
 
       p.navbar-text
         span.text-up.market
-        span: a.hand-point.switch-market = t('.switch')
+
+      = render partial: 'market_switch'
+
       p.navbar-text
         span data-title="#{t('.vol')}"
           span.vol.text-up

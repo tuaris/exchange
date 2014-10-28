@@ -4,12 +4,16 @@
   padding: 20px 0 10px;
   border-top: 1px solid lighten($footer-color-light, 20%);
   .powered-by {
-    margin-top: 43px;
+    margin-top: -20px;
     img {
+      width: 120px;
       margin-bottom: 10px;
-      opacity: .4;
+      opacity: 0.8;
     }
     a {
+      &:first-of-type {
+        margin-right: 32px;
+      }
       color: $footer-color-light;
       font-weight: bold;
       &:hover {
@@ -25,6 +29,10 @@
       text-decoration: none;
     }
   }
+
+  .footer-icp {
+    margin-top: 30px
+  }
   p {
     font-size: 14px;
     margin-bottom: 8px;
@@ -37,12 +45,12 @@
     }
   }
   .qq {
-    .fa.fa-qq { position: relative; top: 11px; }
-    .qq-number { text-indent: 20px; display: inline-block; }
+    .qq-number { text-indent: 24px; display: inline-block; }
   }
   .hotline {
-
+    margin-top: -5px;
     font-size: 1.1em;
+
     strong {
       color: $text-color;
       font-size: 1.3em;
