@@ -4,6 +4,12 @@
   sort_order: 2
   min_confirm: 1
   max_confirm: 6
+- id: 250
+  key: litecoin
+  currency: ltc
+  sort_order: 3
+  min_confirm: 1
+  max_confirm: 6
 - id: 300
   key: protoshare
   currency: pts
