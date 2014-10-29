@@ -6,6 +6,13 @@
   ask: {fee: 0, currency: btc, fixed: 4}
   sort_order: 1
   #visible: false     # default to true
+- id: ltccny
+  code: 4
+  base_unit: ltc
+  quote_unit: cny
+  sort_order: 1
+  bid: {fee: 0, currency: cny, fixed: 2}
+  ask: {fee: 0, currency: ltc, fixed: 4}
 - id: ptscny
   code: 5
   base_unit: pts
