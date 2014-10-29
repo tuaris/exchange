@@ -18,6 +18,7 @@ module Admin
       can :menu, Deposit
       can :manage, ::Deposits::Bank
       can :manage, ::Deposits::Satoshi
+      can :manage, ::Deposits::Litecoin
       can :manage, ::Deposits::Protoshare
       can :manage, ::Deposits::Dogecoin
       can :manage, ::Deposits::Bitsharesx
