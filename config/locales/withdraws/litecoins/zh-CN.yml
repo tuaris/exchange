@@ -1,18 +1,18 @@
 zh-CN:
   withdraw_channel:
-    satoshi:
+    litecoin:
       key: 块链
-      title: 比特币提现
-      intro: 将你在云币网的比特币余额提取到你的钱包账户
+      title: 莱特币提现
+      intro: 将你在云币网的莱特币余额提取到你的钱包账户
       latency: 受理后 10 分钟到账
       transfer: 人工处理
       go: 立即提现
 
   activerecord:
     models:
-      withdraws/satoshi: 比特币转账
+      withdraws/litecoin: 莱特币转账
     attributes:
-      withdraws/satoshi:
+      withdraws/litecoin:
         id: 提现编号
         member_name: 用户
         currency_obj_key_text: 币种
@@ -28,7 +28,7 @@ zh-CN:
         fee: 矿工费
     errors:
       models:
-        withdraws/satoshi:
+        withdraws/litecoin:
           attributes:
             sum:
               poor: 账户余额不足，请核对。
@@ -38,7 +38,7 @@ zh-CN:
               invalid: 无效的提现地址，请核对。
               ismine: 提现地址为系统所有，请更换其他地址。
 
-  withdraws/satoshi:
+  withdraws/litecoin:
     aasm_state:
       submitting: 待确认
       submitted: 待校验
@@ -55,7 +55,7 @@ zh-CN:
 
   private:
     withdraws:
-      satoshis:
+      litecoins:
         destroy:
           notice: 提现申请已被撤销，冻结余额已返还到您的账户
         update:
@@ -71,18 +71,18 @@ zh-CN:
 
   admin:
     withdraws:
-      satoshis:
+      litecoins:
         index:
           one: 待处理提现订单
           all: 二十四小时内订单
           empty: 无任何数据
         show:
-          withdraw: 比特币提现
+          withdraw: 莱特币提现
 
   simple_form:
     labels:
       withdraw:
-        satoshi:
+        litecoin:
           fee: 矿工费
           sum: 提取数量
           fund_uid: 提现地址
@@ -91,27 +91,27 @@ zh-CN:
           member_name: 账户名
     placeholders:
       withdraw:
-        satoshi:
+        litecoin:
           sum: 最低 0.001
           fund_extra: 填写常用标签（可选）
     hints:
       withdraw:
-        satoshi:
+        litecoin:
           sum: "<a target='_balance' href='/documents/price'>资费说明</a>"
 
   guides:
     private:
       withdraws:
-        satoshis:
-          panel: 提现 / 比特币提现
+        litecoins:
+          panel: 提现 / 莱特币提现
           new:
-            title: 比特币提现
+            title: 莱特币提现
             intro: 选择提现地址并输入金额，完成提交。
             default-panel: 历史记录
           create:
-            title: 比特币提现
-            intro: 您可以输入您的提现地址或者选择已保存提现地址，输入提现数量，提取到您的比特币提现地址。
+            title: 莱特币提现
+            intro: 您可以输入您的提现地址或者选择已保存提现地址，输入提现数量，提取到您的莱特币提现地址。
             default-panel: 历史记录
           edit:
-            title: 比特币提现
-            intro: 您可以输入您的提现地址或者选择已保存提现地址，输入提现数量，提取到您的比特币提现地址。
+            title: 莱特币提现
+            intro: 您可以输入您的提现地址或者选择已保存提现地址，输入提现数量，提取到您的莱特币提现地址。
