@@ -27,6 +27,7 @@ module Admin
       can :menu, Withdraw
       can :manage, ::Withdraws::Bank
       can :manage, ::Withdraws::Satoshi
+      can :manage, ::Withdraws::Litecoin
       can :manage, ::Withdraws::Protoshare
       can :manage, ::Withdraws::Dogecoin
       can :manage, ::Withdraws::Bitsharesx

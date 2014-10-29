@@ -2,6 +2,8 @@ zh-CN:
   currency:
     satoshi:
       key: BTC
+    litecoin:
+      key: LTC
     renminbi:
       key: CNY
     protoshare:
@@ -18,6 +20,7 @@ zh-CN:
     name:
       cny: 人民币
       btc: 比特币
+      ltc: 莱特币
       pts: PTS
       doge: 狗狗币
       btsx: Bitshares X
@@ -26,6 +29,7 @@ zh-CN:
     code:
       cny: CNY
       btc: BTC
+      ltc: LTC
       pts: PTS
       doge: DOGE
       btsx: BTSX
@@ -35,16 +39,19 @@ zh-CN:
       zero: 'N/A'
       cny: '0.00'
       btc: '0.0000'
+      ltc: '0.0000'
       pts: '0.0000'
       doge: '0.0000'
     icon-large:
       cny: <span class='big-currency'>¥</span>
       btc: <span class='big-currency'>฿</span>
+      ltc: <span class='big-currency'>Ł</span>
       pts: <span class='big-currency'>P</span>
       doge: <span class='big-currency'>Ð</span>
     icon:
       cny: <span class='currency'>¥</span>
       btc: <span class='currency'>฿</span>
+      ltc: <span class='currency'>Ł</span>
       pts: <span class='currency'>P</span>
       doge: <span class='currency'>Ð</span>
     sum:
