@@ -272,6 +272,7 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.3.15)
+    newrelic_rpm (3.9.6.257)
     nilio (1.0.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
@@ -515,6 +516,7 @@ DEPENDENCIES
   mocha
   momentjs-rails
   mysql2
+  newrelic_rpm
   omniauth
   omniauth-identity
   omniauth-weibo-oauth2

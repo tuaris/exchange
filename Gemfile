@@ -102,3 +102,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'poltergeist'
 end
+
+group :production do
+  gem 'newrelic_rpm'
+end
