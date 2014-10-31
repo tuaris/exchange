@@ -4,8 +4,8 @@ json.trades @trades
 json.market_orders @markets_orders
 
 json.config do 
-  json.chart_port ENV['CHAT_PORT']
-  json.chart_host ENV['CHAT_HOST']
+  json.chat_port ENV['CHAT_PORT']
+  json.chat_host ENV['CHAT_HOST']
 end
 
 if @member

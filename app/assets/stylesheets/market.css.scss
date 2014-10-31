@@ -265,15 +265,10 @@ header {
   }
 }
 
-#chat_tabs_wrapper {
+#todamoon {
   bottom: $gutter; left: $gutter;
-  min-height: 300px;
-  @include float-wrapper(260px, 300px);
-  &.stop-resize { 
-    height: 100px !important; 
-    min-height: 100px !important; 
-    & > ul { top: 140px }
-  }
+  min-height: 600px;
+  min-width: 300px;
 }
 
 #market_trades_tabs_wrapper {

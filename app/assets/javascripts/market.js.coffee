@@ -14,6 +14,7 @@
 #= require cookies.min
 #= require flight.min
 #= require pusher.min
+#= require phoenix
 
 #= require ./lib/sfx
 #= require ./lib/notifier
@@ -57,5 +58,6 @@ $ ->
 
   CandlestickUI.attachTo('#candlestick')
   SwitchUI.attachTo('#range_switch, #indicator_switch, #main_indicator_switch')
+  ToDaMoonUI.attachTo('#todamoon')
 
   window.notifier = new Notifier()
