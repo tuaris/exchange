@@ -9,7 +9,6 @@
 #= require moment
 #= require bignumber
 #= require underscore
-#= require handlebars.runtime
 #= require introjs
 #= require ZeroClipboard
 #= require flight.min
@@ -80,5 +79,4 @@ $ ->
 
   SignUpUI.attachTo('#new_identity')
   SmsAuthVerifyUI.attachTo('#edit_sms_auth')
-  FlashMessageUI.attachTo('.flash-message')
   TwoFactorAuth.attachTo('.two-factor-auth-container')
