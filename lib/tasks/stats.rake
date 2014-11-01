@@ -55,4 +55,52 @@ namespace :stats do
     SystemMailer.daily_stats(yesterday.to_i, yesterday_stats, base_stats).deliver
   end
 
+  def accounts_on_date(date)
+    AccountVersion.where('created_at < ?', date).group('account_id').select('max(id) as id, member_id, account_id, currency, amount, created_at')
+  end
+
+  desc "user rank by daily average asset value"
+  task user_rank: :environment do
+    prices = {}
+    Currency.all.each do |currency|
+      case currency.code
+      when 'cny'
+        prices['cny'] = 1
+      when 'yun'
+        prices['yun'] = 0
+      else
+        prices[currency.code] = Global["#{currency.code}cny"].ticker[:last]
+      end
+    end
+
+    from = Time.new(2014, 9, 20).end_of_day
+    to   = Time.now.end_of_day
+
+    total_user_value = Hash.new {|h, k| h[k] = 0 }
+    count = 0
+
+    date = from
+    while date <= to
+      count += 1
+
+      versions = accounts_on_date(date).to_a
+      puts "#{date}, found #{versions.size} versions, processing"
+
+      versions.each do |version|
+        if version.currency != 'yun'
+          total_user_value[version.member_id] += prices[version.currency]*version.amount
+        end
+      end
+
+      date += 1.day
+    end
+
+    File.open('user_rank.csv', 'w') do |f|
+      total_user_value.each do |(id, total)|
+        m = Member.find id
+        f.puts "#{m.name},#{m.email},#{total/count}"
+      end
+    end
+  end
+
 end
