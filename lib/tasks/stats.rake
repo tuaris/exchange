@@ -56,7 +56,8 @@ namespace :stats do
   end
 
   def accounts_on_date(date)
-    AccountVersion.where('created_at < ?', date).group('account_id').select('max(id) as id, member_id, account_id, currency, amount, created_at')
+    ids = AccountVersion.where('created_at < ?', date).group('account_id').select('max(id) as id').map(&:id)
+    AccountVersion.where(id: ids)
   end
 
   desc "user rank by daily average asset value"
@@ -87,8 +88,11 @@ namespace :stats do
       puts "#{date}, found #{versions.size} versions, processing"
 
       versions.each do |version|
-        if version.currency != 'yun'
-          total_user_value[version.member_id] += prices[version.currency]*version.amount
+        price = prices[version.currency]
+        if price && version.amount
+          total_user_value[version.member_id] += price*version.amount
+        else
+          puts "skip account version##{version.id} - currency: #{version.currency}, amount: #{version.amount}"
         end
       end
 
