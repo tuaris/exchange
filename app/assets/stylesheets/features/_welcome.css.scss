@@ -1,3 +1,5 @@
+$iconic-size: 60px;
+
 #welcome-index {
   
   .global-nav {
@@ -234,35 +236,30 @@
     text-align: center;
     .iconic {
       display: inline-block;
-      margin-bottom: 14px;
-      width: 80px;
-      height: 80px;
-      border: 1px solid #333;
+      margin: 0 10px 10px 0;
+      width: $iconic-size;
+      height: $iconic-size;
+      background-color: #3AA5E8;
+      background-color: rgba(58, 165, 232, .75);
       border-radius: 50%;
-      .sprite-lightbulb {
-        margin-top: 16px;
-      }
-      .sprite-magnifier {
-        margin-top: 18px;
-      }
-      .sprite-phone {
-        margin-top: 18px;
-      }
-      .sprite-money {
-        margin-top: 22px;
+      > i {
+        color: #fff;
+        color: rgba(255,255,255,.9);
+        font-size: 36px;
+        line-height: $iconic-size;
       }
     }
     .heading {
       font-size: 22px;
       margin-bottom: 10px;
-      font-weight: normal;
-      color: #666;
-      font-weight: bolder;
+      font-weight: bold;
+      color: #333;
     }
     .cnt {
       color: #777;
-      font-size: 14px;
+      font-size: 15px;
       line-height: 1.8;
+      margin-bottom: 0;
     }
   }
 
