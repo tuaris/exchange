@@ -92,4 +92,12 @@ class Formatter
   t: (key) -> 
     gon.i18n[key]
 
+  currency: (value) ->
+    parts = value.split('.')
+    if parts.length == 2
+      "<span class='int'>#{parts[0]}</span>" +
+      "<span class='float'>.#{parts[1]}</span>"
+    else if parts.length == 1
+      "<span class='int'>#{value}</span>"
+
 window.formatter = new Formatter()
