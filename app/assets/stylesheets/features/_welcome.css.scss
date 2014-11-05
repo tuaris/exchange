@@ -104,7 +104,7 @@ $btsx-border-color: lighten($btsx-head-bg, 30%);
       margin: 0 20px 20px;
       .head {
         margin: 0;
-        padding: 5px 15px;
+        padding: 5px 15px 5px 25px;
         font-size: 13px;
         font-weight: normal;
         color: #fff;
@@ -115,10 +115,10 @@ $btsx-border-color: lighten($btsx-head-bg, 30%);
         @include transition(background-color 0.15s linear);
       }
       .currency-icon {
-        float: left;
-        width: 80px;
-        height: 80px;
-        border-radius: 5px;
+        position: absolute;
+        left: -5px;
+        top: -15px;
+        z-index: 999;
         img {
           max-width: 100%;
         }
@@ -208,6 +208,10 @@ $btsx-border-color: lighten($btsx-head-bg, 30%);
       &.theme-btsx {
         .head {
           background-color: $btsx-head-bg;
+        }
+        .currency-icon {
+          top: -22px;
+          left: -1px;
         }
         .currency-ticker {
           border-color: $btsx-border-color;
