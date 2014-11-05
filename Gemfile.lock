@@ -212,6 +212,7 @@ GEM
     httpclient (2.3.4.1)
     i18n (0.6.11)
     ice_nine (0.11.0)
+    iconv (1.0.4)
     jbuilder (2.0.2)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -489,6 +490,7 @@ DEPENDENCIES
   grape-swagger (~> 0.7.2)
   hashie
   http_accept_language
+  iconv (~> 1.0.4)
   jbuilder
   jquery-rails
   json

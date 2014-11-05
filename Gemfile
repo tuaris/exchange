@@ -3,6 +3,7 @@ source 'http://ruby.taobao.org'
 
 gem 'rails', '~> 4.0.2'
 gem 'rails-i18n'
+gem 'iconv', '~> 1.0.4'
 
 gem 'mysql2'
 gem 'daemons-rails'
