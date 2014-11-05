@@ -1,4 +1,10 @@
 $iconic-size: 60px;
+$btc-head-bg: #f7931a;
+$btc-border-color: lighten($btc-head-bg, 10%);
+$ltc-head-bg: #777777;
+$ltc-border-color: lighten($ltc-head-bg, 30%);
+$btsx-head-bg: #4ea1d3;
+$btsx-border-color: lighten($btsx-head-bg, 30%);
 
 #welcome-index {
   
@@ -90,6 +96,132 @@ $iconic-size: 60px;
       background-color: rgba(255,255,255,.35);
     }
 
+  }
+
+  .market {
+    margin-top: 2em;
+    .currency-item {
+      margin: 0 20px 20px;
+      .head {
+        margin: 0;
+        padding: 5px 15px;
+        font-size: 13px;
+        font-weight: normal;
+        color: #fff;
+        color: rgba(255,255,255,.9);
+        background-color: $btc-head-bg;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        @include transition(background-color 0.15s linear);
+      }
+      .currency-icon {
+        float: left;
+        width: 80px;
+        height: 80px;
+        border-radius: 5px;
+        img {
+          max-width: 100%;
+        }
+      }
+      .currency-ticker {
+        position: relative;
+        padding: 15px;
+        border: 1px solid #F7DEC1;
+        border-top: 0;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        table {
+          width: 100%;
+          > tbody > tr > td {
+            vertical-align: top;
+          }
+          .lbl {
+            color: #aaa;
+            font-size: 14px;
+            td { padding: 3px 0; }
+          }
+          .value {
+            font-size: 18px;
+            line-height: 32px;
+            font-weight: bold;
+            td {
+              vertical-align: bottom;
+            }
+            .int {
+              font-size: 32px;
+              font-weight: bold;
+            }
+            .float {
+              font-weight: normal;
+            }
+            .day-volume .int {
+              font-size: 24px;
+            }
+          }
+          .trend {
+            font-weight: normal;
+            margin-left: 10px;
+          }
+          .arrow {
+            vertical-align: middle;
+            i {
+              position: relative;
+              font-size: 32px;
+              color: #ccc;
+              left: 0;
+              @include transition(all 0.15s linear);
+            }
+          }
+        }
+        
+      }
+      &:hover {
+        cursor: pointer;
+        .head {
+          background-color: darken($btc-head-bg, 5%);
+        }
+        .currency-ticker {
+          border-color: darken($btc-border-color, 5%);
+        }
+        table .arrow i{
+          color: #777;
+          left: 2px;
+        }
+      }
+
+      &.theme-ltc {
+        .head {
+          background-color: $ltc-head-bg;
+        }
+        .currency-ticker {
+          border-color: $ltc-border-color;
+        }
+        &:hover {
+          .head {
+            background-color: darken($ltc-head-bg, 10%);
+          }
+          .currency-ticker {
+            border-color: darken($ltc-border-color, 10%);
+          }
+        }
+      }
+      &.theme-btsx {
+        .head {
+          background-color: $btsx-head-bg;
+        }
+        .currency-ticker {
+          border-color: $btsx-border-color;
+        }
+        &:hover {
+          .head {
+            background-color: darken($btsx-head-bg, 10%);
+          }
+          .currency-ticker {
+            border-color: darken($btsx-border-color, 10%);
+          }
+        }
+      }
+    }
   }
 
   .announcement {
