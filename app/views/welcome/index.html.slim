@@ -58,10 +58,10 @@
 
   .market
     .container
-      .section-heading: h2 云币平台交易品种
+      .section-heading: h2 主要币种实时报价
       .row
         .col-md-8
-          .currency-item.theme-btc data-href="/markets/btccny"
+          .currency-item.theme-btc data-href="/markets/btccny" data-market='btccny'
             h3.head 
               span.currency-icon=image_tag "/icon-btc.png", width: "50"
               'BTC/CNY
@@ -69,18 +69,14 @@
               table
                 tr.lbl
                   td 最新成交价
-                  td 24h成交量
+                  td 24小时成交量
                   td.arrow rowspan="2": i.fa.fa-angle-right
                 tr.value
                   td.ticker
                     .price
-                      span.int 2048
-                      span.float .3974
                   td.day-volume
-                    span.int 231
-                    span.float .3233
         .col-md-8
-          .currency-item.theme-btsx data-href="/markets/btccny"
+          .currency-item.theme-btsx data-href="/markets/btsxcny" data-market='btsxcny'
             h3.head
               span.currency-icon=image_tag "/icon-btsx.png", width: "50"
               'BTSX/CNY
@@ -88,18 +84,14 @@
               table
                 tr.lbl
                   td 最新成交价
-                  td 24h成交量
+                  td 24小时成交量
                   td.arrow rowspan="2": i.fa.fa-angle-right
                 tr.value
                   td.ticker
                     .price
-                      span.int 2048
-                      span.float .3974
                   td.day-volume
-                    span.int 231
-                    span.float .3233
         .col-md-8
-          .currency-item.theme-ltc data-href="/markets/btccny"
+          .currency-item.theme-ltc data-href="/markets/ltccny" data-market='ltccny'
             h3.head
               span.currency-icon=image_tag "/icon-ltc.png", width: "50"
               'LTC/CNY
@@ -107,16 +99,12 @@
               table
                 tr.lbl
                   td 最新成交价
-                  td 24h成交量
+                  td 24小时成交量
                   td.arrow rowspan="2": i.fa.fa-angle-right
                 tr.value
                   td.ticker
                     .price
-                      span.int 2048
-                      span.float .3974
                   td.day-volume
-                    span.int 231
-                    span.float .3233
 
   .testimonials
     .container

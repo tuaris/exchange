@@ -82,3 +82,5 @@ $ ->
   SmsAuthVerifyUI.attachTo('#edit_sms_auth')
   FlashMessageUI.attachTo('.flash-message')
   TwoFactorAuth.attachTo('.two-factor-auth-container')
+  TickerUI.attachTo('.currency-item')
+  TickerData.attachTo(document)
