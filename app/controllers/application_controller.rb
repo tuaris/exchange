@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def auth_member!
-    redirect_to signin_path, alert: t('.login_required') unless current_user
+    redirect_to root_path, alert: t('activations.new.login_required') unless current_user
   end
 
   def auth_activated!
@@ -161,10 +161,7 @@ class ApplicationController < ActionController::Base
 
     gon.tickers = {}
     Market.all.each do |market|
-      global = Global[market.id]
-      global.trigger_ticker
-      market_unit = {base_unit: market.base_unit, quote_unit: market.quote_unit}
-      gon.tickers[market.id] = global.ticker.merge(market_unit)
+      gon.tickers[market.id] = market.unit_info.merge(Global[market.id].ticker)
     end
 
     if current_user
