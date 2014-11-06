@@ -67,6 +67,7 @@
   deposit_account: chongzhi-yunbi
   rpc: http://dns:dnshelloworld@127.0.0.1:20152/rpc
   blockchain: http://104.131.241.162/blocks/block?id=#{txid}
+  visible: false
 - id: 999
   key: yun
   code: yun
