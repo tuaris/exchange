@@ -96,6 +96,10 @@ zh-CN:
         title: 原型股PTS提现
       withdraw_ltc:
         title: 莱特币提现
+      withdraw_btsx:
+        title: BTSX提现
+      withdraw_yun:
+        title: 云朵提现
       withdraw_coin:
         intro: 指定要提现的地址，输入提取数量，提交即可，10分钟之内到账。
         label: 标签
