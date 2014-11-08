@@ -1,0 +1,39 @@
+<section class="withdraw-instruction">
+  <div class="row">
+    <div class="col-sm-4">
+      <h4 class="steps">1</h4>
+    </div>
+
+    <div class="col-sm-20">
+      <p> {{"funds.deposit_coin.btsx_series.open-wallet" | t}} </p>
+    </div>
+  </div>
+
+  <hr class="split">
+
+  <div class="row">
+    <div class="col-sm-4">
+      <h4 class="steps">2</h4>
+    </div>
+    <div class="col-sm-20">
+
+      <p>{{"funds.deposit_coin.btsx_series.desc" | t}}<b>{{"funds.deposit_coin.btsx_series.memo_desc" | t}}</b></p>
+
+      <ng-include src="'/templates/funds/_btsx_like_address.html'"></ng-include>
+
+      <br>{{"funds.deposit_coin.btsx_series.avatar_check" | t}}
+
+    </div>
+  </div>
+
+  <hr class="split">
+
+  <div class="row">
+    <div class="col-sm-4"><h4 class="steps">3</h4></div>
+    <div class="col-sm-20">
+      <p>{{"funds.deposit_coin.btsx_series.after_deposit" | t}}</p>
+    </div>
+  </div>
+
+</section>
+

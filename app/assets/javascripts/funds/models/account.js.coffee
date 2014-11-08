@@ -27,4 +27,15 @@ class Account extends PeatioModel.Model
   topWithdraws: ->
     @withdraws().reverse().slice(0,3)
 
+  # TODO: Fetch from server side.
+  accountAvatar: ->
+    if @currency == 'btsx'
+      "/btsx.chongzhi.yunbi.png"
+    else if @currency == "yun"
+      "/yun.chongzhi.yunbi.png"
+    else
+      ""
+
+
+
 window.Account = Account
