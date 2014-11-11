@@ -3,15 +3,9 @@ module APIv2
     class Middleware < ::Grape::Middleware::Base
 
       def before
-        @env['api_v2.token'] = authenticate!
-      end
-
-      def authenticate!
         if provided?
           auth = Authenticator.new(request, params)
-          auth.authentic? ? auth.token : nil
-        elsif ENV['API_ADMIN_IPS'] and ENV['API_ADMIN_IPS'].include?(request.ip) and env["action_dispatch.remote_ip"].to_s() == request.ip
-          APIToken.new(access_key: request.ip, secret_key: '', member: Member.new)
+          @env['api_v2.token'] = auth.authenticate!
         end
       end
 

@@ -16,7 +16,7 @@
     git remote add peatio_beijing git@github.com:peatio/peatio_beijing.git
     git fetch peatio_beijing
     git checkout -b peatio_beijing --trac peatio_beijing/master
-    
+
 
 **Branches**
 

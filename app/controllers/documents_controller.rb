@@ -14,7 +14,7 @@ class DocumentsController < ApplicationController
   end
 
   def about
-    
+
   end
 
   def api_v2
