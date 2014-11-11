@@ -122,4 +122,9 @@ namespace :migration do
     end
   end
 
+  desc "fix scopes of old api tokens"
+  task fix_scopes: :environment do
+    puts APIToken.where(scopes: nil).update_all(scopes: 'all')
+  end
+
 end

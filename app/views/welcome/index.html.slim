@@ -56,6 +56,56 @@
             br
             | 100% 法币资产保证金
 
+  .market
+    .container
+      .section-heading: h2 主要币种实时报价
+      .row
+        .col-md-8
+          .currency-item.theme-btc data-href="/markets/btccny" data-market='btccny'
+            h3.head 
+              span.currency-icon=image_tag "/icon-btc.png", width: "50"
+              'BTC/CNY
+            .currency-ticker
+              table
+                tr.lbl
+                  td 最新成交价
+                  td 24小时成交量
+                  td.arrow rowspan="2": i.fa.fa-angle-right
+                tr.value
+                  td.ticker
+                    .price
+                  td.day-volume
+        .col-md-8
+          .currency-item.theme-btsx data-href="/markets/btsxcny" data-market='btsxcny'
+            h3.head
+              span.currency-icon=image_tag "/icon-btsx.png", width: "50"
+              'BTSX/CNY
+            .currency-ticker
+              table
+                tr.lbl
+                  td 最新成交价
+                  td 24小时成交量
+                  td.arrow rowspan="2": i.fa.fa-angle-right
+                tr.value
+                  td.ticker
+                    .price
+                  td.day-volume
+        .col-md-8
+          .currency-item.theme-ltc data-href="/markets/ltccny" data-market='ltccny'
+            h3.head
+              span.currency-icon=image_tag "/icon-ltc.png", width: "50"
+              'LTC/CNY
+            .currency-ticker
+              table
+                tr.lbl
+                  td 最新成交价
+                  td 24小时成交量
+                  td.arrow rowspan="2": i.fa.fa-angle-right
+                tr.value
+                  td.ticker
+                    .price
+                  td.day-volume
+
   .testimonials
     .container
       .section-heading: h2 媒体及用户点评

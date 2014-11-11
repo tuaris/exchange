@@ -61,6 +61,11 @@ Peatio.DepositsController = Ember.ArrayController.extend
     @model[0].currency == "cny"
   ).property('@each')
 
+  ltc: (->
+    @model[0].currency == "ltc"
+  ).property('@each')
+
+
   btsx: (->
     @model[0].currency == "btsx"
   ).property('@each')

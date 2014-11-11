@@ -1,0 +1,8 @@
+<td class='ticker'>
+  <div class='price'>
+    <%- formatter.currency(@last) %>
+  </div>
+</td>
+<td class='day-volume'>
+  <%- formatter.currency(@vol) %>
+</td>

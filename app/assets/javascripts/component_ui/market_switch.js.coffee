@@ -10,13 +10,13 @@ window.MarketSwitchUI = flight.component ->
 
     for ticker in tickers.reverse()
       ticker['current'] = true if (ticker.market == gon.market.id)
-      $table.prepend(JST['market_switch'](ticker))
+      $table.prepend(JST['templates/market_switch'](ticker))
 
   @after 'initialize', ->
     @on document, 'market::tickers', @refresh
     @select('table').on 'click', 'tr', (e) ->
-      win = window.open("/markets/#{$(@).data('market')}", '_blank')
-      win.focus()
+      unless e.target.nodeName == 'I'
+        window.location.href = window.formatter.market_url($(@).data('market'))
 
     @.hide_accounts = $('tr.hide')
     $('.view_all_accounts').on 'click', (e) =>

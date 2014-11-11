@@ -4,6 +4,12 @@
   sort_order: 2
   min_confirm: 1
   max_confirm: 6
+- id: 250
+  key: litecoin
+  currency: ltc
+  sort_order: 3
+  min_confirm: 1
+  max_confirm: 6
 - id: 300
   key: protoshare
   currency: pts
@@ -32,12 +38,12 @@
   sort_order: 3
   min_confirm: 10
   max_confirm: 51
-- id: 700
-  key: keyid
-  currency: dns
-  sort_order: 4
-  min_confirm: 10
-  max_confirm: 51
+#- id: 700
+#  key: keyid
+#  currency: dns
+#  sort_order: 4
+#  min_confirm: 10
+#  max_confirm: 51
 - id: 999
   key: yun
   currency: yun

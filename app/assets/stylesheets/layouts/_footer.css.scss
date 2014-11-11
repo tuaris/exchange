@@ -1,6 +1,7 @@
 .global-footer {
   color: $footer-color-light;
   font-size: 14px;
+  margin-top: 2em;
   padding: 20px 0 10px;
   border-top: 1px solid lighten($footer-color-light, 20%);
   .powered-by {

@@ -3,6 +3,7 @@ source 'http://ruby.taobao.org'
 
 gem 'rails', '~> 4.0.2'
 gem 'rails-i18n'
+gem 'iconv', '~> 1.0.4'
 
 gem 'mysql2'
 gem 'daemons-rails'
@@ -13,9 +14,10 @@ gem 'json'
 gem 'jbuilder'
 gem 'bcrypt-ruby', '~> 3.1.2'
 
-gem 'omniauth'
-gem 'omniauth-identity'
-gem 'omniauth-weibo-oauth2'
+gem 'doorkeeper', '~> 1.4.0'
+gem 'omniauth', '~> 1.2.1'
+gem 'omniauth-identity', '~> 1.1.1'
+gem 'omniauth-weibo-oauth2', '~> 0.3.0'
 
 gem 'figaro'
 gem 'settingslogic'
@@ -27,7 +29,6 @@ gem 'bunny', '~> 1.2.1'
 gem 'cancancan'
 gem 'enumerize'
 gem 'datagrid'
-gem 'cached_resource'
 gem 'acts-as-taggable-on'
 gem 'kaminari'
 gem 'paranoid2'
@@ -50,15 +51,14 @@ gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
 gem "jquery-rails"
+gem "angularjs-rails"
 gem 'bootstrap-sass', '~> 3.2.0.2'
 gem 'bootstrap-wysihtml5-rails'
 gem 'font-awesome-sass'
 gem 'bourbon'
 gem 'momentjs-rails'
-gem 'flot-rails'
-gem 'handlebars_assets'
+gem 'eco'
 gem 'browser'
-gem 'introjs-rails'
 gem 'rbtree'
 gem 'liability-proof', '0.0.9'
 gem 'whenever', '~> 0.9.2'
@@ -76,6 +76,8 @@ gem 'airbrake', '~> 4.1.0'
 gem 'simple_captcha', github: 'galetahub/simple-captcha'
 gem 'rest-client', '~> 1.6.8'
 gem 'seventeen_mon', github: 'mycolorway/SeventeenMon'
+
+gem 'weibo_2'
 
 group :development, :test do
   gem 'factory_girl_rails'
@@ -102,4 +104,8 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
   gem 'poltergeist'
+end
+
+group :production do
+  gem 'newrelic_rpm'
 end

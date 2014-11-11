@@ -37,12 +37,9 @@
   key: litecoin
   code: ltc
   coin: true
-  rpc: http://username:password@127.0.0.1:19332
-  assets:
-    balance: 333333
-    accounts:
-      -
-        address: 1dice8EMZmqKvrGE4Qc9bUFf9PX3xaYDp
+  rpc: http://username:password@127.0.0.1:9332
+  blockchain: http://ltc.blockr.io/tx/info/#{txid}
+  address_url: http://ltc.blockr.io/address/info/#{address}
 - id: 8
   key: dogecoin
   code: doge
@@ -70,6 +67,7 @@
   deposit_account: chongzhi-yunbi
   rpc: http://dns:dnshelloworld@127.0.0.1:20152/rpc
   blockchain: http://104.131.241.162/blocks/block?id=#{txid}
+  visible: false
 - id: 999
   key: yun
   code: yun

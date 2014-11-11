@@ -2,8 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user, :is_admin?, :current_market, :muut_enabled?, :gon
-  before_action :set_language, :set_timezone, :set_gon
+  before_action :set_timezone, :set_gon
   after_action :allow_iframe
+  after_action :set_csrf_cookie_for_ng
   rescue_from CoinRPC::ConnectionRefusedError, with: :coin_rpc_connection_refused
 
   include TwoFactorHelper
@@ -26,7 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def auth_member!
-    redirect_to signin_path, alert: t('.login_required') unless current_user
+    redirect_to signin_path, alert: t('activations.new.login_required') unless current_user
   end
 
   def auth_activated!
@@ -72,14 +73,8 @@ class ApplicationController < ActionController::Base
     two_factor = current_user.two_factors.by_type(params[:two_factor][:type])
     return false if not two_factor
 
-    two_factor.assign_attributes params.require(:two_factor).permit(:otp)
+    two_factor.assign_attributes params.require(:two_factor).permit(:otp, :type)
     two_factor.verify?
-  end
-
-  def set_language
-    cookies[:lang] = params[:lang] unless params[:lang].blank?
-    locale = cookies[:lang] || http_accept_language.compatible_language_from(I18n.available_locales)
-    I18n.locale = locale if locale && I18n.available_locales.include?(locale.to_sym)
   end
 
   def set_timezone
@@ -160,10 +155,7 @@ class ApplicationController < ActionController::Base
 
     gon.tickers = {}
     Market.all.each do |market|
-      global = Global[market.id]
-      global.trigger_ticker
-      market_unit = {base_unit: market.base_unit, quote_unit: market.quote_unit}
-      gon.tickers[market.id] = global.ticker.merge(market_unit)
+      gon.tickers[market.id] = market.unit_info.merge(Global[market.id].ticker)
     end
 
     if current_user
@@ -198,4 +190,15 @@ class ApplicationController < ActionController::Base
   def allow_iframe
     response.headers.except! 'X-Frame-Options' if Rails.env.development?
   end
+
+  protected
+
+  def set_csrf_cookie_for_ng
+    cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
+  end
+
+  def verified_request?
+    super || form_authenticity_token == request.headers['X-XSRF-TOKEN']
+  end
+
 end

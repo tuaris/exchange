@@ -1,0 +1,7 @@
+zh-CN:
+  currency:
+    litecoin:
+      key: LTC
+      code: LTC
+      name: 莱特币
+      format: '0,0.0000'
