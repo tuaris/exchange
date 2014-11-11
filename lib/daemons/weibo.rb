@@ -37,7 +37,7 @@ def refresh
 
   if resp.first
     resp.each do |status|
-      @r.rpush('peatio:weibo:statuses', status.to_json) if status.id > last_id
+      @r.lpush('peatio:weibo:statuses', status.to_json) if status.id > last_id
     end
     max_id = (resp.map(&:id) << last_id).max
     @r.set 'peatio:weibo:last_id', max_id
