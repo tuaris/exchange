@@ -36,6 +36,7 @@ def refresh
   resp = @statuses.user_timeline(since_id: last_id, trim_user: 1).statuses
 
   if resp.first
+    resp.sort!{|a, b| a.id <=> b.id }
     resp.each do |status|
       @r.lpush('peatio:weibo:statuses', status.to_json) if status.id > last_id
     end
