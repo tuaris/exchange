@@ -1,4 +1,9 @@
 en:
   admin:
     withdraws:
-      insufficient: Insufficient amount in hot wallet.
+      actions:
+        process: Process
+        succeed: succeed
+        reject: Reject
+        reject_confirm: Reject confirm
+        insufficient: Insufficient amount in hot wallet.

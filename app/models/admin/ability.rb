@@ -22,7 +22,6 @@ module Admin
       can :manage, ::Deposits::Protoshare
       can :manage, ::Deposits::Dogecoin
       can :manage, ::Deposits::Bitsharesx
-      can :manage, ::Deposits::Keyid
       can :manage, ::Deposits::Yun
 
       can :menu, Withdraw
@@ -32,7 +31,6 @@ module Admin
       can :manage, ::Withdraws::Protoshare
       can :manage, ::Withdraws::Dogecoin
       can :manage, ::Withdraws::Bitsharesx
-      can :manage, ::Withdraws::Keyid
       can :manage, ::Withdraws::Yun
     end
   end
