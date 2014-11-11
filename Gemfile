@@ -76,6 +76,8 @@ gem 'simple_captcha', github: 'galetahub/simple-captcha'
 gem 'rest-client', '~> 1.6.8'
 gem 'seventeen_mon', github: 'mycolorway/SeventeenMon'
 
+gem 'weibo_2'
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker', '~> 1.4.3'
