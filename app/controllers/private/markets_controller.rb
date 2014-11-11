@@ -1,6 +1,7 @@
 module Private
   class MarketsController < BaseController
     skip_before_action :auth_member!, only: [:show]
+    before_action :visible_market?
     after_action :set_default_market
 
     layout false
@@ -14,7 +15,6 @@ module Private
 
       @market = current_market
       @markets_orders = Hash[Market.all.map { |m| [m.id, m.sort_order] }]
-        
 
       @bids   = @market.bids
       @asks   = @market.asks
@@ -29,6 +29,10 @@ module Private
     end
 
     private
+
+    def visible_market?
+      redirect_to market_path(Market.first) if not current_market.visible?
+    end
 
     def set_default_market
       set_current_market market: @market
