@@ -19,6 +19,7 @@ html lang="en"
     = render partial: "private/markets/header"
     #wrap
       .content
+        = render partial: 'todamoon'
         = render partial: 'candlestick'
 
         = render partial: 'range_switch'
@@ -47,4 +48,3 @@ html lang="en"
         = render partial: 'ask_entry', locals: {market: @market, order: @order_ask }
         = render partial: 'bid_entry', locals: {market: @market, order: @order_bid }
 
-        = render partial: 'todamoon'

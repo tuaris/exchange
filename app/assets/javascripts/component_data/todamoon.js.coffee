@@ -6,11 +6,12 @@
       component = @
 
       chan.on 'join', ->
+        component.off document, 'todamoon:send'
         component.on document, 'todamoon:send', (event, message) ->
-          chan.send('new:msg', message)
+          chan.send('new:msg', body: message.body)
 
       chan.on "user:entered", (message) ->
-        component.trigger 'todamoon:user:enter', (message.username || "anonymous")
+        component.trigger 'todamoon:user:enter', message
 
       chan.on "new:msg", (message) ->
         component.trigger 'todamoon:receive', message

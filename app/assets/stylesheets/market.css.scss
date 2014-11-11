@@ -269,6 +269,7 @@ header {
   bottom: $gutter; left: $gutter;
   min-height: 600px;
   min-width: 300px;
+  z-index: 910;
 }
 
 #market_trades_tabs_wrapper {
@@ -348,7 +349,6 @@ header {
   }
 }
 #candlestick { 
-
   position: absolute;
   min-width: $candlestick-width; width: $candlestick-width; 
   min-height: $candlestick-height; height: $candlestick-height;

@@ -51,13 +51,14 @@ $ ->
   MarketTickerUI.attachTo('#ticker')
   MarketSwitchUI.attachTo('#market_switch')
   MarketTradesUI.attachTo('#market_trades')
+  ToDaMoonUI.attachTo('#todamoon')
 
   MarketData.attachTo(document)
   GlobalData.attachTo(document, {pusher: window.pusher})
   MemberData.attachTo(document, {pusher: window.pusher}) if gon.accounts
+  ToDaMoonData.attachTo(document)
 
   CandlestickUI.attachTo('#candlestick')
   SwitchUI.attachTo('#range_switch, #indicator_switch, #main_indicator_switch')
-  ToDaMoonUI.attachTo('#todamoon')
 
   window.notifier = new Notifier()

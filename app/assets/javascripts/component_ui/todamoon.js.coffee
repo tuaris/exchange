@@ -1,13 +1,14 @@
 @ToDaMoonUI = flight.component ->
+  @attributes
+    'send': 'a.send'
+    'box': 'input.box'
+
   @after 'initialize', ->
-    @.socket = new Phoenix.Socket("ws://#{gon.config.chat_host}:#{gon.config.chat_port}/ws")
+    @on @select('send'), 'click', =>
+      @trigger document, 'todamoon:send', body: @select('box').val()
 
-    @.socket.join "rooms", "lobby", {}, (chan) ->
-      chan.on "join", (message) ->
-        console.log 'joined'
+    @on document, 'todamoon:user:enter', (e, d) ->
+      console.log 'user:enter', e, d
 
-      chan.on "new:message", (message) ->
-        console.log "message: #{message}"
-
-      chan.on "user:entered", (msg) ->
-        console.log "user: #{msg.username || "anonymous"}"
+    @on document, 'todamoon:receive', (e, d) ->
+      console.log 'receive', e, d
