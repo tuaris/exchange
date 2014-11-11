@@ -138,9 +138,7 @@
 
   br
   .public-info
-    
     .container
-      
       .row
         .col-md-15: .blog-posts
           h3
@@ -169,37 +167,36 @@
               i.fa.fa-weibo
               '&nbsp;官方微博
             ul.weibo-list
-              li.item
-                p 截至2014-11-08 04:00，云币网（原貔貅北京交易所）BTC总资产：฿1942.02；LTC总资产：Ł46.69；CNY总资产：￥1037145.80；BTSX总资产：37948455；DNS总资产：28138141；PTS总资产：11641.41；Doge总资产：Ð167651845。
+              - if @weibo_feeds.blank?
+                li.item: .help-block 微博加载失败，请刷新页面...
+              - else
+                - @weibo_feeds.each do |weibo|
+                  li.item
+                    p= weibo['text']
+                    - if weibo['retweeted_status']
+                      blockquote= auto_link weibo['retweeted_status']['text']
+                    time.timeline-time datetime="2014-11-11 15:45"
+                      span= DateTime.parse(weibo['created_at']).to_s(:short)
 
-                time.timeline-time datetime="2014-11-11 15:45"
-                  span 15:45 今天
-              li.item
-                p 截至2014-11-08 04:00，云币网（原貔貅北京交易所）BTC总资产：฿1942.02；LTC总资产：Ł46.69；CNY总资产：￥1037145.80；BTSX总资产：37948455；DNS总资产：28138141；PTS总资产：11641.41；Doge总资产：Ð167651845。
-
-                time.timeline-time datetime="2014-11-11 15:45"
-                  span 15:45 今天
-
-
-    .public-data
-      h2.small-text 
-        '* 全准备金公开, 查看
-        a href="/exchange_assets" 验证方式
-      .container
-        table
-          tr
-            td.asset-btc
-              span.num ฿1942.02
-              span.currency BTC
-            td.asset-ltc
-              span.num Ł46.69
-              span.currency LTC
-            td.asset-cny
-              span.num ￥1037145.80
-              span.currency CNY
-            td.asset-btsx
-              span.num 37948455
-              span.currency BTSX
+  .public-data
+    h2.small-text 
+      '* 全准备金公开, 查看
+      a href="/exchange_assets" 验证方式
+    .container
+      table
+        tr
+          td.asset-btc
+            span.num ฿1942.02
+            span.currency BTC
+          td.asset-ltc
+            span.num Ł46.69
+            span.currency LTC
+          td.asset-cny
+            span.num ￥1037145.80
+            span.currency CNY
+          td.asset-btsx
+            span.num 37948455
+            span.currency BTSX
 
 
   javascript:

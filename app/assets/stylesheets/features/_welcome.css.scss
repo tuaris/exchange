@@ -296,7 +296,10 @@ $bubble-bg: #F2F8FB;
     border-color: #ddd;
     cursor: text;
   }
-
+  
+  .public-info {
+    margin-bottom: 2em;
+  }
   .public-data {
     color: #fff;
     text-align: center;
@@ -324,6 +327,18 @@ $bubble-bg: #F2F8FB;
       &:hover {
         color: rgba(255,255,255,.8);
       }
+    }
+  }
+
+  .weibo,
+  .blog-posts {
+    > h3 {
+      margin-top: 0;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #F2F2F2;
     }
   }
   
@@ -362,6 +377,7 @@ $bubble-bg: #F2F8FB;
   }
 
   .weibo {
+    > h3 { margin-bottom: 10px; }
     .weibo-list {
       padding: 0;
       list-style: none;
@@ -377,18 +393,13 @@ $bubble-bg: #F2F8FB;
         font-weight: bold;
         text-align: right;
       }
-    }
-  }
-
-  .weibo,
-  .blog-posts {
-    > h3 {
-      margin-top: 0;
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 30px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid #F2F2F2;
+      blockquote {
+        color: #999;
+        font-size: 12px;
+        padding: 0 0 0 1em;
+        margin: 0 0 10px;
+        border-left: 3px solid #F2F8FB;
+      }
     }
   }
 
