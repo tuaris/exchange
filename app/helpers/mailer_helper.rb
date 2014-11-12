@@ -45,7 +45,7 @@ module MailerHelper
     end
   end
 
-  def working_time?(time=Time.now.hour)
+  def working_time?(time=Time.now)
     hour = time.hour
     hour >= 9 and hour <= 18
   end

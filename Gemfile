@@ -14,9 +14,10 @@ gem 'json'
 gem 'jbuilder'
 gem 'bcrypt-ruby', '~> 3.1.2'
 
-gem 'omniauth'
-gem 'omniauth-identity'
-gem 'omniauth-weibo-oauth2'
+gem 'doorkeeper', '~> 1.4.0'
+gem 'omniauth', '~> 1.2.1'
+gem 'omniauth-identity', '~> 1.1.1'
+gem 'omniauth-weibo-oauth2', '~> 0.3.0'
 
 gem 'figaro'
 gem 'settingslogic'
@@ -75,6 +76,8 @@ gem 'airbrake', '~> 4.1.0'
 gem 'simple_captcha', github: 'galetahub/simple-captcha'
 gem 'rest-client', '~> 1.6.8'
 gem 'seventeen_mon', github: 'mycolorway/SeventeenMon'
+
+gem 'weibo_2'
 
 group :development, :test do
   gem 'factory_girl_rails'

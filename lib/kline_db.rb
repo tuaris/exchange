@@ -11,5 +11,10 @@ module KlineDB
       data = redis.lrange(key, length - 1000, -1).map{|str| JSON.parse(str)}
     end
 
+    def weibo(size)
+      key = "peatio:weibo:statuses"
+      redis.lrange(key, 0, size - 1).collect{|str| JSON.parse(str)}
+    end
+
   end
 end

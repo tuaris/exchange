@@ -7,7 +7,7 @@ $btsx-head-bg: #4ea1d3;
 $btsx-border-color: lighten($btsx-head-bg, 30%);
 
 #welcome-index {
-  
+
   .global-nav {
     margin: 0;
     background: none;
@@ -60,7 +60,7 @@ $btsx-border-color: lighten($btsx-head-bg, 30%);
       background-color: #8bbbd4;
       background-color: rgba(255,255,255,.5);
       input[type=text], input[type=password] {
-        background-color: rgba(255, 255, 255, 0.75); 
+        background-color: rgba(255, 255, 255, 0.75);
         @include placeholder(#888);
       }
 
@@ -173,7 +173,7 @@ $btsx-border-color: lighten($btsx-head-bg, 30%);
             }
           }
         }
-        
+
       }
       &:hover {
         cursor: pointer;
@@ -284,7 +284,7 @@ $btsx-border-color: lighten($btsx-head-bg, 30%);
       }
       .author {
         @include clearfix;
-        img { 
+        img {
           border-radius: 50%;
           max-height: 40px;
           float: left;

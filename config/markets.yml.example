@@ -50,3 +50,4 @@
   quote_unit: cny
   bid: {fee: 0, currency: cny, fixed: 4}
   ask: {fee: 0, currency: dns, fixed: 2}
+  visible: false
