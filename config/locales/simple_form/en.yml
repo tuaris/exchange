@@ -63,7 +63,7 @@ en:
         address: Address
         category: Category
         btsx:
-          fund_source_address: BTSX Account
+          fund_source_address: BTS Account
         btc:
           fund_source_address: BTC Address
         pts:

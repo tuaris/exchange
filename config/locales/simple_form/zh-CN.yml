@@ -65,7 +65,7 @@ zh-CN:
         address: 银行卡号 / 地址
         category: 选择提现种类
         btsx:
-          fund_source_address: BTSX帐号
+          fund_source_address: BTS帐号
         btc:
           fund_source_address: 比特币钱包地址
         pts:
@@ -75,7 +75,7 @@ zh-CN:
         dns:
           fund_source_address: KeyID DNS账号
         yun:
-          fund_source_address: YUN账号(BTSX帐号)
+          fund_source_address: YUN账号(BTS帐号)
         ltc:
           fund_source_address: 莱特币钱包地址
 

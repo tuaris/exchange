@@ -17,7 +17,7 @@
   key: bitsharesx
   code: btsx
   coin: true
-  handler: BTSX
+  handler: BTS
   deposit_account: test
   rpc: http://btsx:test@127.0.0.1:20150/rpc
   blockchain: http://www.bitsharesblocks.com/blocks/block?id=#{txid}
