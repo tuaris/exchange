@@ -59,12 +59,12 @@ class CoinRPC
   end
 
   BITSHARES_ASSETS = {
-    BTSX: {id: 0, precision: 100000},
-    DNS:  {id: 0, precision: 100000},
-    YUN:  {id: 41, precision: 100}
+    BTS: { id: 0, precision: 100000},
+    DNS: { id: 0, precision: 100000},
+    YUN: { id: 41, precision: 100}
   }.freeze
 
-  class BTSX < self
+  class BTS < self
     def handle(name, *args)
       post_body = { 'method' => name, 'params' => args, 'jsonrpc' => '2.0', 'id' => 0 }.to_json
       resp = JSON.parse( http_post_request(post_body) )
@@ -178,9 +178,9 @@ class CoinRPC
 
   end
 
-  class DNS < BTSX; end
+  class DNS < BTS; end
 
-  class YUN < BTSX
+  class YUN < BTS
     def settxfee(fee)
       # do nothing, use default bitshares fee
     end
