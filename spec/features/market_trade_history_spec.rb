@@ -16,6 +16,7 @@ feature 'show account info', js: true do
 
   scenario 'user can cancel his own order' do
     pending
+
     login identity
     click_on I18n.t('header.market')
 
