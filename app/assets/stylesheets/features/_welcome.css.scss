@@ -359,7 +359,7 @@ $bubble-bg: #F2F8FB;
     .post-details {
       padding-left: 160px;
       h3 {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: bold;
         margin-top: 0;
         a {
@@ -372,6 +372,8 @@ $bubble-bg: #F2F8FB;
       }
       p {
         color: #999;
+        font-size: 15px;
+        line-height: 1.6;
       }
     }
   }
@@ -387,6 +389,9 @@ $bubble-bg: #F2F8FB;
       margin-bottom: 10px;
       padding-bottom: 10px;
       border-bottom: 1px solid #F2F2F2;
+      &:last-child {
+        border: none;
+      }
       time {
         display: block;
         font-size: 12px;
