@@ -2,8 +2,8 @@ zh-CN:
   withdraw_channel:
     bitsharesx:
       key: 块链
-      title: BTSX提现
-      intro: 将你在云币网的 BTSX 余额提取到你的钱包账户
+      title: BTS提现
+      intro: 将你在云币网的 BTS 余额提取到你的钱包账户
       latency: 受理后 10-30秒 到账
       transfer: 人工处理
       go: 立即提现
@@ -64,7 +64,7 @@ zh-CN:
         new:
           submit: 提交
           allin: 全部提取
-          fund_source_label: BTSX帐号
+          fund_source_label: BTS帐号
           manage_fund_source: 管理提现地址
         create:
           notice: 您的提现请求提交成功，请按照提示继续完成您的转账操作。
@@ -77,7 +77,7 @@ zh-CN:
           all: 二十四小时内订单
           empty: 无任何数据
         show:
-          withdraw: BTSX提现
+          withdraw: BTS提现
 
   simple_form:
     labels:
@@ -103,15 +103,15 @@ zh-CN:
     private:
       withdraws:
         bitsharesxes:
-          panel: 提现 / BTSX提现
+          panel: 提现 / BTS提现
           new:
-            title: BTSX提现
-            intro: 提取您在交易所的BTSX资金到您的BitShares X账户或者公钥地址。
+            title: BTS提现
+            intro: 提取您在交易所的BTS资金到您的BitShares账户或者公钥地址。
             default-panel: 历史记录
           create:
-            title: BTSX提现
-            intro: 您可以输入您的提现地址或者选择已保存提现地址，输入提现数量，提取到您的BTSX提现地址。
+            title: BTS提现
+            intro: 您可以输入您的提现地址或者选择已保存提现地址，输入提现数量，提取到您的BTS提现地址。
             default-panel: 历史记录
           edit:
-            title: BTSX提现
-            intro: 您可以输入您的提现地址或者选择已保存提现地址，输入提现数量，提取到您的BTSX提现地址。
+            title: BTS提现
+            intro: 您可以输入您的提现地址或者选择已保存提现地址，输入提现数量，提取到您的BTS提现地址。

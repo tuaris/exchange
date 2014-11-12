@@ -2,8 +2,8 @@ en:
   withdraw_channel:
     bitsharesx:
       key: Blockchain
-      title: BTSX Blockchain
-      intro: Withdraw BTSX to your own BTSX wallet
+      title: BTS Blockchain
+      intro: Withdraw BTS to your own BTS wallet
       latency: 30 minutes
       transfer: Manual
       go: Withdraw
@@ -85,7 +85,7 @@ en:
         bitsharesx:
           fee: Fee
           sum: Amount
-          fund_uid: BTSX Address
+          fund_uid: BTS Address
           fund_extra: Label
           account_balance: Account Balance
           member_name: Account
@@ -105,10 +105,10 @@ en:
         bitsharesxes:
           panel: Withdraw
           new:
-            intro: Enter the BTSX address and amount you want to withdraw.
+            intro: Enter the BTS address and amount you want to withdraw.
             default-panel: Withdraw History
           create:
-            intro: Enter the BTSX address and amount you want to withdraw.
+            intro: Enter the BTS address and amount you want to withdraw.
             default-panel: Withdraw History
           edit:
-            intro: Enter the BTSX address and amount you want to withdraw.
+            intro: Enter the BTS address and amount you want to withdraw.
