@@ -11,7 +11,7 @@ zh-CN:
     dogecoin:
       key: DOGE
     bitsharesx:
-      key: BTSX
+      key: BTS
     keyid:
       key: DNS
     yun:
@@ -23,7 +23,7 @@ zh-CN:
       ltc: 莱特币
       pts: PTS
       doge: 狗狗币
-      btsx: Bitshares X
+      btsx: Bitshares
       dns: KeyID DNS
       yun: 云朵
     code:
@@ -32,7 +32,7 @@ zh-CN:
       ltc: LTC
       pts: PTS
       doge: DOGE
-      btsx: BTSX
+      btsx: BTS
       dns: DNS
       yun: YUN
     format:

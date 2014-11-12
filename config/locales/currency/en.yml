@@ -9,7 +9,7 @@ en:
     dogecoin:
       key: DOGE
     bitsharesx:
-      key: BTSX
+      key: BTS
     keyid:
       key: DNS
 
@@ -18,14 +18,14 @@ en:
       btc: Bitcoin
       pts: ProtoShares
       doge: DogeCoin
-      btsx: Bitshares X
+      btsx: Bitshares
       dns: KeyID DNS
     code:
       cny: CNY
       btc: BTC
       pts: PTS
       doge: DOGE
-      btsx: BTSX
+      btsx: BTS
       dns: DNS
     format:
       zero: 'N/A'
