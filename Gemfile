@@ -78,6 +78,7 @@ gem 'rest-client', '~> 1.6.8'
 gem 'seventeen_mon', github: 'mycolorway/SeventeenMon'
 
 gem 'weibo_2'
+gem 'rails_autolink'
 
 group :development, :test do
   gem 'factory_girl_rails'

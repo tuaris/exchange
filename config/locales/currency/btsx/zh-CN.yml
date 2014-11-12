@@ -2,6 +2,6 @@ zh-CN:
   currency:
     bitsharesx:
       key: BTS
-      code: BTSX
+      code: BTS
       name: 比特股
       format: '0,0.0000'
