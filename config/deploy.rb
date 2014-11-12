@@ -142,7 +142,7 @@ task :del_admin do
 end
 
 @required_daemons = %w(amqp_daemon.rb daemons)
-@redis_daemons = %w(k.rb k_ctl stats.rb stats_ctl slack_ctl amqp_daemon.rb daemons)
+@redis_daemons = %w(k.rb k_ctl stats.rb stats_ctl slack_ctl weibo.rb weibo_ctl amqp_daemon.rb daemons)
 
 def remove_daemons(daemons)
   daemons -= @required_daemons
