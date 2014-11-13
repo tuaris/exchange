@@ -39,6 +39,7 @@
   bid: {fee: 0, currency: btc, fixed: 8}
   ask: {fee: 0, currency: dog, fixed: 0}
 - id: btsxcny
+  name: BTS/CNY
   code: 20
   base_unit: btsx
   quote_unit: cny
