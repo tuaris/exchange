@@ -238,6 +238,14 @@ class Member < ActiveRecord::Base
     PaymentAddress.construct_memo(self)
   end
 
+  def nickname
+    unless self['nickname']
+      "##{memo}"
+    else
+      self['nickname']
+    end
+  end
+
   private
 
   def generate_sn

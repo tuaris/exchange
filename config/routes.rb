@@ -111,6 +111,7 @@ Peatio::Application.routes.draw do
     end
 
     post '/pusher/auth', to: 'pusher#auth'
+    post '/todamoon/auth', to: 'todamoon#auth'
 
     resources :tickets, only: [:index, :new, :create, :show] do
       member do
