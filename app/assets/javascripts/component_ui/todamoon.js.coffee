@@ -12,3 +12,6 @@
 
     @on document, 'todamoon:receive', (e, d) ->
       console.log 'receive', e, d
+
+    @on document, 'todamoon:rejoin', (e, d) ->
+      console.log 'receive', e, d

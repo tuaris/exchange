@@ -13,7 +13,9 @@
             chan.send('new:msg', body: message.body)
 
         chan.on 'rejoin', ->
-          window.alert 'rejoin !!!!!!!!!!!!!!!!!!'
+          component.trigger 'todamoon:rejoin'
+          chan.socket.close()
+          chan.socket = null
 
         chan.on "user:entered", (message) ->
           component.trigger 'todamoon:user:enter', message
