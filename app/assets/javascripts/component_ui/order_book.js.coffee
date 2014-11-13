@@ -13,22 +13,25 @@
   @appendRow = (book, template, data) ->
     data.classes = 'new'
     book.append template(data)
-    book.find("tr[data-order=#{data.index}]").fadeIn('slow')
+    book.find("tr[data-order=#{data.index}] div").slideDown('slow')
 
   @insertRow = (book, row, template, data) ->
     data.classes = 'new'
     row.before template(data)
-    book.find("tr[data-order=#{data.index}]").fadeIn('slow')
+    book.find("tr[data-order=#{data.index}] div").slideDown('slow')
 
   @updateRow = (row, order, index, v1, v2) ->
-    if v1.equals(v2)
-      # do nothing
-    else
-      row.data('volume', order[1])
-      row.find('td.volume').html(formatter.mask_fixed_volume(order[1]))
-      row.find('td.amount').html(formatter.amount(order[1], order[0]))
-      row.addClass('updated')
     row.data('order', index)
+    return if v1.equals(v2)
+
+    if v2.greaterThan(v1)
+      row.addClass('text-up')
+    else
+      row.addClass('text-down')
+
+    row.data('volume', order[1])
+    row.find('td.volume').html(formatter.mask_fixed_volume(order[1]))
+    row.find('td.amount').html(formatter.amount(order[1], order[0]))
 
   @mergeUpdate = (bid_or_ask, book, orders, template) ->
     rows = book.find('tr')
@@ -67,10 +70,12 @@
 
   @clearMarkers = (book) ->
     book.find('tr.new').removeClass('new')
-    book.find('tr.updated').removeClass('updated')
+    book.find('tr.text-up').removeClass('text-up')
+    book.find('tr.text-down').removeClass('text-down')
 
     obsolete = book.find('tr.obsolete')
-    obsolete.fadeOut 'slow', ->
+    obsolete_divs = book.find('tr.obsolete div')
+    obsolete_divs.slideUp 'slow', ->
       obsolete.remove()
 
   @updateOrders = (table, orders, bid_or_ask) ->
