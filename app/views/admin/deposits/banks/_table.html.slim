@@ -1,6 +1,8 @@
 - unless banks.empty?
   = table_for(banks, class: 'table table-condensed table-hover') do |t|
     - t.column :sn, class: 'col-xs-2'
+    - t.column :memo, class: 'col-xs-2' do |x|
+      = x.member.memo
     - t.column :created_at, class: 'col-xs-4'
     - t.column :currency_obj_key_text, t('.currency'), class: 'col-xs-2'
     - t.column :member_name, t('.name'), class: 'col-xs-3' do |x|

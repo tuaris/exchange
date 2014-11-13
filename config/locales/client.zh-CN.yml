@@ -58,6 +58,7 @@ zh-CN:
 
       deposit_history:
         title: 历史记录
+        number: 编号
         identification: 转账识别码
         time: 时间
         txid: 交易哈希
