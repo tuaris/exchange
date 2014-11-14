@@ -5,7 +5,7 @@
         span = t('.deposit', sn: @bank.sn)
       .panel-body
         = description_for :member do
-          = item_for @bank, :memo, @bank.member.memo
+          = item_for @bank, :sn
           = item_for @bank.member, :name
           = item_for @bank, :amount
           = item_for @bank, :created_at
