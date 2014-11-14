@@ -7,6 +7,7 @@
       @.socket = new Phoenix.Socket("ws://#{gon.config.chat_host}:#{gon.config.chat_port}/ws")
 
       @.socket.join "rooms", "lobby", data, (chan) =>
+
         chan.on 'join', ->
           component.off document, 'todamoon:send'
           component.on document, 'todamoon:send', (event, message) ->

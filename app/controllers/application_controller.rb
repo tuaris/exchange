@@ -168,7 +168,12 @@ class ApplicationController < ActionController::Base
     end
 
     if current_user
-      gon.current_user = { id: current_user.id, sn: current_user.sn, nickname: current_user.nickname }
+      gon.current_user = { 
+        id: current_user.id,
+        sn: current_user.sn,
+        nickname: current_user.nickname_for_chatroom
+      }
+
       gon.accounts = current_user.accounts.inject({}) do |memo, account|
         memo[account.currency] = {
           currency: account.currency,

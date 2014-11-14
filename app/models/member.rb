@@ -30,6 +30,7 @@ class Member < ActiveRecord::Base
 
   validates :sn, presence: true
   validates :display_name, uniqueness: true, allow_blank: true
+  validates :nickname_for_chatroom, uniqueness: true, allow_blank: true
   validates :email, email: true, uniqueness: true, allow_nil: true
 
   before_create :build_default_id_document
@@ -238,12 +239,8 @@ class Member < ActiveRecord::Base
     PaymentAddress.construct_memo(self)
   end
 
-  def nickname
-    unless self['nickname']
-      "##{memo}"
-    else
-      self['nickname']
-    end
+  def nickname_for_chatroom
+    self['nickname_for_chatroom'] || nickname || "##{memo}"
   end
 
   private

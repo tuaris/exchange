@@ -1,0 +1,5 @@
+<p class='message'>
+  <span class='nickname'><%= @nickname %></span>
+  <span class='at'><%= @at %></span>
+  <span class='body'><%= @body %></span>
+</p>

@@ -1,0 +1,5 @@
+<p class='event'>
+  <span class='nickname'><%= @nickname %></span>
+  <span class='at'><%= @at %></span>
+  <span class='body'>加入聊天</span>
+</p>
