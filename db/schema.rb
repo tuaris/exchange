@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141107031140) do
+ActiveRecord::Schema.define(version: 20141114030124) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -240,12 +240,13 @@ ActiveRecord::Schema.define(version: 20141107031140) do
   add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
 
   create_table "oauth_applications", force: true do |t|
-    t.string   "name",         null: false
-    t.string   "uid",          null: false
-    t.string   "secret",       null: false
-    t.text     "redirect_uri", null: false
+    t.string   "name",                         null: false
+    t.string   "uid",                          null: false
+    t.string   "secret",                       null: false
+    t.text     "redirect_uri",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "super",        default: false
   end
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
