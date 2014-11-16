@@ -6,15 +6,29 @@ module Private
   
     def auth
       if current_user
-        string_to_sign = "#{current_user.id}:#{current_user.nickname_for_chatroom}"
+        uid = current_user.id
+        nickname = current_user.nickname_for_chatroom
+        is_master = (ENV['CHAT_MASTERS'] || '').split(',').include?(current_user.email)
+
+        # 应用端使用聊天服务器同样的密钥对关键数据进行加密
+        # 加密后的签名用于登录聊天服务器时的凭证
+        # 聊天服务器使用同样的步骤对关键数据进行加密签名
+        # 通过与客户端发送的签名进行比对来验证关键数据的真实有效
+
         secret = ENV['CHAT_SECRET']
         digest = OpenSSL::Digest::SHA256.new
+        string_to_sign = [uid, nickname, is_master].join(":")
         signature = OpenSSL::HMAC.hexdigest(digest, secret, string_to_sign)
-        render :json => {signature: signature, nickname: current_user.nickname_for_chatroom, uid: current_user.id}
+
+        render :json => {
+          uid: uid,
+          nickname: nickname,
+          is_master: is_master,
+          signature: signature
+        }
       else
         render :text => "Forbidden", :status => '403'
       end
     end
   end
 end
-

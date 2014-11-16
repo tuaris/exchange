@@ -3,7 +3,7 @@
     component = @
 
     join_room = (data) ->
-      @.socket = new Phoenix.Socket("ws://#{gon.config.chat_host}:#{gon.config.chat_port}/ws")
+      @.socket = new Phoenix.Socket(gon.config.chat_uri)
 
       @.socket.join "rooms", "lobby", data, (chan) =>
 

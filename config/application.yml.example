@@ -86,10 +86,9 @@ defaults: &defaults
   # --------------------------------------------------------------
   # Do you want chat feature in your exchange ?
   # send mail to community@peatio.com
-  CHAT_HOST: 0.0.0.0
-  CHAT_PORT: 4000
+  CHAT_URI: ws://0.0.0.0:4000/ws
   CHAT_SECRET: Xy0eoFuf4Ge9VudnzNPUg3Jm
-  
+  CHAT_MASTERS: [] # chat room master email list
 
 development:
   <<: *defaults
