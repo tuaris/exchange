@@ -334,11 +334,19 @@ $bubble-bg: #F2F8FB;
   .blog-posts {
     > h3 {
       margin-top: 0;
+      color: #74858E;
       font-size: 18px;
       font-weight: bold;
       margin-bottom: 30px;
       padding-bottom: 15px;
       border-bottom: 1px solid #F2F2F2;
+      a {
+        color: #74858E;
+        &:hover {
+          color: lighten(#74858E, 10%);
+          text-decoration: none;
+        }
+      }
     }
   }
   
