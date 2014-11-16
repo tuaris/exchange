@@ -6,7 +6,7 @@ module APIv2
     end
 
     def auth_admin!
-      current_user.try(:admin?) or raise AuthorizationError
+      current_token.super? or raise AuthorizationError
     end
 
     def redis

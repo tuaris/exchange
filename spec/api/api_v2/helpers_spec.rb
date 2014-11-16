@@ -54,18 +54,20 @@ describe APIv2::Helpers do
     end
 
     context "Authenticate admin fields" do
-      let(:payload) { "GET|/api/v2/auth_admin|access_key=#{token.access_key}&foo=bar&hello=world&tonce=#{tonce}" }
-      let(:signature) { APIv2::Auth::Utils.hmac_signature(token.secret_key, payload) }
-      let(:admin) { build :admin_member }
+      let!(:super_token) { create(:api_token, super: true) }
 
-      it "should be success if user is admin" do
-        ENV['ADMIN'] = (Member.admins << token.member.email).join(',')
+      it "should be success when using super token" do
+        payload = "GET|/api/v2/auth_admin|access_key=#{super_token.access_key}&foo=bar&hello=world&tonce=#{tonce}"
+        signature = APIv2::Auth::Utils.hmac_signature(super_token.secret_key, payload)
 
-        get '/api/v2/auth_admin', access_key: token.access_key, signature: signature, foo: 'bar', hello: 'world', tonce: tonce
+        get '/api/v2/auth_admin', access_key: super_token.access_key, signature: signature, foo: 'bar', hello: 'world', tonce: tonce
         response.should be_success
       end
 
-      it "should fail if user isn't admin" do
+      it "should fail when using normal token" do
+        payload = "GET|/api/v2/auth_admin|access_key=#{token.access_key}&foo=bar&hello=world&tonce=#{tonce}"
+        signature = APIv2::Auth::Utils.hmac_signature(token.secret_key, payload)
+
         get '/api/v2/auth_admin', access_key: token.access_key, signature: signature, foo: 'bar', hello: 'world', tonce: tonce
         response.code.should == '401'
         response.body.should == "{\"error\":{\"code\":2001,\"message\":\"Authorization failed\"}}"
