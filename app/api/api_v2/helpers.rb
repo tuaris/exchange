@@ -5,6 +5,10 @@ module APIv2
       current_user or raise AuthorizationError
     end
 
+    def auth_admin!
+      current_user.try(:admin?) or raise AuthorizationError
+    end
+
     def redis
       @r ||= KlineDB.redis
     end

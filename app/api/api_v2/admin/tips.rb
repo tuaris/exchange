@@ -3,7 +3,10 @@ module APIv2
     class Tips < Grape::API
       helpers ::APIv2::NamedParams
 
-      before { authenticate! }
+      before do
+        authenticate!
+        auth_admin!
+      end
 
       desc 'tipping somebody'
       params do
