@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141107031140) do
+ActiveRecord::Schema.define(version: 20141116172836) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(version: 20141107031140) do
   add_index "accounts", ["member_id"], name: "index_accounts_on_member_id", using: :btree
 
   create_table "api_tokens", force: true do |t|
-    t.integer  "member_id",                        null: false
-    t.string   "access_key",            limit: 50, null: false
-    t.string   "secret_key",            limit: 50, null: false
+    t.integer  "member_id",                                        null: false
+    t.string   "access_key",            limit: 50,                 null: false
+    t.string   "secret_key",            limit: 50,                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "trusted_ip_list"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20141107031140) do
     t.datetime "expire_at"
     t.string   "scopes"
     t.datetime "deleted_at"
+    t.boolean  "super",                            default: false
   end
 
   add_index "api_tokens", ["access_key"], name: "index_api_tokens_on_access_key", unique: true, using: :btree
@@ -240,12 +241,13 @@ ActiveRecord::Schema.define(version: 20141107031140) do
   add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
 
   create_table "oauth_applications", force: true do |t|
-    t.string   "name",         null: false
-    t.string   "uid",          null: false
-    t.string   "secret",       null: false
-    t.text     "redirect_uri", null: false
+    t.string   "name",                         null: false
+    t.string   "uid",                          null: false
+    t.string   "secret",                       null: false
+    t.text     "redirect_uri",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "super",        default: false
   end
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree

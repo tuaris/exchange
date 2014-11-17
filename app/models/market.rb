@@ -26,7 +26,8 @@ class Market < ActiveYamlBase
     super
 
     raise "missing base_unit or quote_unit: #{args}" unless base_unit.present? && quote_unit.present?
-    @name = self[:name] || "#{base_unit}/#{quote_unit}".upcase
+    self[:name] ||= "#{base_unit}/#{quote_unit}".upcase
+    @name = self[:name]
   end
 
   def latest_price
@@ -70,7 +71,7 @@ class Market < ActiveYamlBase
   end
 
   def unit_info
-    {base_unit: base_unit, quote_unit: quote_unit}
+    {name: name, base_unit: base_unit, quote_unit: quote_unit}
   end
 
   private

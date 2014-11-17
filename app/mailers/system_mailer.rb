@@ -39,8 +39,8 @@ class SystemMailer < BaseMailer
     from   = Time.at(ts)
     to     = Time.at(ts + 1.day - 1)
 
-    # fix activation count
-    @stats['member_stats'][2] = Member.where(activated: true, created_at: from..to).count
+    @signup_count   = Member.where(created_at: from..to).count
+    @activate_count = Member.where(activated: true, created_at: from..to).count
 
     mail subject: "Daily Summary (#{from} - #{to})",
          to: ENV['OPERATE_MAIL_TO']

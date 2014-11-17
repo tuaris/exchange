@@ -11,7 +11,9 @@ module Private
       ids = Doorkeeper::AccessToken
         .where(id: @oauth_api_tokens.map(&:oauth_access_token_id))
         .group(:application_id).select('max(id) as id')
-      @oauth_access_tokens = Doorkeeper::AccessToken.where(id: ids).includes(:application)
+      @oauth_access_tokens = Doorkeeper::AccessToken.includes(:application)
+        .where(id: ids)
+        .merge(Doorkeeper::Application.where(super: false))
     end
 
     def new
