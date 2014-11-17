@@ -53,25 +53,48 @@ peatio和yunbi都需要的feature, 我们总是先在peatio里面实现，再mer
 #### Major Release Planning/Develop/Test/Deploy Flow
 
 1. Release Planning
+
   a. 为下一个release增加一个todo: https://tower.im/projects/fd2686cb7fac4b149a537794c67597ac/lists/771fd4e2ff2a485187bb7cafe0732769/show/
+
   b. todo里面记录这次release要发布的features
+
 2. Release Development
+
   a. 参考Git Flow创建分支并开发
+
   b. 提交PR, 将PR的milestone为所属的release, e.g. r2
+
     b1. 除非有明确说明, PR请求往master merge.
+
     b2. 特殊情况下deployer可以创建一个<release_name>_master分支，如r2_master, 同时告知开发者该release下的PR往<release_name>_master merge.
+
   c. Review PR and merge.
+
   d. 如有任何需要在deploy时完成的任务，如migration task, 配置修改, 记录到tower上的release todo中
+
 3. Release Test
+
   a. merge release分支到staging
+
   b. 部署staging
+
   c. QA (TODO: Define QA Process)
+
 4. Prepare Deploy
+
   a. 阅读release todo
+
   b. 部署前服务器准备 (修改配置 etc.)
+
   c. merge release分支(master或指定release分支)进production. 注意: 尽量避免merge staging分支到production, 因为staging分支可能包含不属于本次release的代码。
+
 5. 部署
+
   a. 部署
+
   b. 部署后服务器维护 (运行task etc.)
+
   c. 部署中遇到的未解决问题记录到tower上
+
   d. slack中发布部署完成消息, tower上将release todo标记完成
+
