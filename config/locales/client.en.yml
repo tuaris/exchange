@@ -5,6 +5,14 @@ en:
     funds:
       deposit: Deposit
       withdraw: Withdraw
+      currency_name:
+        cny: CNY
+        btc: BTC
+        ltc: LTC
+        pts: PTS
+        doge: DOGE
+        btsx: BTS
+        yun: YUN
       deposit_cny:
         title: Chinese Yuan Deposit
         desc: "Deposit with Bank, please follow step following:"
