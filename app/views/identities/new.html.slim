@@ -2,8 +2,6 @@
   .container: .users-form-container
     h3.guide-title 
       = guide_title
-      a href="/auth/weibo" class="pull-right"
-          <img src="http://img.t.sinajs.cn/t4/appstyle/open/images/website/loginbtn/loginbtn_03.png" alt="" id="btnStyleImg1">
     p.guide-intro = guide_intro
     hr.split
     = simple_form_for @identity, :url => '/auth/identity/register' do |f|
