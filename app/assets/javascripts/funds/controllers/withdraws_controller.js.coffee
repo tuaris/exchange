@@ -12,7 +12,7 @@ app.controller 'WithdrawsController', ($scope, $stateParams, $http) ->
     withdraw_channel = WithdrawChannel.findBy('currency', currency)
     account = withdraw_channel.account()
 
-    data = { withdraw: { member_id: current_user.id, currency: currency, sum: @withdraw.sum, fund_source: @withdraw.fund_source } }
+    data = { withdraw: { member_id: current_user.id, currency: currency, sum: @withdraw.sum, fund_source: @withdraw.fund_source, memo: @withdraw.memo } }
 
     if current_user.app_activated or current_user.sms_activated
       type = $('.two_factor_auth_type').val()
@@ -40,6 +40,9 @@ app.controller 'WithdrawsController', ($scope, $stateParams, $http) ->
 
   $scope.only_sms_activated = ->
     current_user.sms_activated and !current_user.app_activated
+
+  $scope.has_memo = ->
+    ['btsx', 'yun'].indexOf($scope.currency) > -1
 
 
   $scope.$watch (-> $scope.currency), ->
