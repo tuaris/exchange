@@ -1,7 +1,7 @@
 @ToDaMoonUI = flight.component ->
   @attributes
-    'send': 'a.send'
-    'box': 'input.box'
+    'send': '.btn-send'
+    'box': '#chat-textarea'
 
   @after 'initialize', ->
 

@@ -136,3 +136,6 @@ zh-CN:
         global_trades_title: 成交记录
       chat:
         title: 聊天频道
+      todamoon:
+        title: 聊天室
+        send: 发布

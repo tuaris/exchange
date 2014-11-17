@@ -1,7 +1,68 @@
-#todamoon.panel.panel-default
-  .panel-heading
+#todamoon.chatbox
+  .chat-heading
     span = t('.title')
     a.hand-point.pull-right: i.fa.fa-close
-  .panel-body.panel-body-content
-    input.box type='text'
-    a.btn.btn-default.send Send
+  .chat-body
+    .chat-item
+      .chat-bubble
+        span.arrow
+        blockquote Life is good, play more.
+      .author
+        h5.name beenhero
+        time 1分钟前
+    .chat-item
+      .chat-bubble
+        span.arrow
+        blockquote 针对国内比特币交易所乱象，云币网 CEO 邱亮表示：“我们希望以通过开放开源和公开资产的方式，来推动比特币生态圈的健康发展，做交易所该做的事，以改善比特币市场乱象。”
+      .author
+        h5.name hpyhacking
+        time 30s ago
+    .chat-item.by-me
+      .chat-bubble
+        span.arrow
+        blockquote Life is good, play more.
+      .author
+        h5.name beenhero
+        time 1分钟前
+    .chat-item
+      .chat-bubble
+        span.arrow
+        blockquote 针对国内比特币交易所乱象，云币网 CEO 邱亮表示：“我们希望以通过开放开源和公开资产的方式，来推动比特币生态圈的健康发展，做交易所该做的事，以改善比特币市场乱象。”
+      .author
+        h5.name hpyhacking
+        time 30s ago
+    .chat-item.by-admin
+      .chat-bubble
+        span.arrow
+        blockquote 交易平台维护时间：2014-11-11 23:59
+      .author
+        h5.name 云币 Admin
+        time 10s ago
+    .chat-item
+      .author
+        span.user-status.is-online
+        h5.name Annoymous 加入聊天室
+        time 5分钟前
+    .chat-item
+      .author
+        span.user-status.is-offline
+        h5.name jan 退出了聊天室
+        time 刚刚
+    .chat-item
+      .author
+        span.user-status.is-silent
+        h5.name youcai 被管理员禁言30分钟
+        time 刚刚
+    .chat-item
+      .author
+        span.user-status.is-forbidden
+        h5.name pitcoin 被管理员永久禁言
+        time 刚刚
+
+  .chat-footer
+    form.chat-post-form onsubmit="return false;"
+      textarea#chat-textarea.box.form-control placeholder="发表评论"
+      .clearfix
+        button type="submit" class="btn btn-sm btn-primary pull-right btn-send" = t('.send')
+        a href="javascript:void(0)" class="btn btn-sm btn-link btn-icon" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Add Emoji": i class="fa fa-smile-o"
+        a href="javascript:void(0)" class="btn btn-sm btn-link btn-icon" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Send Yun": i class="fa fa-cloud"
