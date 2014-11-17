@@ -6,7 +6,7 @@ module Worker
 
       phone = Phonelib.parse(payload[:phone])
       if phone.country == 'CN'
-        send_via_china_sms(phone.national.delete(' '), payload[:message])
+        send_via_china_sms(phone.sanitized.to_s.gsub(/^86/, ''), payload[:message])
       else
         send_via_twilio(phone.international, payload[:message])
       end
