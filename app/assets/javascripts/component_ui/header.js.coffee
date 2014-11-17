@@ -9,12 +9,12 @@
     sound: 'input[name="sound-checkbox"]'
 
   @refresh = (event, ticker) ->
-    @select('vol').text("#{ticker.volume} #{gon.market.base_unit.toUpperCase()}")
+    @select('vol').text("#{ticker.volume} #{gon.market.name.split('/')[0]}")
     @select('high').text(ticker.high)
     @select('low').text(ticker.low)
 
   @after 'initialize', ->
-    @select('market').text("#{gon.market.base_unit.toUpperCase()}/#{gon.market.quote_unit.toUpperCase()}")
+    @select('market').text("#{gon.market.name}")
 
     @on @select('switch'), 'click', ->
       @trigger 'switch-market'

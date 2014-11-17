@@ -14,6 +14,8 @@
             .form-group
               = f.button :submit, class: 'btn btn-block btn-success', value: t("header.signin")
             p.inline-links
+              = link_to t("header.login_via_weibo"), '/auth/weibo'
+              ' • 
               = link_to '注册新帐号', signup_path
               ' • 
               = link_to "忘了密码?", new_reset_password_path
@@ -213,7 +215,7 @@
 
         .col-md-9.col-md-offset-1
           .weibo
-            h3
+            h3: a href="http://t.yunbi.com"
               i.fa.fa-weibo
               '&nbsp;官方微博
             ul.weibo-list
