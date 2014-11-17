@@ -66,7 +66,7 @@ peatio和yunbi都需要的feature, 我们总是先在peatio里面实现，再mer
 
     b1. 除非有明确说明, PR请求往master merge.
 
-    b2. 特殊情况下deployer可以创建一个<release_name>_master分支，如r2_master, 同时告知开发者该release下的PR往<release_name>_master merge.
+    b2. 特殊情况下deployer可以创建一个 "#{release_name}_master" 分支，如r2_master, 同时告知开发者该release下的PR往该分支merge.
 
   c. Review PR and merge.
 
