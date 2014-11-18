@@ -15,6 +15,8 @@ module Private::HistoryHelper
     case txid
     when /genesis-/
       'from PTS snapshot'
+    when /yun-live/
+      'Thank you for being with us.'
     else
       link_to txid, t.blockchain_url
     end
