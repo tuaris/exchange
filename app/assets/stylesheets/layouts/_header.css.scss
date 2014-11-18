@@ -177,3 +177,30 @@ header #languages {
   min-width: 64px;
   li > a{ padding-top: 8px; }
 }
+
+
+/* Responsive
+------------------------------------------------------- */
+@media (max-width: $container-large-desktop) {
+  .global-nav .container {
+    width: auto;
+    padding: 0 20px;
+  }
+}
+@media (max-width: $container-tablet) {
+  .global-nav {
+    height: auto;
+  }
+}
+@media (max-width: 540px) { 
+  .global-nav .navbar-brand {
+    width: 65px;
+    height: 35px;
+    background-size: 64px 21px;
+    margin-top: 5px;
+  }
+  .global-nav .navbar-nav > li > a {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}

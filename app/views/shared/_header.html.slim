@@ -2,17 +2,19 @@ header.navbar.global-nav.navbar-fixed-top role = "navigation"
   .container
     .navbar-header
       button.nav-bar-toggle type="button" data-toggle="collapse" data-target=".bs-navbar-collapse"
-        span.icon-bar: span.icon-bar: span.icon-bar
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
       = link_to t('header.home'), root_path, class: "navbar-brand"
-
-    ul.nav.navbar-nav.navbar-right
-      = top_nav_link(t('header.market'), market_path(current_market.id), 'exchange', target: true)
-      = top_nav_link(t('header.funds'), funds_path, 'credit-card', controllers: ['funds']) if current_user
-      = top_nav_link(t('header.assets'), exchange_assets_path, 'assets')
-      = top_nav_link(t('header.history'), order_history_path, 'history', controllers: ['history']) if current_user
-      = render partial: 'shared/header_account_balance' if current_user && controller_name == 'markets'
-      = render partial: 'shared/header_profile_setting' if current_user && controller_name != 'markets'
-      = top_nav_link(t('header.signin'), signin_path, 'login-link') unless current_user
-      = top_nav_link(t('header.signup'), signup_path, 'signup-link') unless current_user
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        = top_nav_link(t('header.market'), market_path(current_market.id), 'exchange', target: true)
+        = top_nav_link(t('header.funds'), funds_path, 'credit-card', controllers: ['funds']) if current_user
+        = top_nav_link(t('header.assets'), exchange_assets_path, 'assets')
+        = top_nav_link(t('header.history'), order_history_path, 'history', controllers: ['history']) if current_user
+        = render partial: 'shared/header_account_balance' if current_user && controller_name == 'markets'
+        = render partial: 'shared/header_profile_setting' if current_user && controller_name != 'markets'
+        = top_nav_link(t('header.signin'), signin_path, 'login-link') unless current_user
+        = top_nav_link(t('header.signup'), signup_path, 'signup-link') unless current_user
 
 .header-shadow
