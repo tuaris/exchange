@@ -44,6 +44,12 @@
 #  sort_order: 4
 #  min_confirm: 10
 #  max_confirm: 51
+- id: 710
+  key: bitcny
+  currency: bitcny
+  sort_order: 71
+  min_confirm: 10
+  max_confirm: 51
 - id: 999
   key: yun
   currency: yun

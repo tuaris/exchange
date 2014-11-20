@@ -44,6 +44,12 @@
 #  fixed: 5
 #  fee: 0.1
 #  sort_order: 4
+- id: 710
+  key: bitcny
+  currency: bitcny
+  fixed: 2
+  fee: 0
+  sort_order: 71
 - id: 999
   key: yun
   currency: yun

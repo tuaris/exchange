@@ -10,7 +10,7 @@ class PaymentAddress < ActiveRecord::Base
   validates_uniqueness_of :address, allow_nil: true
 
   def bts_address?
-    account && %w(btsx dns yun).include?(account.currency)
+    account && %w(btsx bitcny dns yun).include?(account.currency)
   end
 
   def bts_gen_address

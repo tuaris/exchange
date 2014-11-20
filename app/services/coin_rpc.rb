@@ -59,9 +59,10 @@ class CoinRPC
   end
 
   BITSHARES_ASSETS = {
-    BTS: { id: 0, precision: 100000},
-    DNS: { id: 0, precision: 100000},
-    YUN: { id: 41, precision: 100}
+    BTS: { id: 0,  precision: 100000},
+    DNS: { id: 0,  precision: 100000},
+    YUN: { id: 41, precision: 100},
+    CNY: { id: 14, precision: 10000}
   }.freeze
 
   class BTS < self
@@ -183,6 +184,16 @@ class CoinRPC
   class YUN < BTS
     def settxfee(fee)
       # do nothing, use default bitshares fee
+    end
+  end
+
+  class BITCNY < BTS
+    def settxfee(fee)
+      # do nothing, use default bitshares fee
+    end
+
+    def asset_name
+      'CNY'
     end
   end
 

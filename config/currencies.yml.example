@@ -68,6 +68,15 @@
   rpc: http://dns:dnshelloworld@127.0.0.1:20152/rpc
   blockchain: http://104.131.241.162/blocks/block?id=#{txid}
   visible: false
+- id: 25
+  key: bitcny
+  code: bitcny
+  coin: true
+  symbol: 'BITCNY'
+  handler: BITCNY
+  deposit_account: cny.taimei
+  rpc: http://btsx:btsxhelloworld@127.0.0.1:20150/rpc
+  blockchain: http://www.bitsharesblocks.com/blocks/block?id=#{txid}
 - id: 999
   key: yun
   code: yun

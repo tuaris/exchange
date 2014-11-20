@@ -17,6 +17,7 @@ zh-CN:
         pts: PTS
         doge: DOGE
         btsx: BTS
+        bitcny: BitCNY
         yun: YUN
       deposit_cny:
         title: 人民币充值
