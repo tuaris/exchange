@@ -1,5 +1,5 @@
 module Deposits
-  class Bitcny < ::Deposit
+  class Yun < ::Deposit
     include ::AasmAbsolutely
     include ::Deposits::Coinable
 
