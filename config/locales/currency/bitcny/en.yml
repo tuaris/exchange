@@ -1,0 +1,7 @@
+en:
+  currency:
+    bitcny:
+      key: BITCNY
+      code: BITCNY
+      name: BitCNY
+      format: '0,0.0000'

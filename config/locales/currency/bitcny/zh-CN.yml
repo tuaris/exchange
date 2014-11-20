@@ -1,0 +1,7 @@
+zh-CN:
+  currency:
+    bitcny:
+      key: BITCNY
+      code: BITCNY
+      name: BitCNY
+      format: '0,0'

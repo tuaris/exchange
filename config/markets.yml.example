@@ -52,3 +52,9 @@
   bid: {fee: 0, currency: cny, fixed: 4}
   ask: {fee: 0, currency: dns, fixed: 2}
   visible: false
+- id: bitcnycny
+  code: 27
+  base_unit: bitcny
+  quote_unit: cny
+  bid: {fee: 0, currency: cny, fixed: 4}
+  ask: {fee: 0, currency: bitcny, fixed: 3}
