@@ -106,7 +106,7 @@ zh-CN:
           panel: 提现 / KeyID DNS提现
           new:
             title: KeyID DNS提现
-            intro: 提取您在交易所的KeyID DNS资金到您的BitShares X账户或者公钥地址。
+            intro: 提取您在交易所的KeyID DNS资金到您的BitShares账户或者公钥地址。
             default-panel: 历史记录
           create:
             title: KeyID DNS提现
