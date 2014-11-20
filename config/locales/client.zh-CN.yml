@@ -50,6 +50,8 @@ zh-CN:
         title: BTS充值
       deposit_yun:
         title: 云朵充值
+      deposit_bitcny:
+        title: BITCNY充值
       deposit_coin:
         address: 地址
         new_address: 生成新地址
@@ -109,6 +111,8 @@ zh-CN:
         title: BTS提现
       withdraw_yun:
         title: 云朵提现
+      withdraw_bitcny:
+        title: BITCNY提现
       withdraw_coin:
         intro: 指定要提现的地址，输入提取数量，提交即可，10分钟之内到账。
         label: 标签

@@ -182,7 +182,7 @@ class Account < ActiveRecord::Base
   end
 
   def deposit_address
-    if %w(btsx dns yun).include?(self.currency)
+    if %w(btsx dns yun bitcny).include?(self.currency)
       payment_address.deposit_address
     else
       payment_addresses.empty? ? "" : payment_address.deposit_address

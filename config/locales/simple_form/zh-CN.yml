@@ -78,6 +78,8 @@ zh-CN:
           fund_source_address: YUN账号(BTS帐号)
         ltc:
           fund_source_address: 莱特币钱包地址
+        bitcny:
+          fund_source_address: BITCNY账号(BTS账号)
 
         name: 账户名
       member:

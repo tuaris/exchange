@@ -33,6 +33,8 @@ class Account extends PeatioModel.Model
       "/btsx.chongzhi.yunbi.png"
     else if @currency == "yun"
       "/yun.chongzhi.yunbi.png"
+    else if @currency == "bitcny"
+      "/cny.chongzhi.yunbi.png"
     else
       ""
 
