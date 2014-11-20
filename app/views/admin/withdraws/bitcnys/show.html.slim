@@ -1,0 +1,27 @@
+.row
+  .col-md-12
+    .panel.panel-primary
+      .panel-heading
+        span = t('.withdraw', sn: @bitcny.id)
+      .panel-body
+        = description_for :withdraw do
+          = item_for @bitcny, :id
+          = item_for @bitcny, :created_at
+          = item_for @bitcny, :aasm_state_text
+          hr.split
+          = item_for @bitcny.member, :name
+          = item_for @bitcny, :fund_extra
+          = item_for @bitcny, :fund_uid do
+            span = @bitcny.fund_uid.truncate(22)
+          = item_for @bitcny, :memo
+          = item_for @bitcny, :txid
+          = item_for @bitcny, :amount
+          hr.split
+          = item_for @bitcny, :remark
+          hr.split
+          ul.list-inline.pull-right
+          = render 'admin/withdraws/actions', withdraw: @bitcny
+
+  .col-md-12
+    = render partial: 'shared/admin/member', locals: {member: @bitcny.member}
+    = render partial: 'shared/admin/account', locals: {account: @bitcny.account}

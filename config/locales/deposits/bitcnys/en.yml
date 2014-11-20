@@ -1,0 +1,50 @@
+en:
+  deposit_channel:
+    bitcny:
+      key: Block Chain
+      title: BitCNY Deposits
+      intro: Deposit BitCNY from your own wallet address to bitcnybi account
+      latency: 1 confirmation
+      transfer: Manual
+      go: Deposit
+
+  activerecord:
+    attributes:
+      deposits/bitcny:
+        created_at: Created At
+        txid: Transaction ID
+        amount: Amount
+        memo: Confirmation
+        aasm_state_text: State
+
+  deposits/bitcny:
+    aasm_state:
+      submitted: Submitted
+      accepted: Accepted
+      checked: Checked
+      warning: Warning
+
+  guides:
+    private:
+      deposits:
+        bitcnys:
+          panel: Deposits
+          intro: Deposit BitCNY from your own Wallet address to bitcnybi account.
+          new:
+            default-panel: Deposit Transactions
+
+  admin:
+    deposits:
+      bitcnys:
+        update:
+          notice: The deposit was successful.
+        index:
+          accept: Accept
+          accept_confirm: Confirm deposit?
+
+  private:
+    deposits:
+      bitcnys:
+        new:
+          send-coin: Fill in the collection address the following address which is specifically for your BitCNY deposits. Check the BitCNY amount you want to send,  and do not forget to pay a fee to the miner in order to ensure the transaction could be confirmed quickly.
+          check-confirm: Send BitCNY to your bitcnybi account. When the transaction gets one confirmation by the whole network, the system will automatically recharge your account.(you do not need to refresh this interface, transactions and recharge will be real-time updated).
