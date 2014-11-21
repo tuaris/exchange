@@ -4,6 +4,12 @@
   fixed: 4
   fee: 0.0001
   sort_order: 2
+- id: 250
+  key: litecoin
+  currency: ltc
+  fixed: 4
+  fee: 0.001
+  sort_order: 3
 - id: 300
   key: protoshare
   currency: pts
@@ -32,12 +38,12 @@
   fixed: 5
   fee: 0.1
   sort_order: 3
-- id: 700
-  key: keyid
-  currency: dns
-  fixed: 5
-  fee: 0.1
-  sort_order: 4
+#- id: 700
+#  key: keyid
+#  currency: dns
+#  fixed: 5
+#  fee: 0.1
+#  sort_order: 4
 - id: 999
   key: yun
   currency: yun

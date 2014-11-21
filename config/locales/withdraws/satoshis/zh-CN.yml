@@ -10,7 +10,7 @@ zh-CN:
 
   activerecord:
     models:
-      withdraws/satoshi: 银行转账
+      withdraws/satoshi: 比特币转账
     attributes:
       withdraws/satoshi:
         id: 提现编号
@@ -106,7 +106,7 @@ zh-CN:
           panel: 提现 / 比特币提现
           new:
             title: 比特币提现
-            intro: 选择提现银行并输入帐号和提取金额，完成提交。您提现的银行账户姓名必须和您实名认证的姓名一致。
+            intro: 选择提现地址并输入金额，完成提交。
             default-panel: 历史记录
           create:
             title: 比特币提现

@@ -1,6 +1,7 @@
 en:
   js:
     brand: Peatio
+    submit: Submit
     funds:
       deposit: Deposit
       withdraw: Withdraw
@@ -23,10 +24,11 @@ en:
         to_name: Name
         to_bank_name: Bank Name
         opening_bank_name: Account where created
-        submit: Submit
 
       deposit_btc:
         title: BTC Deposit
+
+      deposit_coin:
         address: Address
         new_address: New Address
         open-wallet: Please use your common wallet services, local wallet, mobile terminal or online wallet, select a payment and send.
@@ -60,7 +62,7 @@ en:
         title: Chinese Yuan Withdraw
         intro: Select the bank to cash withdrawal amount and enter the account number and complete submission.
         intro_2: Your bank account and name must be consistent with the real-name authentication name.
-        attention: ""
+        attention: "Working Hours: 9:00 - 18:00"
         account_name: Account Name
         withdraw_address: Withdraw Address
         balance: Balance
@@ -69,21 +71,12 @@ en:
         fee_explain: About Fee
         min: At least
         withdraw_all: Withdraw all
-        submit: Submit
-
-
-      withdraw_history_cny:
-        title: Withdraw History
-        number: Number
-        withdraw_time: Time
-        withdraw_account: Withdraw Account
-        withdraw_amount: Amount
-        fee: Fee
-        state_and_action: "State/Action"
 
       withdraw_btc:
         title: BTC Withdraw
-        intro: Please fill in the address and amount,then submit the form. It will be confirmed in 10 minutes
+
+      withdraw_coin:
+        intro: Please fill in the address and amount, then submit the form. It will be confirmed in 10 minutes
         label: Label
         balance: Balance
         amount: Amount
@@ -92,16 +85,32 @@ en:
         withdraw_all: Withdraw all
         fee_explain: About Fee
 
-      withdraw_history_btc:
+      withdraw_history:
         title: Withdraw History
         number: Number
         withdraw_time: Time
+        withdraw_account: Withdraw Account
         withdraw_address: Address
+        withdraw_amount: Amount
         actual_amount: Actual Amount
         fee: Fee
+        miner_fee: Fee
         state_and_action: "State/Action"
+        cancel: Cancel
+        no_data: There is no history data
 
-
+        submitting: Submitting
+        submitted: Submitted
+        rejected: Rejected
+        accepted: Accepted
+        suspect: Suspect
+        processing: Processing
+        coin_ready: Coin Ready
+        coin_done: Coin Done
+        done: Done
+        almost_done: Almost Done
+        canceled: Canceld
+        failed: Failed
 
     auth:
       please_active_two_factor: Please set mobile number or google authenticator first.
@@ -114,3 +123,4 @@ en:
       hints:
         app: Google Authenticator will re-generate a new password every thirty seconds, please input timely.
         sms: We'll send a text message to you phone with verify code.
+

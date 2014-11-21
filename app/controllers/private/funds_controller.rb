@@ -13,15 +13,20 @@ module Private
       @withdraw_channels = WithdrawChannel.all
       @currencies = Currency.all.sort
       @deposits = current_user.deposits
-      @accounts = current_user.accounts
+      @accounts = current_user.accounts.enabled
       @withdraws = current_user.withdraws
       @fund_sources = current_user.fund_sources
     end
 
     def gen_address
       current_user.accounts.each do |account|
-        if account.payment_addresses.blank? && account.currency_obj.coin?
+        next if not account.currency_obj.coin?
+
+        if account.payment_addresses.blank?
           account.payment_addresses.create(currency: account.currency)
+        else
+          address = account.payment_addresses.last
+          address.gen_address if address.address.blank?
         end
       end
       render nothing: true

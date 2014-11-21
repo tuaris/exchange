@@ -26,7 +26,7 @@ class Formatter
   market: (base, quote) ->
     "#{base.toUpperCase()}/#{quote.toUpperCase()}"
 
-  market_url: (market, order_id = nil) ->
+  market_url: (market, order_id) ->
     if order_id?
       "/markets/#{market}/orders/#{order_id}"
     else
@@ -96,25 +96,15 @@ class Formatter
     else
       @.fixAsk volume
 
-  t: (key) -> 
+  t: (key) ->
     gon.i18n[key]
 
-  moment.locale('zh-cn', {
-    relativeTime : {
-      future: "%s 后",
-      past:   "%s 前",
-      s:  "秒",
-      m:  "1分钟",
-      mm: "%d 分钟",
-      h:  "1小时",
-      hh: "%d 小时",
-      d:  "1天",
-      dd: "%d 天",
-      M:  "1个月",
-      MM: "%d 月",
-      y:  "1年",
-      yy: "%d 年"
-    }
-  })
+  currency: (value) ->
+    parts = value.split('.')
+    if parts.length == 2
+      "<span class='int'>#{parts[0]}</span>" +
+      "<span class='float'>.#{parts[1]}</span>"
+    else if parts.length == 1
+      "<span class='int'>#{value}</span>"
 
 window.formatter = new Formatter()

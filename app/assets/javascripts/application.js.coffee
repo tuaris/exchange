@@ -9,7 +9,6 @@
 #= require moment
 #= require bignumber
 #= require underscore
-#= require introjs
 #= require ZeroClipboard
 #= require flight.min
 #= require pusher.min
@@ -80,3 +79,5 @@ $ ->
   SignUpUI.attachTo('#new_identity')
   SmsAuthVerifyUI.attachTo('#edit_sms_auth')
   TwoFactorAuth.attachTo('.two-factor-auth-container')
+  TickerUI.attachTo('.currency-item')
+  TickerData.attachTo(document)

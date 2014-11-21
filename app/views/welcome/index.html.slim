@@ -14,6 +14,8 @@
             .form-group
               = f.button :submit, class: 'btn btn-block btn-success', value: t("header.signin")
             p.inline-links
+              = link_to t("header.login_via_weibo"), '/auth/weibo'
+              ' • 
               = link_to '注册新帐号', signup_path
               ' • 
               = link_to "忘了密码?", new_reset_password_path
@@ -22,7 +24,7 @@
       .container: .row
         .col-xs-6.feature-highlight
           span.iconic
-            i.sprite.sprite-lightbulb
+            i.icon-coffee
           h4.heading 费用全免
           p.cnt
             | 2015年4月1日前
@@ -31,7 +33,7 @@
 
         .col-xs-6.feature-highlight
           span.iconic
-            i.sprite.sprite-magnifier
+            i.icon-magnifier
           h4.heading 公开透明
           p.cnt
             | 全站采用开源代码
@@ -40,7 +42,7 @@
 
         .col-xs-6.feature-highlight
           span.iconic
-            i.sprite.sprite-phone
+            i.icon-phone
           h4.heading 全时服务
           p.cnt
             | 客服全天候在线
@@ -49,12 +51,62 @@
 
         .col-xs-6.feature-highlight
           span.iconic
-            i.sprite.sprite-money
+            i.icon-safe
           h4.heading 全准备金
           p.cnt
             | 100% 数字资产保证金
             br
             | 100% 法币资产保证金
+
+  .market
+    .container
+      .section-heading: h2 主要币种实时报价
+      .row
+        .col-md-8
+          .currency-item.theme-btc data-href="/markets/btccny" data-market='btccny'
+            h3.head 
+              span.currency-icon=image_tag "/icon-btc.png", width: "50"
+              'BTC/CNY
+            .currency-ticker
+              table
+                tr.lbl
+                  td 最新成交价
+                  td 24小时成交量
+                  td.arrow rowspan="2": i.fa.fa-angle-right
+                tr.value
+                  td.ticker
+                    .price
+                  td.day-volume
+        .col-md-8
+          .currency-item.theme-btsx data-href="/markets/btsxcny" data-market='btsxcny'
+            h3.head
+              span.currency-icon=image_tag "/icon-bts.png", width: "50"
+              'BTS/CNY
+            .currency-ticker
+              table
+                tr.lbl
+                  td 最新成交价
+                  td 24小时成交量
+                  td.arrow rowspan="2": i.fa.fa-angle-right
+                tr.value
+                  td.ticker
+                    .price
+                  td.day-volume
+        .col-md-8
+          .currency-item.theme-ltc data-href="/markets/ltccny" data-market='ltccny'
+            h3.head
+              span.currency-icon=image_tag "/icon-ltc.png", width: "50"
+              'LTC/CNY
+            .currency-ticker
+              table
+                tr.lbl
+                  td 最新成交价
+                  td 24小时成交量
+                  td.arrow rowspan="2": i.fa.fa-angle-right
+                tr.value
+                  td.ticker
+                    .price
+                  td.day-volume
 
   .testimonials
     .container
@@ -135,6 +187,69 @@
                 .author-info
                   h5.name 贺方昱
                   div.from: a href="http://weibo.com/3050832407" target="_blank"  @贺方昱
+
+  br
+  .public-info
+    .container
+      .row
+        .col-md-14: .blog-posts
+          h3
+            i.fa.fa-newspaper-o
+            '&nbsp;行业文章
+          .blog-post
+            .post-thumb
+              a href="http://blog.peatio.com/archives/52"
+                = image_tag "http://blog.peatio.com/wp-content/uploads/2014/11/Clipboard-Image.png"
+            .post-details
+              h3: a href="http://blog.peatio.com/archives/52" 新版云币网交易平台，如何满足专业交易体验？
+              p 
+                '云币网又升级了，不断迭代的产品，只为最佳体验！ 请不要被新版首页惊艳到，它只是变得更漂亮了！ 遥想2013年6月之前，BTCCHINA的交易界面，让很多人无所适从（请相信云币网所有成员对BTCCHINA...
+          .blog-post
+            .post-thumb
+              a href="http://blog.peatio.com/archives/47"
+                = image_tag "/photo20@2x.jpg"
+            .post-details
+              h3: a href="http://blog.peatio.com/archives/47" 《一切为你而来》
+              p 
+                '貔貅（pí xiū），最早只是作为一套开源代码的开发别名，这个名字产生的过程已经没有人能说清楚了。一群数字货币的理想主义极客，产生出这样一个极客范的名字，并无违和感。貔貅开发的本意是...
+
+        .col-md-9.col-md-offset-1
+          .weibo
+            h3: a href="http://t.yunbi.com"
+              i.fa.fa-weibo
+              '&nbsp;官方微博
+            ul.weibo-list
+              - if @weibo_feeds.blank?
+                li.item: .help-block 微博加载失败，请刷新页面...
+              - else
+                - @weibo_feeds.each do |weibo|
+                  li.item
+                    p= weibo['text']
+                    - if weibo['retweeted_status']
+                      blockquote= auto_link weibo['retweeted_status']['text']
+                    time.timeline-time datetime="2014-11-11 15:45"
+                      span= DateTime.parse(weibo['created_at']).to_s(:short)
+
+  / .public-data
+    h2.small-text 
+      '* 全准备金公开, 查看
+      a href="/exchange_assets" 验证方式
+    .container
+      table
+        tr
+          td.asset-btc
+            span.num ฿1942.02
+            span.currency BTC
+          td.asset-ltc
+            span.num Ł46.69
+            span.currency LTC
+          td.asset-cny
+            span.num ￥1037145.80
+            span.currency CNY
+          td.asset-btsx
+            span.num 37948455
+            span.currency BTSX
+
 
   javascript:
     var didScroll = false;

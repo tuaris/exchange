@@ -2,12 +2,27 @@ class Currency < ActiveYamlBase
   include International
   include ActiveHash::Associations
 
+  field :visible, default: true
+
+  self.singleton_class.send :alias_method, :all_with_invisible, :all
+  def self.all
+    all_with_invisible.select &:visible
+  end
+
+  def self.enumerize
+    all_with_invisible.inject({}) {|hash, i| hash[i.id.to_sym] = i.code; hash }
+  end
+
   def self.hash_codes
-    @codes ||= all.inject({}) {|memo, i| memo[i.code.to_sym] = i.id; memo}
+    @codes ||= all_with_invisible.inject({}) {|memo, i| memo[i.code.to_sym] = i.id; memo}
   end
 
   def self.codes
     @keys ||= all.map &:code
+  end
+
+  def self.ids
+    @ids ||= all.map &:id
   end
 
   def self.assets(code)

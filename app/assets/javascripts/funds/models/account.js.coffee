@@ -16,15 +16,26 @@ class Account extends PeatioModel.Model
     DepositChannel.findBy 'currency', @currency
 
   deposits: ->
-    Deposit.findAllBy 'account_id', @id
+    _.sortBy(Deposit.findAllBy('account_id', @id), (d) -> d.id).reverse()
 
   withdraws: ->
-    Withdraw.findAllBy 'account_id', @id
+    _.sortBy(Withdraw.findAllBy('account_id', @id), (d) -> d.id).reverse()
 
   topDeposits: ->
     @deposits().reverse().slice(0,3)
 
   topWithdraws: ->
     @withdraws().reverse().slice(0,3)
+
+  # TODO: Fetch from server side.
+  accountAvatar: ->
+    if @currency == 'btsx'
+      "/btsx.chongzhi.yunbi.png"
+    else if @currency == "yun"
+      "/yun.chongzhi.yunbi.png"
+    else
+      ""
+
+
 
 window.Account = Account

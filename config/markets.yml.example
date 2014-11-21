@@ -6,6 +6,13 @@
   ask: {fee: 0, currency: btc, fixed: 4}
   sort_order: 1
   #visible: false     # default to true
+- id: ltccny
+  code: 4
+  base_unit: ltc
+  quote_unit: cny
+  sort_order: 1
+  bid: {fee: 0, currency: cny, fixed: 2}
+  ask: {fee: 0, currency: ltc, fixed: 4}
 - id: ptscny
   code: 5
   base_unit: pts
@@ -32,6 +39,7 @@
   bid: {fee: 0, currency: btc, fixed: 8}
   ask: {fee: 0, currency: dog, fixed: 0}
 - id: btsxcny
+  name: BTS/CNY
   code: 20
   base_unit: btsx
   quote_unit: cny
@@ -43,3 +51,4 @@
   quote_unit: cny
   bid: {fee: 0, currency: cny, fixed: 4}
   ask: {fee: 0, currency: dns, fixed: 2}
+  visible: false

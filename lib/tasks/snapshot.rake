@@ -138,6 +138,29 @@ namespace :snapshot do
     end
   end
 
+  desc 'take retroactive snapshot of DNS collapse'
+  task collapse_retroactive: :environment do
+    collapsed_at = Time.utc(2014,10,21,16,26,30)
+    trades = Trade.with_currency(:dnscny).where('created_at <= ?', collapsed_at)
+    bought = Hash.new {|h, k| h[k] = 0}
+
+    trades.each do |t|
+      bought[t.ask_member_id] -= t.volume
+      bought[t.bid_member_id] += t.volume
+    end
+
+    total_buy = 0
+    total_sell = 0
+    bought.to_a.sort_by(&:last).reverse.each do |(id,volume)|
+      m = Member.find id
+      puts "#{m.name} #{m.email} #{volume}"
+      total_buy += volume if volume > 0
+      total_sell += volume if volume < 0
+    end
+    puts "Total buy: #{total_buy}"
+    puts "Total sell: #{total_sell}"
+  end
+
   desc "calculate member active order voulme percentage of ME snapshot"
   task member_volume: :environment do
     ask_orders = Hash.new{|h,k| h[k] = 0}

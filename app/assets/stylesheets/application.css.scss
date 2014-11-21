@@ -10,6 +10,7 @@
 
 @import "font-awesome-sprockets";
 @import 'font-awesome';
+@import 'iconfonts';
 
 @import 'layouts/basic';
 @import 'layouts/header';
@@ -23,6 +24,7 @@
 @import 'features/id_document';
 @import 'features/history';
 @import 'features/funds';
+@import 'features/documents';
 @import 'features/custom';
 @import 'features/sprites';
 @import 'features/docs';
