@@ -41,6 +41,7 @@
     # 某用户在聊天室中发言
     # body, at, nickname
     @on document, 'todamoon:user:send', (e, d) ->
+      d['is_me'] = d['uid'] == gon.current_user['id']
       html = JST["templates/todamoon/receive"](d)
       @select('chatroom').append(html)
 

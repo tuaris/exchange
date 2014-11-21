@@ -176,6 +176,13 @@ $chat-bubble-admin-bg: #B78753;
           border-left-color: $chat-bubble-admin-bg;
           border-top-color: $chat-bubble-admin-bg;
         }
+        &.by-me {
+          .chat-bubble .arrow {
+            border-left-color: transparent;
+            border-right-color: $chat-bubble-admin-bg;
+            border-top-color: $chat-bubble-admin-bg;
+          }
+        }
       }
     }
   }

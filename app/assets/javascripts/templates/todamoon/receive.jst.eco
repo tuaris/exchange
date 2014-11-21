@@ -1,4 +1,4 @@
-<div class="chat-item <%= 'by-admin' if @is_master %>">
+<div class="chat-item <%= 'by-admin' if @is_master %> <%= 'by-me' if @is_me %>">
   <div class="chat-bubble">
     <span class="arrow"></span>
     <blockquote><%= @body %></blockquote>
