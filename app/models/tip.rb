@@ -3,7 +3,7 @@ class Tip < ActiveRecord::Base
 
   extend Enumerize
 
-  enumerize :currency, in: Currency.hash_codes
+  enumerize :currency, in: Currency.enumerize
 
   scope :for_user, ->(u, provider = :weibo) { where payee: u.auth(provider).try(:uid) }
   scope :unsettled, -> { where payee_settled: false }
