@@ -3,7 +3,7 @@
     'send': '.btn-send'
     'box': '#chat-textarea'
     'chatroom': '.chat-body'
-    'close': '.fa-close'
+    'switcher': '#btn-todamoon'
 
   @after 'initialize', ->
     
@@ -66,5 +66,8 @@
       html = JST["templates/todamoon/announcement"](d)
       @select('chatroom').append(html)
 
-    @on @select('close'), 'click', =>
-      @$node.removeClass('expanded')
+    @on @select('switcher'), 'click', =>
+      if @$node.hasClass('expanded')
+        @$node.removeClass('expanded')
+      else
+        @$node.addClass('expanded')

@@ -4,25 +4,37 @@ $chatbox-bg: #1D2F3E;
 $chat-bubble-bg: darken($chatbox-bg, 3%);
 $chat-bubble-me-bg: lighten($chatbox-bg, 35%);
 $chat-bubble-admin-bg: #B78753;
+$todamoon-btn-size: 40px;
 
 .chatbox {
   position: fixed;
-  top: $navbar-height;
+  top: 100%;
   bottom: 1px; 
-  left: -$chatbox-width - 1;
+  left: -$chatbox-width + $todamoon-btn-size + $chatbox-gutter;
+  margin-top: -$todamoon-btn-size - $chatbox-gutter;
   width: $chatbox-width;
   z-index: 910;
-  border: 1px solid lighten($chatbox-bg, 20%);
-  border-left: none;
-  background-color: $chatbox-bg;
   overflow: hidden;
-  @include transition(left 0.1s ease);
+  @include transition(all 0.3s ease);
+  .chatbox-wrap {
+    opacity: 0;
+    @include transition(opacity 0.3s 0.3s ease);
+    > div {
+      padding: $chatbox-gutter;
+    }
+  }
   &.expanded {
     left: 0;
+    top: $navbar-height;
+    margin-top: 0;
+    border: 1px solid lighten($chatbox-bg, 20%);
+    border-left: none;
+    background-color: $chatbox-bg;
+    .chatbox-wrap {
+      opacity: 1;
+    }
   }
-  > div {
-    padding: $chatbox-gutter;
-  }
+  
   .chat-heading {
     color: rgba(255,255,255,.2);
     font-weight: bold;
@@ -185,5 +197,38 @@ $chat-bubble-admin-bg: #B78753;
         }
       }
     }
+  }
+}
+
+#btn-todamoon {
+  position: fixed;
+  z-index: 911;
+  left: 0;
+  bottom: 0;
+  width: $todamoon-btn-size;
+  height: $todamoon-btn-size;
+  margin: $chatbox-gutter;
+  border: none;
+  font-size: 18px;
+  line-height: $todamoon-btn-size;
+  text-align: center;
+  background-color: rgba(29, 47, 62, .8);
+  border-radius: 50%;
+  color: rgba(255,255,255,.5);
+  outline: none;
+  @include transition(transform .5s linear, color .3s linear);
+  &:hover {
+    color: #fff;
+    background-color: rgba(29, 47, 62, 1);
+  }
+}
+.expanded {
+  #btn-todamoon {
+    position: relative;
+    width: auto;
+    height: auto;
+    line-height: 1;
+    background-color: transparent;
+    @include rotate(180deg);
   }
 }
