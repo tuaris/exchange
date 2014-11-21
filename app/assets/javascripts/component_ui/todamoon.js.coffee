@@ -6,7 +6,6 @@
     'switcher': '#btn-todamoon'
 
   @after 'initialize', ->
-    
     # at          通知消息时间戳
     # uid         用户唯一标识
     # nickname    用户昵称
@@ -25,49 +24,57 @@
     # 当前用户加入聊天室
     @on document, 'todamoon:notify:join', ->
       html = JST["templates/todamoon/join"]
-      @select('chatroom').append(html)
+      @append_item(html)
 
     # 当前用户重复加入聊天室（连接已经断开）
     @on document, 'todamoon:notify:rejoin', ->
       html = JST["templates/todamoon/join"]({'type':'rejoin'})
-      @select('chatroom').append(html)
+      @append_item(html)
 
     # 某用户进入聊天室
     # uid, at, nickname
     @on document, 'todamoon:user:enter', (e, d) ->
       html = JST["templates/todamoon/user_enter"](d)
-      @select('chatroom').append(html)
+      @append_item(html)
 
     # 某用户在聊天室中发言
     # body, at, nickname
     @on document, 'todamoon:user:send', (e, d) ->
       d['is_me'] = d['uid'] == gon.current_user['id']
       html = JST["templates/todamoon/receive"](d)
-      @select('chatroom').append(html)
+      @append_item(html)
 
     # 某用户被管理员限制发言
     # limit_at, uid, at, nickname
     @on document, 'todamoon:user:limit_send', (e, d) ->
       d['type'] = 'limit_send'
       html = JST["templates/todamoon/announcement"](d)
-      @select('chatroom').append(html)
+      @append_item(html)
 
     # 当前用户发言过快（未到达发言时限，默认间隔1秒）
     # limit_at
     @on document, 'todamoon:error:excessively_send', (e, d) ->
       d['type'] = 'excessively_send'
       html = JST["templates/todamoon/announcement"](d)
-      @select('chatroom').append(html)
+      @append_item(html)
 
     # 当前用户被管理员禁言
     # limit_at 禁言解除时间戳
     @on document, 'todamoon:error:limit_send', (e, d) ->
       d['type'] = 'forbidden_send'
       html = JST["templates/todamoon/announcement"](d)
-      @select('chatroom').append(html)
+      @append_item(html)
 
     @on @select('switcher'), 'click', =>
       if @$node.hasClass('expanded')
         @$node.removeClass('expanded')
       else
         @$node.addClass('expanded')
+
+  @append_item = (html) ->
+    chatroom = @select('chatroom')
+    chatroom.append(html)
+    posY = chatroom[0].scrollHeight - chatroom.height() - 16 
+    if posY - chatroom.scrollTop() > 0
+      chatroom.getNiceScroll().doScrollPos(0, posY, 200)
+      chatroom.getNiceScroll().doScrollPos(0, posY, 200) #temporary fixing the scroll bug
