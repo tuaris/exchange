@@ -22,8 +22,11 @@
       @select('box').val('')
 
     # 当前用户加入聊天室
-    @on document, 'todamoon:notify:join', ->
-      html = JST["templates/todamoon/join"]
+    @on document, 'todamoon:notify:join', (e, d) ->
+      html = ''
+      if d['history'].length
+        html += JST["templates/todamoon/receive"](h) for h in d['history']
+      html += JST["templates/todamoon/join"]()
       @append_item(html)
 
     # 当前用户重复加入聊天室（连接已经断开）

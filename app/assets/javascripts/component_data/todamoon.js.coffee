@@ -9,7 +9,7 @@
 
         chan.on 'notify:join', (d) ->
           if d.status == 'connected'
-            component.trigger 'todamoon:notify:join'
+            component.trigger 'todamoon:notify:join', d
             component.off document, 'todamoon:cmd:send'
             component.on document, 'todamoon:cmd:send', (event, message) ->
               chan.send('cmd:send', body: message.body)
