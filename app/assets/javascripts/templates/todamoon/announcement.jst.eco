@@ -4,7 +4,7 @@
     <% if @type == 'limit_send': %>
       <span class="user-status is-silent"></span>
       <h5 class="name"><%= @nickname %> 被管理员禁言 <%= @limit_at %></h5>
-      <time><%- formatter.time_ago @at %></time>
+      <time><%- formatter.short_time @at %></time>
     <% else if @type == 'excessively_send': %>
       <span class="user-status is-silent"></span>
       <h5 class="name">你发言过快拉，请休息一会儿</h5>
