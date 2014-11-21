@@ -1,5 +1,15 @@
-<p class='message'>
-  <span class='nickname'><%= @nickname %></span>
-  <span class='at'><%= @at %></span>
-  <span class='body'><%= @body %></span>
-</p>
+<div class="chat-item <%= 'by-admin' if @is_master %>">
+  <div class="chat-bubble">
+    <span class="arrow"></span>
+    <blockquote><%= @body %></blockquote>
+  </div>
+  <div class="author">
+    <h5 class="name">
+      <%= @nickname %>
+      <% if @is_master: %>
+        <span class="label label-primary">admin</span>
+      <% end %> 
+    </h5>
+    <time><%- formatter.time_ago @at %></time>
+  </div>
+</div>

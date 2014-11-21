@@ -1,5 +1,7 @@
-<p class='event'>
-  <span class='nickname'><%= @nickname %></span>
-  <span class='at'><%= @at %></span>
-  <span class='body'>加入聊天</span>
-</p>
+<div class="chat-item">
+  <div class="author">
+    <span class="user-status is-online"></span>
+    <h5 class="name"><%= @nickname %> 加入了聊天室</h5>
+    <time><%- formatter.time_ago @at %></time>
+  </div>
+</div>

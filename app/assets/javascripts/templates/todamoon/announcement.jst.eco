@@ -1,0 +1,17 @@
+<div class="chat-item">
+  <div class="author">
+
+    <% if @type == 'limit_send': %>
+      <span class="user-status is-silent"></span>
+      <h5 class="name"><%= @nickname %> 被管理员禁言 <%= @limit_at %></h5>
+      <time><%- formatter.time_ago @at %></time>
+    <% else if @type == 'excessively_send': %>
+      <span class="user-status is-silent"></span>
+      <h5 class="name">你发言过快拉，请休息一会儿</h5>
+    <% else if @type == 'forbidden_send': %>
+      <span class="user-status is-forbidden"></span>
+      <h5 class="name">你已被禁言 <%= @limit_at %></h5>
+    <% end %>
+
+  </div>
+</div>

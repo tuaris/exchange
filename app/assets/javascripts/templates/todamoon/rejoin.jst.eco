@@ -1,4 +1,0 @@
-<p class='event'>
-  <span class='at'><%= @at %></span>
-  <span class='body body-error'>重复登录，将要退出聊天室。</span>
-</p>

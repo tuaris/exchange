@@ -58,6 +58,9 @@ class Formatter
     m = moment.unix(timestamp)
     "#{m.format("YYYY/MM/DD HH:mm")}"
 
+  time_ago: (timestamp) ->
+    moment.unix(timestamp).fromNow()
+
   mask_fixed_volume: (volume) ->
     @.fixAsk(volume).replace(/\..*/, "<g>$&</g>")
 

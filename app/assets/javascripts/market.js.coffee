@@ -4,6 +4,7 @@
 #= require jquery_ujs
 #= require jquery.mousewheel
 #= require jquery-timing.min
+#= require jquery.nicescroll.min
 #
 #= require bootstrap
 #= require bootstrap-switch.min
@@ -62,3 +63,10 @@ $ ->
   SwitchUI.attachTo('#range_switch, #indicator_switch, #main_indicator_switch')
 
   window.notifier = new Notifier()
+  $('#todamoon .chat-body').niceScroll({
+    cursorcolor: "#0D151B",
+    cursoropacitymax: 0.7,
+    cursorwidth: 6,
+    cursorborder: "1px solid #0D151B",
+    cursorborderradius: "4px",
+  })

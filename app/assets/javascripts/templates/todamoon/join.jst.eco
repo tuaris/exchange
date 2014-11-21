@@ -1,0 +1,13 @@
+<div class="chat-item">
+  <div class="author">
+    <h5 class="name">
+      <% if @type == 'rejoin': %>
+        <span class="user-status is-silent"></span>
+        你重复加入了聊天室，其它登录帐号将被退出
+      <% else: %>
+        <span class="user-status is-online"></span>
+        欢迎！你已加入聊天室
+      <% end %>
+    </h5>
+  </div>
+</div>
