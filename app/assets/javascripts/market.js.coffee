@@ -5,6 +5,7 @@
 #= require jquery.mousewheel
 #= require jquery-timing.min
 #= require jquery.nicescroll.min
+#= require keymaster
 #
 #= require bootstrap
 #= require bootstrap-switch.min
@@ -63,6 +64,7 @@ $ ->
   SwitchUI.attachTo('#range_switch, #indicator_switch, #main_indicator_switch')
 
   window.notifier = new Notifier()
+
   $('#todamoon .chat-body').niceScroll({
     cursorcolor: "#0D151B",
     cursoropacitymax: 0.7,
@@ -70,3 +72,13 @@ $ ->
     cursorborder: "1px solid #0D151B",
     cursorborderradius: "4px",
   })
+
+  key.filter = (event) ->
+    tagName = (event.target || event.srcElement).tagName
+    key.setScope(/^(INPUT|TEXTAREA|SELECT)$/.test(tagName) ? 'input' : 'other')
+    return true
+
+  key '⌘+enter, ctrl+enter', (e) ->
+    if $('#todamoon').hasClass('expanded')
+      $('#todamoon .btn-send').click()
+      e.preventDefault()
