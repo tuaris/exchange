@@ -17,6 +17,8 @@ module Private::HistoryHelper
       'from PTS snapshot'
     when /yun-deliver/
       'Thank you for being with us.'
+    when /yun-interest/
+      I18n.t('private.history.yun-interest')
     else
       link_to txid, t.blockchain_url
     end

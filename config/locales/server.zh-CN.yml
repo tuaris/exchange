@@ -44,6 +44,8 @@ zh-CN:
     withdraw_done: "%{email} 您好，您于%{time}进行了（%{currency}）提现操作，金额为%{amount}。最新余额为：%{balance}。锁定余额为：%{locked}（若非本人操作，请立即联系客服！）【云币网yunbi.com】"
 
   private:
+    history:
+      yun-interest: 资产奖励
     trade:
       trades:
         orders:
