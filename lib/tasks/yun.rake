@@ -15,20 +15,40 @@ namespace :yun do
     v
   end
 
+  def deposit_interest(m, amount, ts)
+    a = m.get_account('yun')
+    ActiveRecord::Base.transaction do
+      d = Deposits::Yun.new(
+        payment_transaction_id: nil,
+        blockid: ts,
+        txid: "yun-interest-#{ts}-#{m.id}",
+        amount: amount,
+        member: m,
+        account: a,
+        currency: 'yun',
+        memo: 101,
+        aasm_state: :accepted
+      )
+      d.save!(validate: false)
+      a.plus_funds amount, reason: Account::INTEREST
+    end
+  end
+
   desc "deliver interest"
   task interest: :environment do
     blacklist = ["forex@peatio.com", "forex-deep@peatio.com", "btsx-forex@peatio.com"]
     prices = Currency.market_values
+
     from = Time.now.beginning_of_day
+    ts = Time.now.strftime "%Y%m%d"
 
     Member.find_each do |m|
       next if blacklist.include?(m.email)
 
-      a = m.get_account('yun')
-      unless a.versions.with_reason(Account::INTEREST).where('created_at >= ?', from).exists?
+      unless m.deposits.with_currency('yun').where(blockid: ts).exists?
         amount = (accounts_value(m, prices) - changes_today(m, prices)) / 10
         if amount >= 1
-          a.plus_funds amount, reason: Account::INTEREST
+          deposit_interest m, amount, ts
           puts "Member##{m.id} >> deliver interest #{amount} YUN."
         else
           puts "Member##{m.id} >> not enough assets, skip."
