@@ -29,6 +29,22 @@ class Currency < ActiveYamlBase
     find_by_code(code)[:assets]
   end
 
+  def self.market_values(denomination_unit='cny')
+    map = {}
+    all.each do |currency|
+      case currency.code
+      when denomination_unit
+        map[denomination_unit] = 1
+      when 'yun'
+        map['yun'] = 0
+      else
+        map[currency.code] = Global["#{currency.code}#{denomination_unit}"].ticker[:last]
+      end
+    end
+    map['dns'] = 0.01875*map['btsx']
+    map
+  end
+
   def api
     raise unless coin?
     CoinRPC[code]

@@ -59,18 +59,7 @@ namespace :stats do
 
   desc "user rank by daily average asset value"
   task vip: :environment do
-    prices = {}
-    Currency.all.each do |currency|
-      case currency.code
-      when 'cny'
-        prices['cny'] = 1
-      when 'yun'
-        prices['yun'] = 0
-      else
-        prices[currency.code] = Global["#{currency.code}cny"].ticker[:last]
-      end
-    end
-    prices['dns'] = 0.01875*prices['btsx']
+    prices = Currency.market_values
 
     user_value = []
     count = 0
@@ -88,17 +77,7 @@ namespace :stats do
 
   desc "user rank by daily average asset value"
   task user_rank: :environment do
-    prices = {}
-    Currency.all.each do |currency|
-      case currency.code
-      when 'cny'
-        prices['cny'] = 1
-      when 'yun'
-        prices['yun'] = 0
-      else
-        prices[currency.code] = Global["#{currency.code}cny"].ticker[:last]
-      end
-    end
+    prices = Currency.market_values
 
     from = Time.new(2014, 9, 20).end_of_day
     to   = Time.now.end_of_day
