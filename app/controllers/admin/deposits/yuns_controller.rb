@@ -7,6 +7,7 @@ module Admin
         start_at = DateTime.now.ago(60 * 60 * 24)
         @yuns = @yuns.includes(:member).
           where('created_at > ?', start_at).
+          where('txid NOT LIKE ?', 'yun-interest-%').
           order('id DESC')
         @pending_payments = PaymentTransaction::Yun.with_aasm_state(:unconfirm).order('id DESC')
       end
