@@ -32,6 +32,13 @@ GIT
       mina (~> 0.3.0)
       rest-client (~> 1.6.7)
 
+GIT
+  remote: https://github.com/peatio/tip_engine
+  revision: 9ea9ddd8398713d61b3ac942e381b6361eeea0b3
+  specs:
+    tip_engine (0.0.1)
+      rails (~> 4.0.2)
+
 GEM
   remote: http://ruby.taobao.org/
   specs:
@@ -546,6 +553,7 @@ DEPENDENCIES
   slim-rails
   thread (~> 0.1.4)
   timecop
+  tip_engine!
   twilio-ruby (~> 3.11)
   uglifier
   unread!

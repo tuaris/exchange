@@ -9,25 +9,25 @@ footer.global-footer: .container: .row
     ul.footer-nav
       li
         i.fa.fa-cloud.fa-fw
-        = link_to t('footer.about'), document_path('about')
+        = link_to t('footer.about'), main_app.document_path('about')
       li
         i.fa.fa-phone.fa-fw
-        = link_to t('footer.contact'), document_path('contact')
+        = link_to t('footer.contact'), main_app.document_path('contact')
       li
         i.fa.fa-tasks.fa-fw
-        = link_to t('footer.terms_and_service'), document_path('terms_and_service')
+        = link_to t('footer.terms_and_service'), main_app.document_path('terms_and_service')
       li
         i.fa.fa-question-circle.fa-fw
-        = link_to t('footer.questions'), document_path('questions')
+        = link_to t('footer.questions'), main_app.document_path('questions')
 
   .col-md-3
     ul.footer-nav
       li
         i.fa.fa-money.fa-fw
-        = link_to t('footer.price'), document_path('price')
+        = link_to t('footer.price'), main_app.document_path('price')
       li
         i.fa.fa-bank.fa-fw
-        = link_to t('footer.liability_proof'), document_path('liability_proof')
+        = link_to t('footer.liability_proof'), main_app.document_path('liability_proof')
       li
         i.fa.fa-code.fa-fw
         = link_to t('footer.api'), '/documents/api_v2'
