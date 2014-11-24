@@ -46,7 +46,7 @@ namespace :yun do
       next if blacklist.include?(m.email)
 
       unless m.deposits.with_currency('yun').where(blockid: ts).exists?
-        amount = (accounts_value(m, prices) - changes_today(m, prices)) / 10
+        amount = ((accounts_value(m, prices) - changes_today(m, prices)) / 10).floor
         if amount >= 1
           deposit_interest m, amount, ts
           puts "Member##{m.id} >> deliver interest #{amount} YUN."
