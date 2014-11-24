@@ -11,6 +11,9 @@
     <% else if @type == 'forbidden_send': %>
       <span class="user-status is-forbidden"></span>
       <h5 class="name">你已被禁言 <%= @limit_at %></h5>
+    <% else if @type == 'nickname_changed': %>
+      <span class="user-status is-online"></span>
+      <h5 class="name"><strong><%= @old_nickname %></strong> 已改名为 <strong><%= @nickname %></strong></h5>
     <% end %>
 
   </div>

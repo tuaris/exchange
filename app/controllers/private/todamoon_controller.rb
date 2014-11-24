@@ -33,15 +33,13 @@ module Private
       @member = current_user
 
       if @member.update_attributes(member_chat_params)
-        Rails.logger.debug "SET NICKNAME @member.nickname_for_chatroom"
         nickname = @member.nickname_for_chatroom
         signature = sign(nickname)
 
         render :json => { nickname: nickname, signature: signature }
       else
-        Rails.logger.debug "SET NICKNAME ERROR"
         #TODO: nickname_for_chatroom validation and error pop.
-        render js: {error: 'invalid chart'}, status: 500
+        render js: '非法字符', status: 500
       end
     end
 

@@ -82,8 +82,10 @@
     # nickname 设置后昵称
     @on document, 'todamoon:user:set', (e, d) ->
       console.log 'todamoon:user:set', d
-      #html = '<div class="alert alert-success"><p>昵称设置成功</p></div>'
-      #@select('chat-top').html(html).find('.alert').delay(2500).fadeOut()
+      d['type'] = 'nickname_changed'
+      html = JST["templates/todamoon/announcement"](d)
+      @append_item(html)
+      
 
     @on @select('switcher'), 'click', =>
       if @$node.hasClass('expanded')
@@ -93,8 +95,11 @@
 
     @on @select('nickname-form'), 'ajax:success', (e, d) ->
       @trigger document, 'todamoon:cmd:set', d
+      html = '<div class="alert alert-success"><p>昵称设置成功</p></div>'
+      @select('chat-top').html(html).find('.alert').delay(2500).fadeOut()
 
     @on @select('nickname-form'), 'ajax:error', (e, d) ->
+      console.log d
       html = "<div class='alert alert-danger'><p>#{d.responseText}, 请重试</p></div>"
       @select('chat-top').append(html).find('.alert').delay(2500).fadeOut()
 
