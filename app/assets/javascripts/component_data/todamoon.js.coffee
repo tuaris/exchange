@@ -21,6 +21,9 @@
         chan.on "user:enter", (d) ->
           component.trigger 'todamoon:user:enter', d
 
+        chan.on "user:leave", (d) ->
+          component.trigger 'todamoon:user:leave', d
+
         chan.on "user:send", (d) ->
           component.trigger 'todamoon:user:send', d
 
