@@ -22,7 +22,7 @@ class MembersController < ApplicationController
     if @member.update_attributes(member_chat_params)
       render nothing: true, status: 200
     else
-      render nothing: true, status: 500
+      render js: '非法字符', status: 500 #TODO: nickname_for_chatroom validation and error pop.
     end
   end
 

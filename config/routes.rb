@@ -21,7 +21,11 @@ Peatio::Application.routes.draw do
   get '/auth/failure' => 'sessions#failure', :as => :failure
   match '/auth/:provider/callback' => 'sessions#create', via: [:get, :post]
 
-  resource :member, :only => [:edit, :update, :set_nickname_for_chatroom]
+  resource :member, :only => [:edit, :update, :set_nickname_for_chatroom] do
+    member do
+      patch :set_nickname_for_chatroom
+    end
+  end
   resource :identity, :only => [:edit, :update]
 
   namespace :verify do

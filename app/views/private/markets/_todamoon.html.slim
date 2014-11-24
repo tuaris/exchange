@@ -1,6 +1,13 @@
 #todamoon.chatbox
   a#btn-todamoon.hand-point.pull-right href="javascript:void(0);": i.fa.fa-rocket
   .chatbox-wrap
+    .chat-top
+      -if @member && @member['nickname_for_chatroom'].blank?
+        = form_for @member, url: set_nickname_for_chatroom_member_path, :remote => true, html: { class: "chatroom-form", id: "set-nickname-form" } do |f|
+          label 请设置你的聊天室昵称
+          = f.text_field :nickname_for_chatroom
+          button.btn.btn-sm.btn-default type="submit" = t('.save')
+
     .chat-heading
       span = t('.title')
     .chat-body
@@ -12,4 +19,6 @@
           button type="submit" class="btn btn-sm btn-primary pull-right btn-send" = t('.send')
           a href="javascript:void(0)" class="btn btn-sm btn-link btn-icon" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Add Emoji": i class="fa fa-smile-o"
           a href="javascript:void(0)" class="btn btn-sm btn-link btn-icon" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Send Yun": i class="fa fa-cloud"
+          -if @is_chatroom_master
+            a href="javascript:void(0)" class="btn btn-sm btn-link btn-icon" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Admin": i class="fa fa-cog"
       = render partial: 'mask'

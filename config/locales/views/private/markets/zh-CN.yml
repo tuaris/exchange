@@ -137,5 +137,6 @@ zh-CN:
       chat:
         title: 聊天频道
       todamoon:
+        save: 保存
         title: 聊天室
         send: 发布

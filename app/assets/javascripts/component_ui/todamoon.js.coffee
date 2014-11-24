@@ -4,6 +4,8 @@
     'box': '#chat-textarea'
     'chatroom': '.chat-body'
     'switcher': '#btn-todamoon'
+    'nickname-form' : '#set-nickname-form'
+    'chat-top' : '.chat-top'
 
   @after 'initialize', ->
     # at          通知消息时间戳
@@ -79,6 +81,16 @@
         @$node.removeClass('expanded')
       else
         @$node.addClass('expanded')
+
+    @on @select('nickname-form'), 'ajax:success', (e, d) ->
+      ToDaMoonData.teardownAll()
+      ToDaMoonData.attachTo(document)
+      html = '<div class="alert alert-success"><p>昵称设置成功</p></div>'
+      @select('chat-top').html(html).find('.alert').delay(2500).fadeOut()
+
+    @on @select('nickname-form'), 'ajax:error', (e, d) ->
+      html = "<div class='alert alert-danger'><p>#{d.responseText}, 请重试</p></div>"
+      @select('chat-top').append(html).find('.alert').delay(2500).fadeOut()
 
   @append_item = (html) ->
     chatroom = @select('chatroom')
