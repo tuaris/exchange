@@ -18,6 +18,7 @@ class AccountVersion < ActiveRecord::Base
     Account::WITHDRAW_LOCK => 800,
     Account::WITHDRAW_UNLOCK => 810,
     Account::DEPOSIT => 1000,
+    Account::INTEREST => 1001,
     Account::WITHDRAW => 2000,
     Account::TIP => 3000,
     Account::REFUND => 3001,

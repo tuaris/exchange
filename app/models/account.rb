@@ -1,6 +1,8 @@
 class Account < ActiveRecord::Base
   include Currencible
 
+  ZERO = 0.to_d
+
   FIX = :fix
   UNKNOWN = :unknown
   STRIKE_ADD = :strike_add
@@ -14,11 +16,11 @@ class Account < ActiveRecord::Base
   WITHDRAW_UNLOCK = :withdraw_unlock
   DEPOSIT = :deposit
   WITHDRAW = :withdraw
-  ZERO = 0.to_d
   TIP = :tip
   REFUND = :refund
   ESCROW_IN = :escrow_in
   ESCROW_OUT = :escrow_out
+  INTEREST = :interest
 
   FUNS = {:unlock_funds => 1, :lock_funds => 2, :plus_funds => 3, :sub_funds => 4, :unlock_and_sub_funds => 5}
 

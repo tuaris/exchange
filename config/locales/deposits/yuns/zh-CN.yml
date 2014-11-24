@@ -46,6 +46,8 @@ zh-CN:
         index:
           accept: 立即充值
           accept_confirm: 确定立刻确认此充值？
+          yun-rewards: "每日云朵奖励统计 %{date}"
+          yun-interest: 资产奖励
 
   private:
     deposits:

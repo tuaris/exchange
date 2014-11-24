@@ -45,6 +45,8 @@ en:
     withdraw_done: "Hi %{email}, the request of your withdrawal is complete."
 
   private:
+    history:
+      yun-interest: Balance reward
     trade:
       trades:
         orders:

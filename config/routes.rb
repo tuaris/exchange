@@ -15,6 +15,8 @@ Peatio::Application.routes.draw do
     mount MailsViewer::Engine => '/mails'
   end
 
+  mount TipEngine::Engine => '/tips'
+
   get '/signin' => 'sessions#new', :as => :signin
   get '/signup' => 'identities#new', :as => :signup
   get '/signout' => 'sessions#destroy', :as => :signout
