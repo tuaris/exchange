@@ -36,7 +36,7 @@ namespace :yun do
 
   desc "deliver interest"
   task interest: :environment do
-    blacklist = ["forex@peatio.com", "forex-deep@peatio.com", "btsx-forex@peatio.com"]
+    blacklist = ["forex@peatio.com", "forex-deep@peatio.com", "btsx-forex@peatio.com", 'lixiaolai@gmail.com']
     prices = Currency.market_values
 
     from = Time.now.beginning_of_day
