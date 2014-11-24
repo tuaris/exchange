@@ -55,6 +55,10 @@ $todamoon-btn-size: 40px;
       background-color: $chatbox-bg;
       margin-top: $chatbox-gutter;
     }
+    .mask {
+      background-color: rgba(29, 47, 62, .8);
+      padding-top: 50px;
+    }
   }
   .chat-post-form {
     textarea {
