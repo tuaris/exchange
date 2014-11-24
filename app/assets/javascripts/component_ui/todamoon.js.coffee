@@ -87,6 +87,11 @@
       @append_item(html)
       
 
+    # 获取房间信息
+    # room_size 房间人数
+    @on document, 'todamoon:room:info', (e, d) ->
+      console.log 'todamoon:room:info', d
+
     @on @select('switcher'), 'click', =>
       if @$node.hasClass('expanded')
         @$node.removeClass('expanded')

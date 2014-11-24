@@ -35,6 +35,9 @@
         chan.on "user:set", (d) ->
           component.trigger 'todamoon:user:set', d
 
+        chan.on "room:info", (d) ->
+          component.trigger 'todamoon:room:info', d
+
         chan.on "error:excessively_send", (d) ->
           component.trigger 'todamoon:error:excessively_send', d
 
