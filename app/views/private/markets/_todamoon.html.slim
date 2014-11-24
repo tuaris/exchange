@@ -17,8 +17,8 @@
         textarea#chat-textarea.box.form-control placeholder="发表评论"
         .clearfix
           button type="submit" class="btn btn-sm btn-primary pull-right btn-send" = t('.send')
-          a href="javascript:void(0)" class="btn btn-sm btn-link btn-icon" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Add Emoji": i class="fa fa-smile-o"
-          a href="javascript:void(0)" class="btn btn-sm btn-link btn-icon" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Send Yun": i class="fa fa-cloud"
+          a.hide href="javascript:void(0)" class="btn btn-sm btn-link btn-icon" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Add Emoji": i class="fa fa-smile-o"
+          a.hide href="javascript:void(0)" class="btn btn-sm btn-link btn-icon" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Send Yun": i class="fa fa-cloud"
           -if @is_chatroom_master
             a href="javascript:void(0)" class="btn btn-sm btn-link btn-icon" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Admin": i class="fa fa-cog"
       = render partial: 'mask'
