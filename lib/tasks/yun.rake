@@ -21,7 +21,7 @@ namespace :yun do
       d = Deposits::Yun.new(
         payment_transaction_id: nil,
         blockid: ts,
-        txid: "yun-interest-#{ts}-#{m.id}",
+        txid: "#{Deposit::PREFIXS[:yun][:interest]}-#{ts}-#{m.id}",
         amount: amount,
         member: m,
         account: a,

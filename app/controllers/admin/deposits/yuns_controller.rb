@@ -4,13 +4,14 @@ module Admin
       load_and_authorize_resource :class => '::Deposits::Yun'
 
       def index
+        prefix = Deposit::PREFIXS[:yun][:interest]
         start_at = DateTime.now.ago(60 * 60 * 24)
         @interest = @yuns.where('created_at > ?', Time.now.beginning_of_day).
-          where('txid LIKE ?', 'yun-interest-%').
+          where('txid LIKE ?', "#{prefix}-%").
           sum(:amount)
         @yuns = @yuns.includes(:member).
           where('created_at > ?', start_at).
-          where('txid NOT LIKE ?', 'yun-interest-%').
+          where('txid NOT LIKE ?', "#{prefix}-%").
           order('id DESC')
         @pending_payments = PaymentTransaction::Yun.with_aasm_state(:unconfirm).order('id DESC')
       end

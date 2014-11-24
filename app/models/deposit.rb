@@ -1,6 +1,16 @@
 class Deposit < ActiveRecord::Base
   STATES = [:submitting, :cancelled, :submitted, :rejected, :accepted, :checked, :warning]
 
+  PREFIXS = {
+    bts: {
+      pts_snapshot: 'genesis-'
+    },
+    yun: {
+      deliver: 'yun-deliver',
+      interest: 'yun-interest'
+    }
+  }.freeze
+
   extend Enumerize
 
   include AASM
