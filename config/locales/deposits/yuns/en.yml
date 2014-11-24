@@ -41,6 +41,8 @@ en:
         index:
           accept: Accept
           accept_confirm: Confirm deposit?
+          yun-rewards: "Daily YUN Rewards %{date}"
+          yun-interest: "Assets Reward"
 
   private:
     deposits:

@@ -5,6 +5,9 @@ module Admin
 
       def index
         start_at = DateTime.now.ago(60 * 60 * 24)
+        @interest = @yuns.where('created_at > ?', Time.now.beginning_of_day).
+          where('txid LIKE ?', 'yun-interest-%').
+          sum(:amount)
         @yuns = @yuns.includes(:member).
           where('created_at > ?', start_at).
           where('txid NOT LIKE ?', 'yun-interest-%').

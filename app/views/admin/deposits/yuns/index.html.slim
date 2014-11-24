@@ -1,4 +1,12 @@
 .panel.panel-primary
+  .panel-heading: span = t('.yun-rewards', date: Time.now.beginning_of_day.strftime("%Y-%m-%d"))
+  table.table.table-condensed.table-hover
+    tbody
+      tr
+        td = t('.yun-interest')
+        td = @interest
+
+.panel.panel-primary
   .panel-heading: span = t('.pending-payments')
   = table_for(@pending_payments, class: 'table table-condensed table-hover', model: ::PaymentTransaction::Yun) do |pt|
     - pt.column :txid do |x|
