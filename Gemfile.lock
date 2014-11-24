@@ -34,10 +34,10 @@ GIT
 
 GIT
   remote: https://github.com/peatio/tip_engine
-  revision: 9ea9ddd8398713d61b3ac942e381b6361eeea0b3
+  revision: fd66f57ce95fce30c78a33c6aff8c929dfb0380a
   specs:
     tip_engine (0.0.1)
-      rails (~> 4.0.2)
+      rails (= 4.0.2)
 
 GEM
   remote: http://ruby.taobao.org/
