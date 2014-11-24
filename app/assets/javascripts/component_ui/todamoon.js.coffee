@@ -76,6 +76,15 @@
       html = JST["templates/todamoon/announcement"](d)
       @append_item(html)
 
+    # 某用户设置昵称
+    # uid 用户标识
+    # old_nickname 设置前昵称
+    # nickname 设置后昵称
+    @on document, 'todamoon:user:set', (e, d) ->
+      console.log 'todamoon:user:set', d
+      #html = '<div class="alert alert-success"><p>昵称设置成功</p></div>'
+      #@select('chat-top').html(html).find('.alert').delay(2500).fadeOut()
+
     @on @select('switcher'), 'click', =>
       if @$node.hasClass('expanded')
         @$node.removeClass('expanded')
@@ -83,10 +92,7 @@
         @$node.addClass('expanded')
 
     @on @select('nickname-form'), 'ajax:success', (e, d) ->
-      ToDaMoonData.teardownAll()
-      ToDaMoonData.attachTo(document)
-      html = '<div class="alert alert-success"><p>昵称设置成功</p></div>'
-      @select('chat-top').html(html).find('.alert').delay(2500).fadeOut()
+      @trigger document, 'todamoon:cmd:set', d
 
     @on @select('nickname-form'), 'ajax:error', (e, d) ->
       html = "<div class='alert alert-danger'><p>#{d.responseText}, 请重试</p></div>"

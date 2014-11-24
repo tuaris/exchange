@@ -16,22 +16,8 @@ class MembersController < ApplicationController
     end
   end
 
-  def set_nickname_for_chatroom
-    @member = current_user
-
-    if @member.update_attributes(member_chat_params)
-      render nothing: true, status: 200
-    else
-      render js: '非法字符', status: 500 #TODO: nickname_for_chatroom validation and error pop.
-    end
-  end
-
   private
   def member_params
     params.required(:member).permit(:display_name)
-  end
-
-  def member_chat_params
-    params.required(:member).permit(:nickname_for_chatroom)
   end
 end

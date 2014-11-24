@@ -2,8 +2,8 @@
   a#btn-todamoon.hand-point.pull-right href="javascript:void(0);": i.fa.fa-rocket
   .chatbox-wrap
     .chat-top
-      -if @member && @member['nickname_for_chatroom'].blank?
-        = form_for @member, url: set_nickname_for_chatroom_member_path, :remote => true, html: { class: "chatroom-form", id: "set-nickname-form" } do |f|
+      -if @member && @member.need_set_nickname?
+        = form_for @member, url: set_nickname_path, :remote => true, html: { class: "chatroom-form", id: "set-nickname-form" } do |f|
           label 请设置你的聊天室昵称
           = f.text_field :nickname_for_chatroom
           button.btn.btn-sm.btn-default type="submit" = t('.save')

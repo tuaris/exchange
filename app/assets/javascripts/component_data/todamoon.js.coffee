@@ -13,6 +13,8 @@
             component.off document, 'todamoon:cmd:send'
             component.on document, 'todamoon:cmd:send', (event, message) ->
               chan.send('cmd:send', body: message.body)
+            component.on document, 'todamoon:cmd:set', (event, message) ->
+              chan.send('cmd:set', message)
           else if d.status == 'reconnected'
             component.trigger 'todamoon:notify:rejoin'
             chan.socket.close()
@@ -29,6 +31,9 @@
 
         chan.on "user:limit_send", (d) ->
           component.trigger 'todamoon:user:limit_send', d
+          
+        chan.on "user:set", (d) ->
+          component.trigger 'todamoon:user:set', d
 
         chan.on "error:excessively_send", (d) ->
           component.trigger 'todamoon:error:excessively_send', d

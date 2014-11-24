@@ -21,11 +21,7 @@ Peatio::Application.routes.draw do
   get '/auth/failure' => 'sessions#failure', :as => :failure
   match '/auth/:provider/callback' => 'sessions#create', via: [:get, :post]
 
-  resource :member, :only => [:edit, :update, :set_nickname_for_chatroom] do
-    member do
-      patch :set_nickname_for_chatroom
-    end
-  end
+  resource :member, :only => [:edit, :update]
   resource :identity, :only => [:edit, :update]
 
   namespace :verify do
@@ -121,6 +117,7 @@ Peatio::Application.routes.draw do
 
     post '/pusher/auth', to: 'pusher#auth'
     post '/todamoon/auth', to: 'todamoon#auth'
+    patch '/todamoon/nickname', to: 'todamoon#nickname', as: :set_nickname
 
     resources :tickets, only: [:index, :new, :create, :show] do
       member do

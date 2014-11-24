@@ -242,6 +242,10 @@ class Member < ActiveRecord::Base
     self['nickname_for_chatroom'] || nickname || "##{memo}"
   end
 
+  def need_set_nickname?
+    !(self['nickname_for_chatroom'] || nickname)
+  end
+
   private
 
   def generate_sn
