@@ -78,7 +78,7 @@ $ ->
     key.setScope(/^(INPUT|TEXTAREA|SELECT)$/.test(tagName) ? 'input' : 'other')
     return true
 
-  key '⌘+enter, ctrl+enter', (e) ->
+  key 'enter', (e) ->
     if $('#todamoon').hasClass('expanded')
       $('#todamoon .btn-send').click()
       e.preventDefault()
