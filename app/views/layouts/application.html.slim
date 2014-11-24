@@ -14,7 +14,7 @@ html lang="en"
     = csrf_meta_tags
 
   body id='#{body_id}' data-lang="#{locale_name}"
-    #alert-topbar= render 'shared/alert'
+    #alert-topbar=render 'shared/alert'
 
     #wrap
       - if content_for?(:header)

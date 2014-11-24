@@ -8,7 +8,7 @@
       - unless current_user
         .col-md-7.col-md-offset-1: .users-form-container
           = simple_form_for Identity.new, url: '/auth/identity/callback', method: :post, wrapper: :login do |f|
-            .flash-messages
+            =render 'shared/flash'
             = f.input :email, input_html: {name: 'auth_key', autofocus: 'true'}, label: t('.email'), placeholder: '账户邮箱'
             = f.input :password, as: 'password', input_html: {name: 'password'}, label: t('.password'), placeholder: '账户密码', hint: ''
             .form-group

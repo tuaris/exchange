@@ -35,8 +35,15 @@ html, body {
   height: 100%;
 }
 
-#alert-topbar .alert {
-  margin-bottom: 0;
+#alert-topbar {
+  position: absolute;
+  width: 100%;
+  z-index: 9999;
+  text-align: center;
+  .alert {
+    margin-bottom: 0;
+    border-radius: 0;
+  }
 }
 
 #wrap {
