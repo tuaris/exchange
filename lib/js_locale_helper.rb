@@ -9,12 +9,9 @@ module JsLocaleHelper
   end
 
   def self.output_locale(locale=:en)
-    puts "*"*100
-    p locale
     result = ""
     result << "I18n.translations = #{load_yaml(locale).to_json};\n"
     result << "I18n.locale = '#{locale}';\n"
-    p result
     result
   end
 
