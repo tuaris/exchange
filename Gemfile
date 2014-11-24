@@ -79,6 +79,7 @@ gem 'seventeen_mon', github: 'mycolorway/SeventeenMon'
 
 gem 'weibo_2'
 gem 'rails_autolink'
+gem 'tip_engine', git: 'https://github.com/peatio/tip_engine'
 
 group :development, :test do
   gem 'factory_girl_rails'
