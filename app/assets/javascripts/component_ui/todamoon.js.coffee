@@ -91,7 +91,7 @@
     # 获取房间信息
     # room_size 房间人数
     @on document, 'todamoon:room:info', (e, d) ->
-      @select('online-peers').fadeOut().text(d.room_size).fadeIn()
+      @select('online-peers').fadeOut().text(d.room_size+'人').fadeIn()
 
     @on @select('switcher'), 'click', =>
       if @$node.hasClass('expanded')
