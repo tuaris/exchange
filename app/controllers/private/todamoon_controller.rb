@@ -7,7 +7,7 @@ module Private
     def auth
       if current_user
         uid = current_user.id
-        nickname = current_user.nickname_for_chatroom
+        nickname = current_user.chatroom_nickname
         is_master = (ENV['CHAT_MASTERS'] || '').split(',').include?(current_user.email)
 
         # 应用端使用聊天服务器同样的密钥对关键数据进行加密
@@ -33,7 +33,7 @@ module Private
       @member = current_user
 
       if @member.update_attributes(member_chat_params)
-        nickname = @member.nickname_for_chatroom
+        nickname = @member.chatroom_nickname
         signature = sign(nickname)
 
         render :json => { nickname: nickname, signature: signature }

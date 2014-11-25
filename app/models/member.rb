@@ -238,12 +238,12 @@ class Member < ActiveRecord::Base
     PaymentAddress.construct_memo(self)
   end
 
-  def nickname_for_chatroom
-    self['nickname_for_chatroom'] || nickname || "##{memo}"
+  def chatroom_nickname
+    nickname_for_chatroom || nickname || "##{memo}"
   end
 
   def need_set_nickname?
-    !(self['nickname_for_chatroom'] || nickname)
+    !(nickname_for_chatroom || nickname)
   end
 
   private

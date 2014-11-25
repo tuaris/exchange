@@ -162,7 +162,7 @@ class ApplicationController < ActionController::Base
       gon.current_user = { 
         id: current_user.id,
         sn: current_user.sn,
-        nickname: current_user.nickname_for_chatroom
+        nickname: current_user.chatroom_nickname
       }
 
       gon.accounts = current_user.accounts.inject({}) do |memo, account|
