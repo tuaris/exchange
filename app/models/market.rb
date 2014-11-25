@@ -11,8 +11,6 @@
 class Market < ActiveYamlBase
   field :visible, default: true
 
-  attr :name
-
   self.singleton_class.send :alias_method, :all_with_invisible, :all
   def self.all
     all_with_invisible.select &:visible
@@ -26,7 +24,7 @@ class Market < ActiveYamlBase
     super
 
     raise "missing base_unit or quote_unit: #{args}" unless base_unit.present? && quote_unit.present?
-    @name = self[:name] || "#{base_unit}/#{quote_unit}".upcase
+    self[:name] ||= "#{base_unit}/#{quote_unit}".upcase
   end
 
   def latest_price

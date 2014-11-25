@@ -67,7 +67,7 @@ feature 'show account info', js: true do
     login identity
     click_on I18n.t('header.market')
 
-    new_window=page.driver.browser.window_handles.last 
+    new_window=page.driver.browser.window_handles.last
     page.within_window new_window do
       page.find('.asks tr[data-order="0"]').trigger 'click'
       expect(find('#order_bid_price').value).to be_d ask_order.price
