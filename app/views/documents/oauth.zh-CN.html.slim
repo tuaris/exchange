@@ -1,13 +1,13 @@
 .jumbotron
-  h2 貔貅OAuth认证接口
+  h2 云币网OAuth认证接口
 
 .panel.panel-default
   .panel-heading
     h3 OAuth认证
 
   .panel-body
-    p OAuth（开放授权）是一个开放标准。OAuth允许用户让第三方应用访问该用户在貔貅上存储的私密的资源（如照片，视频，联系人列表），而无需将用户名和密码提供给第三方应用。
-    p 貔貅OAuth认证允许用户将一个受限制的令牌(token)授权给第三方应用。第三方应用可以通过令牌访问用户在貔貅上的资源，例如用户资料，交易记录，挂单买卖。
+    p OAuth（开放授权）是一个开放标准。OAuth允许用户让第三方应用访问该用户在云币网上存储的私密的资源（如照片，视频，联系人列表），而无需将用户名和密码提供给第三方应用。
+    p 云币网OAuth认证允许用户将一个受限制的令牌(token)授权给第三方应用。第三方应用可以通过令牌访问用户在云币网上的资源，例如用户资料，交易记录，挂单买卖。
     p OAuth是一个涉及到资源网站(云币网), 第三方应用, 以及用户三方的流程。本文档的目标读者是第三方应用的开发人员, 描述了资源网站(云币网)与第三方应用之间的交互流程。
 
 .panel.panel-default
@@ -15,7 +15,7 @@
     h3 OAuth Client注册
 
   .panel-body
-    p 第三方应用必须事先在貔貅注册，获取client id/secret之后才能使用貔貅OAuth接口。具体步骤请通过网站下方联系方式联系管理员。
+    p 第三方应用必须事先在云币网注册，获取client id/secret之后才能使用云币网OAuth接口。具体步骤请通过网站下方联系方式联系管理员。
     p 注册之后您将获得client id/secret, 请妥善保管。
 
 .panel.panel-default
@@ -23,10 +23,10 @@
     h3 发起授权请求
 
   .panel-body
-    p 当用户想要授权您的应用访问貔貅时，应用生成如下地址交给用户访问(通过外置或者内嵌浏览器):
+    p 当用户想要授权您的应用访问云币网时，应用生成如下地址交给用户访问(通过外置或者内嵌浏览器):
     pre: code
       | GET https://yunbi.com/oauth/authorize?client_id=&lt;your_client_id&gt;&redirect_uri=&lt;registered_rediret_uri&gt;&response_type=code&scope=&lt;scopes&gt;
-    p 'response_type'参数必须是'code'. 'redirect_uri'必须和您注册应用时提供的redirect_uri相同. 'scope'参数代表您的应用想要获得的授权。目前貔貅支持三种授权:
+    p 'response_type'参数必须是'code'. 'redirect_uri'必须和您注册应用时提供的redirect_uri相同. 'scope'参数代表您的应用想要获得的授权。目前云币网支持三种授权:
     ul
       li profile: 用户基本信息
       li history: 用户交易记录
