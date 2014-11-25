@@ -6,6 +6,7 @@
     'switcher': '#btn-todamoon'
     'nickname-form' : '#set-nickname-form'
     'limit-user-btn' : '#limit-user-btn'
+    'release-limit-btn' : '#release-limit-btn'
     'chat-bottom' : '.chat-bottom'
     'online-peers' : '#online-peers'
     'open' : '.btn-open'
@@ -68,6 +69,7 @@
     # 某用户被管理员限制发言
     # limit_at, uid, at, nickname
     @on document, 'todamoon:user:limit_send', (e, d) ->
+      return if d['uid'] == gon.current_user['id']
       d['type'] = 'limit_send'
       html = JST["templates/todamoon/announcement"](d)
       @append_item(html)
@@ -100,6 +102,13 @@
     @on document, 'todamoon:room:info', (e, d) ->
       @select('online-peers').fadeOut().text(d.room_size+'人').fadeIn()
 
+    # 当前用户被管理员解除禁言
+    @on document, 'todamoon:notify:freely_send', (d) ->
+      d['type'] = 'release_limit'
+      html = JST["templates/todamoon/announcement"](d)
+      @append_item(html)
+    
+
     @on @select('switcher'), 'click', =>
       if @$node.hasClass('expanded')
         @$node.removeClass('expanded')
@@ -124,12 +133,24 @@
       uid = @$node.find('#limit-uid').val()
       limit_time = @$node.find('#limit-time').val()
       console.log uid, limit_time
-      if uid && limit_time && $.isNumeric(limit_time)
+      if $.isNumeric(uid) && $.isNumeric(limit_time)
         @trigger document, 'todamoon:cmd:set_excessively_send', {'uid': parseInt(uid), 'sec': parseInt(limit_time)}
+        $('#limit-user-form')[0].reset()
         $('#limit-user-form').fadeToggle()
       else
         html = "<div class='alert alert-danger'><p>值不能为空，时间只能填数字</p></div>"
         @select('chat-bottom').prepend(html).find('.alert').delay(2500).fadeOut()
+
+    @on @select('release-limit-btn'), 'click', (e) ->
+      uid = @$node.find('#release-uid').val()
+      if $.isNumeric(uid)
+        @trigger document, 'todamoon:cmd:set_freely_send', {'uid': parseInt(uid)}
+        $('#release-limit-form')[0].reset()
+        $('#release-limit-form').fadeToggle()
+      else
+        html = "<div class='alert alert-danger'><p>uid值不能为空</p></div>"
+        @select('chat-bottom').prepend(html).find('.alert').delay(2500).fadeOut()
+
 
 
   @append_item = (html) ->

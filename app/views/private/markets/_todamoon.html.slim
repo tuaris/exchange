@@ -20,7 +20,7 @@
             ul class="dropdown-menu" role="menu" aria-labelledby="admin-btn"
               li.menu-item: a#admin-nickname.btn-open data-target="#set-nickname-form" href="javascript:void(0)" 修改昵称
               li.menu-item: a#limit-user.btn-open data-target="#limit-user-form" href="javascript:void(0)" 禁言用户
-              li.menu-item: a#relase-limit.btn-open data-target="#relase-limit-form" href="javascript:void(0)" 解除禁言
+              li.menu-item: a#release-limit.btn-open data-target="#release-limit-form" href="javascript:void(0)" 解除禁言
       = render partial: 'mask'
 
     .chat-bottom
@@ -37,8 +37,8 @@
           input#limit-uid type="text" name="uid" placeholder="uid"
           input#limit-time type="text" name="limit_time" placeholder="time"
           button#limit-user-btn.btn.btn-sm.btn-default = t('.save')
-        form#relase-limit-form.chatroom-form onsubmit="return false;"
-          a.btn-close.pull-right href="javascript:void(0);" data-target="#relase-limit-form" &times;
+        form#release-limit-form.chatroom-form onsubmit="return false;"
+          a.btn-close.pull-right href="javascript:void(0);" data-target="#release-limit-form" &times;
           label 解除禁言
-          input#limit-uid type="text" name="uid" placeholder="uid"
+          input#release-uid type="text" name="uid" placeholder="uid"
           button#release-limit-btn.btn.btn-sm.btn-default = t('.save')

@@ -24,7 +24,7 @@
             chan.socket.close()
             chan.socket = null
 
-        chan.on "notify:freely_send", ->
+        chan.on "notify:freely_send", (d) ->
           component.trigger 'todamoon:notify:freely_send'
 
         chan.on "user:enter", (d) ->
