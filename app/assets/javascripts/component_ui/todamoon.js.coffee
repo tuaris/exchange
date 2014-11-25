@@ -125,7 +125,7 @@
       limit_time = @$node.find('#limit-time').val()
       console.log uid, limit_time
       if uid && limit_time && $.isNumeric(limit_time)
-        @trigger document, 'todamoon:cmd:set_excessively_send', {'uid': uid, 'sec': limit_time}
+        @trigger document, 'todamoon:cmd:set_excessively_send', {'uid': parseInt(uid), 'sec': parseInt(limit_time)}
         $('#limit-user-form').fadeToggle()
       else
         html = "<div class='alert alert-danger'><p>值不能为空，时间只能填数字</p></div>"
