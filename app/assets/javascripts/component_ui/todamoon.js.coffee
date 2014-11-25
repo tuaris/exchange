@@ -124,7 +124,7 @@
       uid = @$node.find('#limit-uid').val()
       limit_time = @$node.find('#limit-time').val()
       console.log uid, limit_time
-      if uid && limit_time && $.isNumeric()
+      if uid && limit_time && $.isNumeric(limit_time)
         @trigger document, 'todamoon:cmd:set_excessively_send', {'uid': uid, 'sec': limit_time}
         $('#limit-user-form').fadeToggle()
       else
