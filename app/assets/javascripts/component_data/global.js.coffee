@@ -3,7 +3,7 @@ window.GlobalData = flight.component ->
   @refreshDocumentTitle = (event, data) ->
     symbol = gon.currencies[gon.market.bid.currency].symbol
     price  = data.last
-    market = [gon.market.ask.currency, gon.market.bid.currency].join("/").toUpperCase()
+    market = data.name
     brand  = '云币网'
 
     document.title = "#{symbol}#{price} #{market} - #{brand}"
