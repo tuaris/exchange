@@ -6,6 +6,7 @@
     'switcher': '#btn-todamoon'
     'nickname-form' : '#set-nickname-form'
     'chat-top' : '.chat-top'
+    'online-peers' : '#online-peers'
 
   @after 'initialize', ->
     # at          通知消息时间戳
@@ -90,7 +91,7 @@
     # 获取房间信息
     # room_size 房间人数
     @on document, 'todamoon:room:info', (e, d) ->
-      console.log 'todamoon:room:info', d
+      @select('online-peers').fadeOut().text(d.room_size).fadeIn()
 
     @on @select('switcher'), 'click', =>
       if @$node.hasClass('expanded')
