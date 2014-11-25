@@ -15,6 +15,8 @@
               chan.send('cmd:send', body: message.body)
             component.on document, 'todamoon:cmd:set', (event, message) ->
               chan.send('cmd:set', message)
+            component.on document, 'todamoon:cmd:set_excessively_send', (event, message) ->
+              chan.send('cmd:set_excessively_send', message)
           else if d.status == 'reconnected'
             component.trigger 'todamoon:notify:rejoin'
             chan.socket.close()

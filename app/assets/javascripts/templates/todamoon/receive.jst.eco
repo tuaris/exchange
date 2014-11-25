@@ -4,11 +4,11 @@
     <blockquote><%= @body %></blockquote>
   </div>
   <div class="author">
-    <h5 class="name">
+    <h5 class="name" title="<%= @uid %>">
       <%= @nickname %>
       <% if @is_master: %>
         <span class="label label-primary">admin</span>
-      <% end %> 
+      <% end %>
     </h5>
     <time><%- formatter.short_time @at %></time>
   </div>

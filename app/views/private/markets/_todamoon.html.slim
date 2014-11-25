@@ -1,13 +1,6 @@
 #todamoon.chatbox
   a#btn-todamoon.hand-point.pull-right href="javascript:void(0);": i.fa.fa-rocket
   .chatbox-wrap
-    .chat-top
-      -if @member && @member.need_set_nickname?
-        = form_for @member, url: set_nickname_path, :remote => true, html: { class: "chatroom-form", id: "set-nickname-form" } do |f|
-          label 请设置你的聊天室昵称
-          = f.text_field :nickname_for_chatroom
-          button.btn.btn-sm.btn-default type="submit" = t('.save')
-
     .chat-heading
       span = t('.title')
       span#online-peers.badge class="#{'badge-success' if @member}" 0人
@@ -18,8 +11,34 @@
         textarea#chat-textarea.box.form-control placeholder="发表评论"
         .clearfix
           button type="submit" class="btn btn-sm btn-primary pull-right btn-send" = t('.send')
-          a.hide href="javascript:void(0)" class="btn btn-sm btn-link btn-icon" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Add Emoji": i class="fa fa-smile-o"
-          a.hide href="javascript:void(0)" class="btn btn-sm btn-link btn-icon" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Send Yun": i class="fa fa-cloud"
-          -if @is_chatroom_master
-            a href="javascript:void(0)" class="btn btn-sm btn-link btn-icon" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Admin": i class="fa fa-cog"
+          .dropdown.emoji-menu
+            a#emoji-btn href="javascript:void(0)" class="btn btn-sm btn-link btn-icon" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false" title="Add Emoji": i class="fa fa-smile-o"
+          .dropdown.yun-menu.hide
+            a#yun-btn href="javascript:void(0)" class="btn btn-sm btn-link btn-icon" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false" title="Send Yun": i class="fa fa-cloud"
+          .dropdown.admin-menu
+            a#admin-btn href="javascript:void(0)" class="btn btn-sm btn-link btn-icon" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false" title="Admin": i class="fa fa-cog"
+            ul class="dropdown-menu" role="menu" aria-labelledby="admin-btn"
+              li.menu-item: a#admin-nickname.btn-open data-target="#set-nickname-form" href="javascript:void(0)" 修改昵称
+              li.menu-item: a#limit-user.btn-open data-target="#limit-user-form" href="javascript:void(0)" 禁言用户
+              li.menu-item: a#relase-limit.btn-open data-target="#relase-limit-form" href="javascript:void(0)" 解除禁言
       = render partial: 'mask'
+
+    .chat-bottom
+      -if @member
+        = form_for @member, url: set_nickname_path, :remote => true, html: { class: "chatroom-form", id: "set-nickname-form" } do |f|
+          a.btn-close.pull-right href="javascript:void(0);" data-target="#set-nickname-form" &times;
+          label 请设置你的聊天室昵称
+          = f.text_field :nickname_for_chatroom
+          button.btn.btn-sm.btn-default type="submit" = t('.save')
+      -if @is_chatroom_master
+        form#limit-user-form.chatroom-form onsubmit="return false;"
+          a.btn-close.pull-right href="javascript:void(0);" data-target="#limit-user-form" &times;
+          label 禁言用户，时间单位为秒
+          input#limit-uid type="text" name="uid" placeholder="uid"
+          input#limit-time type="text" name="limit_time" placeholder="time"
+          button#limit-user-btn.btn.btn-sm.btn-default = t('.save')
+        form#relase-limit-form.chatroom-form onsubmit="return false;"
+          a.btn-close.pull-right href="javascript:void(0);" data-target="#relase-limit-form" &times;
+          label 解除禁言
+          input#limit-uid type="text" name="uid" placeholder="uid"
+          button#release-limit-btn.btn.btn-sm.btn-default = t('.save')

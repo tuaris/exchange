@@ -532,8 +532,8 @@ table {
   }
 }
 
-.dropdown:hover .dropdown-menu {
-    display: block;
+.navbar-static-top .dropdown:hover .dropdown-menu {
+  display: block;
 }
 
 @import 'custom/market';

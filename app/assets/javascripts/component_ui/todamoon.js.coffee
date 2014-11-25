@@ -5,8 +5,11 @@
     'chatroom': '.chat-body'
     'switcher': '#btn-todamoon'
     'nickname-form' : '#set-nickname-form'
-    'chat-top' : '.chat-top'
+    'limit-user-btn' : '#limit-user-btn'
+    'chat-bottom' : '.chat-bottom'
     'online-peers' : '#online-peers'
+    'open' : '.btn-open'
+    'close' : '.btn-close'
 
   @after 'initialize', ->
     # at          通知消息时间戳
@@ -21,8 +24,14 @@
     # todamoon:cmd:set_excessively_send(uid, sec) 禁言某用户
 
     @on @select('send'), 'click', =>
-      @trigger document, 'todamoon:cmd:send', body: @select('box').val()
-      @select('box').val('')
+      content = @select('box').val()
+      return if content.replace(/\s+/g, '') == ''
+      if content.length > 200
+        html = "<div class='alert alert-danger'><p>太长啦，我们是聊天室不是报社</p></div>"
+        @select('chat-bottom').prepend(html).find('.alert').delay(2500).fadeOut()
+      else 
+        @trigger document, 'todamoon:cmd:send', body: content
+        @select('box').val('')
 
     # 当前用户加入聊天室
     @on document, 'todamoon:notify:join', (e, d) ->
@@ -82,11 +91,9 @@
     # old_nickname 设置前昵称
     # nickname 设置后昵称
     @on document, 'todamoon:user:set', (e, d) ->
-      console.log 'todamoon:user:set', d
       d['type'] = 'nickname_changed'
       html = JST["templates/todamoon/announcement"](d)
       @append_item(html)
-      
 
     # 获取房间信息
     # room_size 房间人数
@@ -99,15 +106,31 @@
       else
         @$node.addClass('expanded')
 
+    @on @select('open'), 'click', (e) ->
+      $($(e.currentTarget).data('target')).fadeToggle()
+
+    @on @select('close'), 'click', (e) ->
+      $($(e.currentTarget).data('target')).fadeToggle()
+
     @on @select('nickname-form'), 'ajax:success', (e, d) ->
       @trigger document, 'todamoon:cmd:set', d
-      html = '<div class="alert alert-success"><p>昵称设置成功</p></div>'
-      @select('chat-top').html(html).find('.alert').delay(2500).fadeOut()
+      @select('nickname-form').fadeToggle()
 
     @on @select('nickname-form'), 'ajax:error', (e, d) ->
-      console.log d
       html = "<div class='alert alert-danger'><p>#{d.responseText}, 请重试</p></div>"
-      @select('chat-top').append(html).find('.alert').delay(2500).fadeOut()
+      @select('chat-bottom').prepend(html).find('.alert').delay(2500).fadeOut()
+
+    @on @select('limit-user-btn'), 'click', (e) ->
+      uid = @$node.find('#limit-uid').val()
+      limit_time = @$node.find('#limit-time').val()
+      console.log uid, limit_time
+      if uid && limit_time && $.isNumeric()
+        @trigger document, 'todamoon:cmd:set_excessively_send', {'uid': uid, 'sec': limit_time}
+        $('#limit-user-form').fadeToggle()
+      else
+        html = "<div class='alert alert-danger'><p>值不能为空，时间只能填数字</p></div>"
+        @select('chat-bottom').prepend(html).find('.alert').delay(2500).fadeOut()
+
 
   @append_item = (html) ->
     chatroom = @select('chatroom')

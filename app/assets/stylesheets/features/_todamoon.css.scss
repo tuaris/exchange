@@ -37,20 +37,24 @@ $todamoon-btn-size: 40px;
     }
   }
 
-  .chat-top {
+  .chat-bottom {
     position: absolute;
-    top: 0;
+    bottom: 0;
     z-index: 911;
     width: 100%;
     .alert {
       padding: $chatbox-gutter;
       border-radius: 0;
+      margin: 0;
     }
     .chatroom-form {
-      padding: $chatbox-gutter;
+      display: none;
+      padding: $chatbox-gutter*2 $chatbox-gutter;
       background-color: rgba(50, 130, 195, .7);
+      label { display: block; }
       input[type='text'] {
         color: #000;
+        margin-right: 8px;
         padding: 1px 3px;
         border-radius: 2px;
         border: none;
@@ -62,7 +66,23 @@ $todamoon-btn-size: 40px;
       .btn-sm {
         padding: 1px 8px;
         margin-top: -2px;
-        margin-left: 8px;
+      }
+      &#limit-user-form {
+        #limit-uid {
+          width: 120px;
+        }
+        #limit-time {
+          width: 60px;
+        }
+      }
+    }
+    .btn-close {
+      font-size: 18px;
+      line-height: 1;
+      color: rgba(255,255,255,.7);
+      &:hover {
+        color: #fff;
+        text-decoration: none;
       }
     }
   }
@@ -102,6 +122,60 @@ $todamoon-btn-size: 40px;
     .mask {
       background-color: rgba(29, 47, 62, .8);
       padding-top: 50px;
+    }
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
+      outline: 0 !important;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      .dropdown-menu {
+        min-width: 120px;
+        background-color: #fff;
+        &:before {
+          content: '';
+          display: inline-block;
+          border-left: 7px solid transparent;
+          border-right: 7px solid transparent;
+          border-top: 7px solid #ccc;
+          border-top-color: rgba(0,0,0,0.2);
+          position: absolute;
+          bottom: -7px;
+          left: 12px;
+        }
+        &:after {
+          content: '';
+          display: inline-block;
+          border-left:   6px solid transparent;
+          border-right:  6px solid transparent;
+          border-top: 6px solid #fff;
+          position: absolute;
+          bottom: -6px;
+          left: 13px;
+        }
+        > li > a {
+          font-size: 14px;
+          padding: 3px 10px;
+          color: #777;
+          &:hover {
+            color: #333;
+            background-color: #eee;
+          }
+        }
+      }
+      &.open .dropdown-menu {
+        top: auto;
+        bottom: 110%;
+        .btn {
+          color: #fff;
+        }
+      }
+      &.admin-menu .dropdown-menu {
+        left: -6px;
+      }
     }
   }
   .chat-post-form {
