@@ -19,8 +19,9 @@
             a#admin-btn href="javascript:void(0)" class="btn btn-sm btn-link btn-icon" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false" title="Admin": i class="fa fa-cog"
             ul class="dropdown-menu" role="menu" aria-labelledby="admin-btn"
               li.menu-item: a#admin-nickname.btn-open data-target="#set-nickname-form" href="javascript:void(0)" 修改昵称
-              li.menu-item: a#limit-user.btn-open data-target="#limit-user-form" href="javascript:void(0)" 禁言用户
-              li.menu-item: a#release-limit.btn-open data-target="#release-limit-form" href="javascript:void(0)" 解除禁言
+              -if @is_chatroom_master
+                li.menu-item: a#limit-user.btn-open data-target="#limit-user-form" href="javascript:void(0)" 禁言用户
+                li.menu-item: a#release-limit.btn-open data-target="#release-limit-form" href="javascript:void(0)" 解除禁言
       = render partial: 'mask'
 
     .chat-bottom
