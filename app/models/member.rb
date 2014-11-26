@@ -29,7 +29,8 @@ class Member < ActiveRecord::Base
 
   validates :sn, presence: true
   validates :display_name, uniqueness: true, allow_blank: true
-  validates :nickname_for_chatroom, uniqueness: true, allow_blank: true
+  validates :nickname_for_chatroom, uniqueness: true, allow_blank: true,
+            length: { maximum: 20 }, format: { with: /\A[^`!@#\$%\^&*+_=]+\z/ }
   validates :email, email: true, uniqueness: true, allow_nil: true
 
   before_create :build_default_id_document
@@ -239,11 +240,11 @@ class Member < ActiveRecord::Base
   end
 
   def chatroom_nickname
-    nickname_for_chatroom || nickname || "##{memo}"
+    nickname_for_chatroom.blank? ? nickname || "##{memo}" : nickname_for_chatroom
   end
 
   def need_set_nickname?
-    !(nickname_for_chatroom || nickname)
+    nickname_for_chatroom.blank? && nickname.blank?
   end
 
   private

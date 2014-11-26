@@ -38,8 +38,7 @@ module Private
 
         render :json => { nickname: nickname, signature: signature }
       else
-        #TODO: nickname_for_chatroom validation and error pop.
-        render js: '非法字符', status: 500
+        render js: @member.errors['nickname_for_chatroom'], status: 500
       end
     end
 

@@ -3,7 +3,9 @@
   .chatbox-wrap
     .chat-heading
       span = t('.title')
-      span#online-peers.badge class="#{'badge-success' if @member}" 0人
+      | 在线
+      span#online-peers 0
+      | 人
     .chat-body
 
     .chat-footer

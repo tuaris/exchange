@@ -100,7 +100,7 @@
     # 获取房间信息
     # room_size 房间人数
     @on document, 'todamoon:room:info', (e, d) ->
-      @select('online-peers').fadeOut().text(d.room_size+'人').fadeIn()
+      @select('online-peers').fadeOut().text(d.room_size).fadeIn()
 
     # 当前用户被管理员解除禁言
     @on document, 'todamoon:notify:freely_send', (d) ->
