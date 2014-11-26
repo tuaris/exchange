@@ -73,6 +73,10 @@ class Deposit < ActiveRecord::Base
     end
   end
 
+  def txid_desc
+    txid
+  end
+
   class << self
     def channel
       DepositChannel.find_by_key(name.demodulize.underscore)

@@ -11,17 +11,12 @@ module Private::HistoryHelper
   def transaction_txid_link(t)
     return t.txid unless t.currency_obj.coin?
 
-    txid = t.txid || ''
-    case txid
-    when /#{Deposit::PREFIXS[:bts][:pts_snapshot]}/
-      'from PTS snapshot'
-    when /#{Deposit::PREFIXS[:yun][:deliver]}/
-      'Thank you for being with us.'
-    when /#{Deposit::PREFIXS[:yun][:interest]}/
-      I18n.t("private.history.#{Deposit::PREFIXS[:yun][:interest]}")
+    if t.txid_desc == t.txid
+      link_to t.txid_desc, t.blockchain_url
     else
-      link_to txid, t.blockchain_url
+      t.txid_desc
     end
+
   end
 
 end

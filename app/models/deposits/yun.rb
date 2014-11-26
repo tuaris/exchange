@@ -9,5 +9,17 @@ module Deposits
       currency_obj.blockchain_url(blockid)
     end
 
+    def txid_desc
+      t = txid || ''
+      case t
+      when /#{Deposit::PREFIXS[:yun][:deliver]}/
+        'Thank you for being with us.'
+      when /#{Deposit::PREFIXS[:yun][:interest]}/
+        I18n.t("private.history.#{Deposit::PREFIXS[:yun][:interest]}")
+      else
+        t
+      end
+    end
+
   end
 end
