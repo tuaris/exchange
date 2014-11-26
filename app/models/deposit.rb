@@ -73,6 +73,10 @@ class Deposit < ActiveRecord::Base
     end
   end
 
+  def txid_desc
+    txid || ''
+  end
+
   class << self
     def channel
       DepositChannel.find_by_key(name.demodulize.underscore)
@@ -101,6 +105,10 @@ class Deposit < ActiveRecord::Base
 
   def txid_text
     txid && txid.truncate(40)
+  end
+
+  def as_json(options = {})
+    super.merge(txid: txid.txid_text)
   end
 
   private
