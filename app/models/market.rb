@@ -27,6 +27,10 @@ class Market < ActiveYamlBase
     self[:name] ||= "#{base_unit}/#{quote_unit}".upcase
   end
 
+  def name
+    self[:name]
+  end
+
   def latest_price
     Trade.latest_price(id.to_sym)
   end
