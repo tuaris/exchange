@@ -27,7 +27,7 @@ $todamoon-btn-size: 40px;
   }
   &.expanded {
     left: 0;
-    top: $navbar-height + 94;
+    top: $navbar-height + 96;
     margin-top: 0;
     border: 1px solid lighten($chatbox-bg, 20%);
     border-left: none;
