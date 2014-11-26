@@ -108,7 +108,7 @@ class Deposit < ActiveRecord::Base
   end
 
   def as_json(options = {})
-    super.merge(txid: txid.txid_text)
+    super.merge(txid: txid_desc)
   end
 
   private
