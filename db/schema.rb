@@ -206,9 +206,10 @@ ActiveRecord::Schema.define(version: 20141116172836) do
     t.boolean  "activated"
     t.integer  "country_code"
     t.string   "phone_number"
-    t.boolean  "disabled",     default: false
-    t.boolean  "api_disabled", default: false
+    t.boolean  "disabled",              default: false
+    t.boolean  "api_disabled",          default: false
     t.string   "nickname"
+    t.string   "nickname_for_chatroom"
   end
 
   create_table "oauth_access_grants", force: true do |t|

@@ -1,0 +1,53 @@
+/* peatio exchange site vars
+-------------------------------------------------------------- */
+
+$brand-width: 140px;
+$funds-panel-height: 750px;
+
+$footer-bg: $body-bg;
+$footer-height: 120px;
+$footer-color: $gray-light;
+$footer-color-light: #B0B5BB;
+$footer-border: #ddd;
+
+$content-split: #ddd;
+
+$btn-gutter-width: 20px;
+$text-gutter-width: 5px;
+$icon-gutter-width: 5px;
+
+$up-bg: rgba(89, 132, 50, 1.0);
+$down-bg: rgba(159, 49, 27, 1.0);
+
+$gutter: 2px;
+$min-width: 1180px;
+$min-height: 620px;
+$nav_stacked_width: 50px;
+
+$navbar-height: $navbar-height + 1px;
+$nav_stacked_width_2x: $nav_stacked_width * 2;
+$panel_table_header_high: 73px;
+$gutter-2x: $gutter * 2;
+$gutter-3x: $gutter * 3;
+$gutter-4x: $gutter * 4;
+$gutter-5x: $gutter * 5;
+
+$base-top: $gutter;
+
+$entry-width: 242px;
+$entry-height: 220px;
+
+$ticker-width: $entry-width * 2 + $gutter;
+$ticker-height: 55px;
+
+$order-book-width: $entry-width * 2 + $gutter;
+$order-book-height: $min-height - $navbar-height - $entry-height - $ticker-height - $gutter-4x;
+
+$my-orders-tabs-width: 500px;
+$my-orders-tabs-height: 282px;
+
+$trades-tabs-width: 500px;
+$trades-tabs-height: 282px;
+
+$candlestick-width: $min-width - $order-book-width - $gutter-3x - $nav_stacked_width;
+$candlestick-height: $min-height - $navbar-height - $gutter-2x;

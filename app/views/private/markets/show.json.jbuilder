@@ -3,6 +3,10 @@ json.bids @bids
 json.trades @trades
 json.market_orders @markets_orders
 
+json.config do 
+  json.chat_uri ENV['CHAT_URI']
+end
+
 if @member
   json.orders do
     json.wait *([@orders_wait] + Order::ATTRIBUTES)

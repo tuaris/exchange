@@ -6,7 +6,7 @@
 @import 'bootstrap';
 @import 'bootstrap-switch.min';
 
-@import 'vars/basic';
+@import 'vars/market';
 @import 'vars/custom';
 
 @import "font-awesome-sprockets";
@@ -14,42 +14,10 @@
 @import 'csshake.min';
 
 @import 'layouts/basic';
+@import 'features/todamoon';
 
 /* basic layout 
 ------------------------------------------------ */
-$gutter: 2px;
-$min-width: 1180px;
-$min-height: 620px;
-$nav_stacked_width: 50px;
-
-$navbar-height: $navbar-height + 1px;
-$nav_stacked_width_2x: $nav_stacked_width * 2;
-$panel_table_header_high: 73px;
-$gutter-2x: $gutter * 2;
-$gutter-3x: $gutter * 3;
-$gutter-4x: $gutter * 4;
-$gutter-5x: $gutter * 5;
-
-$base-top: $gutter;
-
-$entry-width: 242px;
-$entry-height: 220px;
-
-$ticker-width: $entry-width * 2 + $gutter;
-$ticker-height: 55px;
-
-$order-book-width: $entry-width * 2 + $gutter;
-$order-book-height: $min-height - $navbar-height - $entry-height - $ticker-height - $gutter-4x;
-
-$my-orders-tabs-width: 500px;
-$my-orders-tabs-height: 282px;
-
-$trades-tabs-width: 500px;
-$trades-tabs-height: 282px;
-
-$candlestick-width: $min-width - $order-book-width - $gutter-3x - $nav_stacked_width;
-$candlestick-height: $min-height - $navbar-height - $gutter-2x;
-
 html,
 body, 
 #wrap, 
@@ -265,17 +233,6 @@ header {
   }
 }
 
-#chat_tabs_wrapper {
-  bottom: $gutter; left: $gutter;
-  min-height: 300px;
-  @include float-wrapper(260px, 300px);
-  &.stop-resize { 
-    height: 100px !important; 
-    min-height: 100px !important; 
-    & > ul { top: 140px }
-  }
-}
-
 #market_trades_tabs_wrapper {
   top: $gutter; right: $gutter_2x + $order-book-width;
   @include float-wrapper($trades-tabs-width, $trades-tabs-height);
@@ -366,7 +323,6 @@ header {
 }
 
 #candlestick { 
-
   position: absolute;
   min-width: $candlestick-width; width: $candlestick-width; 
   min-height: $candlestick-height; height: $candlestick-height;
@@ -576,8 +532,8 @@ table {
   }
 }
 
-.dropdown:hover .dropdown-menu {
-    display: block;
+.navbar-static-top .dropdown:hover .dropdown-menu {
+  display: block;
 }
 
 @import 'custom/market';

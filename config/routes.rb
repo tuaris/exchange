@@ -119,6 +119,8 @@ Peatio::Application.routes.draw do
     end
 
     post '/pusher/auth', to: 'pusher#auth'
+    post '/todamoon/auth', to: 'todamoon#auth'
+    patch '/todamoon/nickname', to: 'todamoon#nickname', as: :set_nickname
 
     resources :tickets, only: [:index, :new, :create, :show] do
       member do

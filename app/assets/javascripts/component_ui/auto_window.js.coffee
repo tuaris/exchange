@@ -38,6 +38,10 @@ PANEL_TABLE_HEADER_HIGH = 73
 
       #$('#chart_switch').attr('style', "top: #{(window_h - navbar_h + chart_switch_h) / 2}px;")
 
+      $('#todamoon').height(window_h - navbar_h)
+      chatbody_h = window_h - navbar_h - $('#todamoon .chat-heading').height() - $('#todamoon .chat-footer').height()
+      $('#todamoon .chat-body').height(chatbody_h - 40) #deduct the padding space 40px
+
       unless $('#chat_tabs_wrapper').hasClass('stop-resize')
         switch_h = $('#market_switch_tabs_wrapper').height()
         $('#chat_tabs_wrapper').height(window_h - navbar_h - switch_h - gutter_9x)

@@ -4,6 +4,8 @@
 #= require jquery_ujs
 #= require jquery.mousewheel
 #= require jquery-timing.min
+#= require jquery.nicescroll.min
+#= require keymaster
 #
 #= require bootstrap
 #= require bootstrap-switch.min
@@ -14,6 +16,7 @@
 #= require cookies.min
 #= require flight.min
 #= require pusher.min
+#= require phoenix
 
 #= require ./lib/sfx
 #= require ./lib/notifier
@@ -50,12 +53,32 @@ $ ->
   MarketTickerUI.attachTo('#ticker')
   MarketSwitchUI.attachTo('#market_switch')
   MarketTradesUI.attachTo('#market_trades')
+  ToDaMoonUI.attachTo('#todamoon')
 
   MarketData.attachTo(document)
   GlobalData.attachTo(document, {pusher: window.pusher})
   MemberData.attachTo(document, {pusher: window.pusher}) if gon.accounts
+  ToDaMoonData.attachTo(document)
 
   CandlestickUI.attachTo('#candlestick')
   SwitchUI.attachTo('#range_switch, #indicator_switch, #main_indicator_switch')
 
   window.notifier = new Notifier()
+
+  $('#todamoon .chat-body').niceScroll({
+    cursorcolor: "#0D151B",
+    cursoropacitymax: 0.7,
+    cursorwidth: 6,
+    cursorborder: "1px solid #0D151B",
+    cursorborderradius: "4px",
+  })
+
+  key.filter = (event) ->
+    tagName = (event.target || event.srcElement).tagName
+    key.setScope(/^(INPUT|TEXTAREA|SELECT)$/.test(tagName) ? 'input' : 'other')
+    return true
+
+  key 'enter', (e) ->
+    if $('#todamoon').hasClass('expanded')
+      $('#todamoon .btn-send').click()
+      e.preventDefault()

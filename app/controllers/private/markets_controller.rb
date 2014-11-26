@@ -47,6 +47,8 @@ module Private
       end
 
       @trades_done = Trade.for_member(@market.id, current_user, limit: 100, order: 'id desc')
+
+      @is_chatroom_master = (ENV['CHAT_MASTERS'] || '').split(',').include?(current_user.email)
     end
 
   end

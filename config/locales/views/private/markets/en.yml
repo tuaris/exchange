@@ -136,3 +136,6 @@ en:
         global_trades_title: TRADES
       chat:
         title: Chat Channel
+      todamoon:
+        title: Chatroom
+        send: Send

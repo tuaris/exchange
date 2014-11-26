@@ -1,0 +1,7 @@
+<div class="chat-item">
+  <div class="author">
+    <span class="user-status is-online"></span>
+    <h5 class="name"><%= @nickname %> 加入了聊天室</h5>
+    <time><%- formatter.short_time @at %></time>
+  </div>
+</div>

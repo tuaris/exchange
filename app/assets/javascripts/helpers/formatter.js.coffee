@@ -58,6 +58,13 @@ class Formatter
     m = moment.unix(timestamp)
     "#{m.format("YYYY/MM/DD HH:mm")}"
 
+  short_time: (timestamp) ->
+    m = moment.unix(timestamp)
+    "#{m.format("HH:mm")}"
+
+  time_ago: (timestamp) ->
+    moment.unix(timestamp).fromNow()
+
   mask_fixed_volume: (volume) ->
     @.fixAsk(volume).replace(/\..*/, "<g>$&</g>")
 
@@ -89,7 +96,7 @@ class Formatter
     else
       @.fixAsk volume
 
-  t: (key) -> 
+  t: (key) ->
     gon.i18n[key]
 
   currency: (value) ->
