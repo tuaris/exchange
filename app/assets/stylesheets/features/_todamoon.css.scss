@@ -1,5 +1,5 @@
 $chatbox-gutter: 8px;
-$chatbox-width: 280px;
+$chatbox-width: 300px;
 $chatbox-bg: #1D2F3E;
 $chat-bubble-bg: darken($chatbox-bg, 3%);
 $chat-bubble-me-bg: lighten($chatbox-bg, 35%);
@@ -27,7 +27,7 @@ $todamoon-btn-size: 40px;
   }
   &.expanded {
     left: 0;
-    top: $navbar-height;
+    top: $navbar-height + 94;
     margin-top: 0;
     border: 1px solid lighten($chatbox-bg, 20%);
     border-left: none;
