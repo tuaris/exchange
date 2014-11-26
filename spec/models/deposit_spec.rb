@@ -22,19 +22,11 @@ describe Deposit do
   end
 
   describe "#txid_desc" do
-    context "txid is nil" do
-      let(:deposit ) { create(:deposit, amount: 100.to_d, txid: nil) }
-      it 'should return empty string' do
-        expect(deposit.txid_desc).to eql ''
-      end
-    end
-    context "txid is not nil" do
-      let(:txid) { 'xman' }
-      let(:deposit ) { create(:deposit, amount: 100.to_d, txid: txid) }
+    let(:txid) { 'xman' }
+    let(:deposit ) { create(:deposit, amount: 100.to_d, txid: txid) }
 
-      it 'should return txid' do
-        expect(deposit.txid_desc).to eql txid
-      end
+    it 'should return txid' do
+      expect(deposit.txid_desc).to eql txid
     end
   end
 end

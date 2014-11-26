@@ -23,6 +23,9 @@ app.controller 'DepositHistoryController', ($scope, $stateParams, $http) ->
   @canCancel = (state) ->
     ['submitting'].indexOf(state) > -1
 
+  @txidLinkAble = (deposit) ->
+    if deposit.txid == deposit.txid_desc then true else false
+
   do @event = ->
     Deposit.bind "create update destroy", ->
       ctrl.refresh()

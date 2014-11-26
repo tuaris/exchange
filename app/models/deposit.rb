@@ -74,7 +74,7 @@ class Deposit < ActiveRecord::Base
   end
 
   def txid_desc
-    txid || ''
+    txid
   end
 
   class << self
@@ -105,10 +105,6 @@ class Deposit < ActiveRecord::Base
 
   def txid_text
     txid && txid.truncate(40)
-  end
-
-  def as_json(options = {})
-    super.merge(txid: txid_desc)
   end
 
   private

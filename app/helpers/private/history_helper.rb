@@ -11,7 +11,12 @@ module Private::HistoryHelper
   def transaction_txid_link(t)
     return t.txid unless t.currency_obj.coin?
 
-    link_to t.txid_desc, t.blockchain_url
+    if t.txid_desc == t.txid
+      link_to t.txid_desc, t.blockchain_url
+    else
+      t.txid_desc
+    end
+
   end
 
 end
