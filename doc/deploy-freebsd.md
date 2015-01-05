@@ -16,7 +16,7 @@ Deploy production server on FreeBSD 10.1 64-bit
 
 ### 1. Set package repository
 
-Create (if it doesn’t exist) deploy user, and assign it to the sudo group:
+Create (if it doesn’t exist) the Exchange package repository, and disable the defaut FreeBSD repository:
 
     mkdir -p /usr/local/etc/pkg/repos
     echo "FreeBSD: { enabled: no }" > /usr/local/etc/pkg/repos/FreeBSD.conf
@@ -43,27 +43,23 @@ Install bundler
 
 ### 3. Install MySQL
 
-    sudo apt-get install mysql-server  mysql-client  libmysqlclient-dev
+    pkg install mysql56-server mysql56-client
+    echo mysql_enable=\"YES\" >> /etc/rc.conf
 
 ### 4. Install Redis
 
-Be sure to install the latest stable Redis, as the package in the distro may be a bit old:
+Install the latest stable Redis:
 
-    sudo apt-add-repository -y ppa:rwky/redis
-    sudo apt-get update
-    sudo apt-get install redis-server
+    pkg install redis
+    echo redis_enable=\"YES\" >> /etc/rc.conf
 
 ### 5. Install RabbitMQ
 
-Please follow instructions here: https://www.rabbitmq.com/install-debian.html
+    pkg install rabbitmq
+    echo rabbitmq_enable=\"YES\" >> /etc/rc.conf
 
-    curl http://www.rabbitmq.com/rabbitmq-signing-key-public.asc | sudo apt-key add -
-    sudo apt-add-repository 'deb http://www.rabbitmq.com/debian/ testing main'
-    sudo apt-get update
-    sudo apt-get install rabbitmq-server
-
-    sudo rabbitmq-plugins enable rabbitmq_management
-    sudo service rabbitmq-server restart
+    rabbitmq-plugins enable rabbitmq_management
+    service rabbitmq-server restart
     wget http://localhost:15672/cli/rabbitmqadmin
     chmod +x rabbitmqadmin
     sudo mv rabbitmqadmin /usr/local/sbin
