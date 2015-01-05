@@ -1,5 +1,5 @@
-Deploy production server on FreeBSD 10.1
--------------------------------------
+Deploy production server on FreeBSD 10.1 64-bit
+-----------------------------------------------
 
 ### Overview
 
@@ -8,54 +8,38 @@ Deploy production server on FreeBSD 10.1
 3. Install [MySQL](http://www.mysql.com/)
 4. Install [Redis](http://redis.io/)
 5. Install [RabbitMQ](https://www.rabbitmq.com/)
-6. Install [Bitcoind](https://en.bitcoin.it/wiki/Bitcoind)
+6. Install [Zetacoind](http://getzetacoin.com)
 7. Install [Nginx with Passenger](https://www.phusionpassenger.com/)
 8. Install JavaScript Runtime
 9. Install ImageMagick
 10. Configure Peatio
 
-### 1. Setup deploy user
+### 1. Set package repository
 
 Create (if it doesn’t exist) deploy user, and assign it to the sudo group:
 
-    sudo adduser deploy
-    sudo usermod -a -G sudo deploy
-
-Re-login as deploy user
+    mkdir -p /usr/local/etc/pkg/repos
+    echo "FreeBSD: { enabled: no }" > /usr/local/etc/pkg/repos/FreeBSD.conf
+    echo "Exchange: { url: "http://pkg.morante.net/exchange", enabled: yes }" > /usr/local/etc/pkg/repos/Exchange.conf
 
 ### 2. Install Ruby
 
 Make sure your system is up-to-date.
 
-    sudo apt-get update
-    sudo apt-get upgrade
+    pkg update -f
+    pkg upgrade
 
-Installing [rbenv](https://github.com/sstephenson/rbenv) using a Installer
+Installing [rbenv](https://github.com/sstephenson/rbenv) from packages
 
-    sudo apt-get install git-core curl zlib1g-dev build-essential \
-                         libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 \
-                         libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common
+    pkg install rbenv
 
-    cd
-    git clone git://github.com/sstephenson/rbenv.git .rbenv
-    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-    echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-    exec $SHELL
+Install Ruby 2.1.x from packages:
 
-    git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-    echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
-    exec $SHELL
-
-Install Ruby 2.1.2 through rbenv:
-
-    rbenv install 2.1.2
-    rbenv global 2.1.2
+    pkg install ruby
 
 Install bundler
 
-    echo "gem: --no-ri --no-rdoc" > ~/.gemrc
-    gem install bundler
-    rbenv rehash
+    pkg install rubygem-bundler
 
 ### 3. Install MySQL
 
