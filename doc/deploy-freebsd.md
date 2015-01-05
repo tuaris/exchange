@@ -60,100 +60,74 @@ Install the latest stable Redis:
 
     rabbitmq-plugins enable rabbitmq_management
     service rabbitmq-server restart
-    wget http://localhost:15672/cli/rabbitmqadmin
-    chmod +x rabbitmqadmin
-    sudo mv rabbitmqadmin /usr/local/sbin
 
-### 6. Install Bitcoind
+### 6. Install Zetacoind
 
-    sudo add-apt-repository ppa:bitcoin/bitcoin
-    sudo apt-get update
-    sudo apt-get install bitcoind
+    pkg install zetacoin-noX11
+    echo zetacoin_enable=\"YES\" >> /etc/rc.conf
 
 **Configure**
 
-    mkdir -p ~/.bitcoin
-    touch ~/.bitcoin/bitcoin.conf
-    vim ~/.bitcoin/bitcoin.conf
+    edit /usr/local/etc/zetacoin.conf
 
-Insert the following lines into the bitcoin.conf, and replce with your username and password.
-
-    server=1
-    daemon=1
-
-    # If run on the test network instead of the real bitcoin network
-    testnet=1
+Change the following lines in the zetacoin.conf with your username and password.
 
     # You must set rpcuser and rpcpassword to secure the JSON-RPC api
     # Please make rpcpassword to something secure, `5gKAgrJv8CQr2CGUhjVbBFLSj29HnE6YGXvfykHJzS3k` for example.
-    # Listen for JSON-RPC connections on <port> (default: 8332 or testnet: 18332)
     rpcuser=INVENT_A_UNIQUE_USERNAME
     rpcpassword=INVENT_A_UNIQUE_PASSWORD
-    rpcport=18332
+    
+Add the following line to the end of zetacoin.conf
 
     # Notify when receiving coins
     walletnotify=/usr/local/sbin/rabbitmqadmin publish routing_key=peatio.deposit.coin payload='{"txid":"%s", "channel_key":"satoshi"}'
 
-**Start bitcoin**
+**Start zetacoin**
 
-    bitcoind
+    service zetacoin start
 
 ### 7. Installing Nginx & Passenger
 
-Install Phusion's PGP key to verify packages
-
-    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7
-
-Add HTTPS support to APT
-
-    sudo apt-get install apt-transport-https ca-certificates
-
-Add the passenger repository. Note that this only works for Ubuntu 14.04. For other versions of Ubuntu, you have to add the appropriate repository according to Section 2.3.1 of this [link](https://www.phusionpassenger.com/documentation/Users%20guide%20Nginx.html).
-
-    sudo add-apt-repository 'deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main'
-    sudo apt-get update
-
-Install nginx and passenger
-
-    sudo apt-get install nginx-extras passenger
+    pkg install nginx rubygem-passenger
 
 Next, we need to update the Nginx configuration to point Passenger to the version of Ruby that we're using. You'll want to open up /etc/nginx/nginx.conf in your favorite editor,
 
-    sudo vim /etc/nginx/nginx.conf
+    edit /usr/local/etc/nginx/nginx.conf
 
 find the following lines, and uncomment them:
 
     passenger_root /usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini;
     passenger_ruby /usr/bin/ruby;
-
-update the second line to read:
-
-    passenger_ruby /home/deploy/.rbenv/shims/ruby;
+    
 
 ### 8. Install JavaScript Runtime
 
 A JavaScript Runtime is needed for Asset Pipeline to work. Any runtime will do but Node.js is recommended.
 
-    sudo apt-get install nodejs
-
+    pkg install node
+    
 
 ### 9. Install ImageMagick
 
-    sudo apt-get -y install imagemagick gsfonts
+    pkg install ImageMagick-nox11 gsfonts
 
 
-### 10. Setup production environment variable
+### 10. Install git
 
-    echo "export RAILS_ENV=production" >> ~/.bashrc
-    source ~/.bashrc
+    pkg install git
 
 ##### Clone the Source
 
-    mkdir -p ~/peatio
-    git clone git://github.com/peatio/peatio.git ~/peatio/current
+    mkdir -p /usr/local/peatio
+    git clone git://github.com/peatio/peatio.git /usr/local/peatio/current
     cd peatio/current
 
-    ＃ Install dependency gems
+    Install dependency gems from packages
+
+    pkg install www/rubygem-rails4 www/rubygem-redis-rails databases/rubygem-mysql2 devel/rubygem-daemons devel/rubygem-json devel/rubygem-jbuilder security/rubygem-bcrypt-ruby security/rubygem-omniauth devel/rubygem-settingslogic devel/rubygem-hashie net/rubygem-amqp net/rubygem-bunny devel/rubygem-enumerize www/rubygem-acts-as-taggable-on www/rubygem-kaminari-rails4 devel/rubygem-rails-observers www/rubygem-gon-rails4 devel/rubygem-eventmachine www/rubygem-em-websocket devel/rubygem-simple_form textproc/rubygem-sass-rails4 devel/rubygem-coffee-rails4 www/rubygem-uglifier www/rubygem-jquery-rails4 www/rubygem-bootstrap-sass devel/rubygem-grape devel/rubygem-grape-entity devel/rubygem-grape-swagger www/rubygem-rack-attack www/rubygem-carrierwave www/rubygem-rest-client devel/rubygem-pry-rails devel/rubygem-byebug
+    
+    Install remaining dependency gems using bundler
+
     bundle install --without development test --path vendor/bundle
 
 ##### Configure Peatio
