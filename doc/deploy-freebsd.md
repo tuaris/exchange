@@ -121,12 +121,8 @@ A JavaScript Runtime is needed for Asset Pipeline to work. Any runtime will do b
     mkdir -p /usr/local/peatio
     git clone git://github.com/peatio/peatio.git /usr/local/peatio/current
     cd peatio/current
-
-    Install dependency gems from packages
-
-    pkg install www/rubygem-rails4 www/rubygem-redis-rails databases/rubygem-mysql2 devel/rubygem-daemons devel/rubygem-json devel/rubygem-jbuilder security/rubygem-bcrypt-ruby security/rubygem-omniauth devel/rubygem-settingslogic devel/rubygem-hashie net/rubygem-amqp net/rubygem-bunny devel/rubygem-enumerize www/rubygem-acts-as-taggable-on www/rubygem-kaminari-rails4 devel/rubygem-rails-observers www/rubygem-gon-rails4 devel/rubygem-eventmachine www/rubygem-em-websocket devel/rubygem-simple_form textproc/rubygem-sass-rails4 devel/rubygem-coffee-rails4 www/rubygem-uglifier www/rubygem-jquery-rails4 www/rubygem-bootstrap-sass devel/rubygem-grape devel/rubygem-grape-entity devel/rubygem-grape-swagger www/rubygem-rack-attack www/rubygem-carrierwave www/rubygem-rest-client devel/rubygem-pry-rails devel/rubygem-byebug
     
-    Install remaining dependency gems using bundler
+    Install dependency gems using bundler
 
     bundle install --without development test --path vendor/bundle
 
